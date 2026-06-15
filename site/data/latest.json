@@ -248,5 +248,101 @@
       "status": "verified-from-archived-code",
       "note": "Archived before raw tweet text was stored; verification is based on extracted single-tweet code length."
     }
+  },
+  {
+    "id": "2065329447247745209",
+    "created_at": "2026-06-12T07:04:46.000Z",
+    "author": {
+      "name": "きんぞ",
+      "username": "TakagiHitoshi",
+      "url": "https://x.com/TakagiHitoshi",
+      "profile_image_url": "https://pbs.twimg.com/profile_images/1882774256393850880/AcqwIYlC_normal.jpg"
+    },
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2065329447247745209",
+    "archive_url": "https://somethingsillystupid.github.io/tsubuyaki-processing-archive/sketch.html?id=2065329447247745209",
+    "preview_still_file": "previews/2065329447247745209-still.webp",
+    "preview_motion_file": "previews/2065329447247745209.webp",
+    "runtime_status": "runs",
+    "tsubuyaki": {
+      "tweet_chars": 257,
+      "code_chars": 209,
+      "tweet_under_280": true,
+      "code_under_280": true,
+      "code_detected": true,
+      "single_tweet_full_code": true,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "2065191020049113405",
+    "created_at": "2026-06-11T21:54:43.000Z",
+    "author": {
+      "name": "きんぞ",
+      "username": "TakagiHitoshi",
+      "url": "https://x.com/TakagiHitoshi",
+      "profile_image_url": "https://pbs.twimg.com/profile_images/1882774256393850880/AcqwIYlC_normal.jpg"
+    },
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2065191020049113405",
+    "archive_url": "https://somethingsillystupid.github.io/tsubuyaki-processing-archive/sketch.html?id=2065191020049113405",
+    "preview_still_file": "previews/2065191020049113405-still.webp",
+    "preview_motion_file": "previews/2065191020049113405.webp",
+    "runtime_status": "runs",
+    "tsubuyaki": {
+      "tweet_chars": 241,
+      "code_chars": 193,
+      "tweet_under_280": true,
+      "code_under_280": true,
+      "code_detected": true,
+      "single_tweet_full_code": true,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "2065010730978738577",
+    "created_at": "2026-06-11T09:58:18.000Z",
+    "author": {
+      "name": "きんぞ",
+      "username": "TakagiHitoshi",
+      "url": "https://x.com/TakagiHitoshi",
+      "profile_image_url": "https://pbs.twimg.com/profile_images/1882774256393850880/AcqwIYlC_normal.jpg"
+    },
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2065010730978738577",
+    "archive_url": "https://somethingsillystupid.github.io/tsubuyaki-processing-archive/sketch.html?id=2065010730978738577",
+    "preview_still_file": "previews/2065010730978738577-still.webp",
+    "preview_motion_file": "previews/2065010730978738577.webp",
+    "runtime_status": "runs",
+    "tsubuyaki": {
+      "tweet_chars": 275,
+      "code_chars": 209,
+      "tweet_under_280": true,
+      "code_under_280": true,
+      "code_detected": true,
+      "single_tweet_full_code": true,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "2064830333300969569",
+    "created_at": "2026-06-10T22:01:28.000Z",
+    "author": {
+      "name": "きんぞ",
+      "username": "TakagiHitoshi",
+      "url": "https://x.com/TakagiHitoshi",
+      "profile_image_url": "https://pbs.twimg.com/profile_images/1882774256393850880/AcqwIYlC_normal.jpg"
+    },
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2064830333300969569",
+    "archive_url": "https://somethingsillystupid.github.io/tsubuyaki-processing-archive/sketch.html?id=2064830333300969569",
+    "preview_still_file": "previews/2064830333300969569-still.webp",
+    "preview_motion_file": "previews/2064830333300969569.webp",
+    "runtime_status": "runs",
+    "tsubuyaki": {
+      "tweet_chars": 239,
+      "code_chars": 191,
+      "tweet_under_280": true,
+      "code_under_280": true,
+      "code_detected": true,
+      "single_tweet_full_code": true,
+      "status": "verified"
+    }
   }
 ]
