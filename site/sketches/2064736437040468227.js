@@ -1,0 +1,12 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  stroke(W)
+  for(y=0;y<W;y+=25)
+  for(x=-((y/75)%2<1)*75;x<W;x+=150){
+    c=50+50*sin(x+y+f/30)
+    line(x,y,x+c,y)
+    line(y+25,x+50,y+25,x+50+c)
+  }
+}
