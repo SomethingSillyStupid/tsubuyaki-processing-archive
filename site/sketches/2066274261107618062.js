@@ -1,0 +1,9 @@
+t=0
+draw=_=>{
+createCanvas(W=(w=200)*2,W)
+strokeWeight(4)
+for(x=-1;x<1;x+=.01)
+for(y=-1;y<1;y+=.01)
+stroke(abs(X=W*sin(Y=t/7+x*91+y*45)*exp(-x+y)),abs(w*sin(Y+X)),abs(w*cos(Y*X))),
+point(w-X,Y*2+w)
+++t}

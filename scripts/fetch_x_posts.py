@@ -7,6 +7,7 @@ ffmpeg for preview generation.
 from __future__ import annotations
 
 import argparse
+import html
 import json
 import os
 import re
@@ -90,19 +91,45 @@ def search_recent(token: str, query: str, max_results: int) -> dict[str, Any]:
     return api_get(url, token).data
 
 
-def normalize_code(text: str) -> str:
-    """Extract likely p5 code while preserving the artist's text as much as possible."""
-    t = text.replace("\u00a0", " ").strip()
-    # Remove expanded URLs and hashtags, which are usually not part of the sketch.
+def line_looks_like_code(line: str) -> bool:
+    stripped = line.strip()
+    if not stripped:
+        return False
+    if any(h in stripped for h in CODE_HINTS):
+        return True
+    return bool(re.match(r"^(\w+\s*=|draw\s*=|setup\s*=|function\s+|for\s*\(|if\s*\(|while\s*\()", stripped))
+
+
+def normalize_social_text(text: str) -> str:
+    t = html.unescape(text).replace("\u00a0", " ").strip()
     t = URL_RE.sub("", t)
     t = HASHTAG_RE.sub("", t)
-    # Japanese hashtag can occasionally be adjacent without a leading space.
     t = t.replace("#つぶやきProcessing", "")
-    # Do not remove @ inside code strings; only leading/social mentions.
     t = MENTION_RE.sub("", t)
-    # Normalize smart quotes often introduced by clients. Avoid deeper rewriting.
     t = t.replace("“", '"').replace("”", '"').replace("‘", "'").replace("’", "'")
     return t.strip()
+
+
+def extract_title(text: str, username: str, tweet_id: str) -> str:
+    cleaned = normalize_social_text(text)
+    for raw in cleaned.splitlines():
+        line = raw.strip().strip("「」『』\"'")
+        if line and not line_looks_like_code(line) and len(line) <= 80:
+            return line
+    return f"@{username} / {tweet_id}"
+
+
+def normalize_code(text: str) -> str:
+    """Extract likely p5 code while preserving the artist's code as much as possible."""
+    t = normalize_social_text(text)
+    lines = [ln.rstrip() for ln in t.splitlines()]
+    start = 0
+    for i, line in enumerate(lines):
+        if line_looks_like_code(line):
+            start = i
+            break
+    lines = lines[start:]
+    return "\n".join(lines).strip()
 
 
 def looks_like_code(code: str) -> bool:
@@ -179,7 +206,7 @@ def build_record(tweet: dict[str, Any], user: dict[str, Any], media: dict[str, A
     if status == "no-code":
         return None
     username = user.get("username") or "unknown"
-    title = f"@{username} / {tweet_id}"
+    title = extract_title(tweet.get("text", ""), username, tweet_id)
     created_at = tweet.get("created_at") or datetime.now(timezone.utc).isoformat()
     preview = make_preview(media, tweet_id, dry_run) if media else None
     record = {

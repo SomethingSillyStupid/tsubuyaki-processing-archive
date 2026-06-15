@@ -1,0 +1,10 @@
+t=0,d=2
+draw=_=>{
+createCanvas(W=(w=200)*2,W)
+colorMode(HSB)
+noStroke(B=(a,b,c,x)=>a*(X=1-x)*X+b*X*x+c*x*x)
+for(x=0;x<W;x+=d)
+for(y=0;y<W;y+=d)
+fill(B(33,177,255,u=sin(x*y)),w,w,.3),
+rect(B(x,X=w*cos(t/91)+w,y,u),B(y,w*sin(t/97)+w,x,u),7)
+++t}

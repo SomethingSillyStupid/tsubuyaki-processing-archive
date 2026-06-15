@@ -1,0 +1,13 @@
+t=0
+draw=_=>{
+t||createCanvas(W=(w=200)*2,W)
+colorMode(HSB)
+p=point
+B=(a,b,c)=>a*(X=1-x)*X+b*X*x+c*x*x
+for(x=0,T=t%W;x<1;x+=.01)
+stroke(B(T,x,U=W-T)%t%255,w,w),
+p(B(T,w,W),B(0,w,T)),
+p(B(W,w,U),B(T,w,W)),
+p(B(U,w,0),B(W,w,U)),
+p(B(0,w,T),B(U,w,0))
+++t}

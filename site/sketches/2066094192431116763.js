@@ -1,0 +1,1 @@
+t=0,draw=e=>{for(t||(createCanvas(W=720,W),noStroke(H=W/2),background(0)),B=blendMode,N=noise,B(NORMAL),fill(0,2),rect(0,0,W,W),translate(H,H),B(ADD),noFill(i=0);(i+=.05)<1;)a=N(t,i)*TAU,stroke(255*i,8),circle(cos(a)*H*N(t),sin(a)*H*N(i),H);t+=.001}//

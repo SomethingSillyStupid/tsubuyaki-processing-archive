@@ -1,0 +1,15 @@
+f=0
+draw=_=>{
+ f++||createCanvas(W=500,W)
+ background(0)
+ stroke(W)
+ noFill()
+ for(c=-3;c<4;c++)
+ for(r=50;r<W;r+=5){
+  push()
+  translate(x=250+r*cos(i=r/90+f*(c?c:c+1)/60),y=250+r*sin(i))
+  rotate(i/3)
+  rect(0,0,r/3)
+  pop()
+ }
+}

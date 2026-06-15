@@ -1,0 +1,14 @@
+f=0
+draw=_=>{
+ f++||createCanvas(W=500,W)
+ background(0)
+ for(n=0;n<9;n++){
+ for(t=99,y=99+300*noise(n,t);t<400;t+=100){
+  fill(W,k=(n*25+t*5+f)%255)
+  stroke(W,k)
+  Y=1e3*noise(n,t)-250
+  circle(t,y,20)
+  line(t,y,t+100,y=Y)
+  }
+ }
+}

@@ -1,0 +1,14 @@
+t=0,d=4
+draw=_=>{
+createCanvas(W=(w=200)*2,W)
+colorMode(HSB)
+strokeWeight(d)
+N=.01*sin(t/w)
+for(x=0;x<W;x+=d)
+for(y=0;y<W;y+=d)
+T=atan2(Y=y-w,X=x-w),
+D=mag(X,Y),
+P=(sin(noise(x*N,y*N)*50+D*.05+T)+1)/2,
+stroke(lerp(0,255,P),w,w),
+point(x,y)
+++t}
