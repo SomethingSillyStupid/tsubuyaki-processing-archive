@@ -24,7 +24,7 @@ function previewImage(sketch, className='hover-preview'){
   const still = sketch.preview_still_file || sketch.preview_file;
   const motion = sketch.preview_motion_file || sketch.preview_file;
   if (!still) return '';
-  return `<img class="${className}" src="${esc(still)}" data-still="${esc(still)}" data-motion="${esc(motion)}" alt="Preview for ${esc(sketch.title)}" loading="lazy" decoding="async">`;
+  return `<img class="${className}" src="${esc(still)}" data-motion="${esc(motion)}" alt="Preview for ${esc(sketch.title)}" loading="lazy" decoding="async">`;
 }
 
 function mediaTemplate(sketch, code){
@@ -34,13 +34,33 @@ function mediaTemplate(sketch, code){
 }
 
 function activateHoverPreviews(root=document){
-  root.querySelectorAll('.hover-preview[data-motion]').forEach((img) => {
-    const still = img.dataset.still;
-    const motion = img.dataset.motion;
-    if (!still || !motion || still === motion) return;
-    const showMotion = () => { if (img.src !== new URL(motion, location.href).href) img.src = motion; };
-    const showStill = () => { if (img.src !== new URL(still, location.href).href) img.src = still; };
-    const host = img.closest('.card, .preview-media') || img;
+  root.querySelectorAll('.hover-preview[data-motion]').forEach((stillImg) => {
+    if (stillImg.dataset.hoverBound === '1') return;
+    stillImg.dataset.hoverBound = '1';
+    const motion = stillImg.dataset.motion;
+    if (!motion || motion === stillImg.getAttribute('src')) return;
+    const host = stillImg.closest('.card, .preview-media') || stillImg.parentElement || stillImg;
+    let motionImg = null;
+
+    const showMotion = () => {
+      if (motionImg) return;
+      motionImg = document.createElement('img');
+      motionImg.className = 'motion-preview';
+      motionImg.alt = '';
+      motionImg.decoding = 'async';
+      motionImg.src = motion;
+      host.classList.add('is-playing');
+      stillImg.insertAdjacentElement('afterend', motionImg);
+    };
+
+    const showStill = () => {
+      host.classList.remove('is-playing');
+      if (motionImg) {
+        motionImg.remove();
+        motionImg = null;
+      }
+    };
+
     host.addEventListener('pointerenter', showMotion);
     host.addEventListener('pointerleave', showStill);
     host.addEventListener('focusin', showMotion);
@@ -50,7 +70,7 @@ function activateHoverPreviews(root=document){
 
 function cardTemplate(sketch, code){
   return `<a class="card" href="sketch.html?id=${encodeURIComponent(sketch.id)}" data-user="${esc(sketch.author.username)}" data-date="${esc(sketch.created_at)}" data-title="${esc(`${sketch.title.toLowerCase()} ${sketch.author.username.toLowerCase()}`)}">
-    <div class="thumb">${mediaTemplate(sketch, code)}<span class="badge">${esc(sketch.status)}</span><span class="play-hint">hover to play</span></div>
+    <div class="thumb">${mediaTemplate(sketch, code)}<span class="badge">${esc(sketch.status)}</span></div>
     <div class="card-body"><h2>${esc(sketch.title)}</h2><div class="meta"><span>@${esc(sketch.author.username)}</span><span>•</span><span>${fmtDate(sketch.created_at)}</span></div><p class="summary">${esc(sketch.summary)}</p></div>
   </a>`;
 }

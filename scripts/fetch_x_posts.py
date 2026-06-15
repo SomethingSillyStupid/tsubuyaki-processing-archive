@@ -180,6 +180,29 @@ def have_webpmux() -> bool:
     return subprocess.run(["bash", "-lc", "command -v webpmux >/dev/null"], stdout=subprocess.DEVNULL).returncode == 0
 
 
+def choose_webp_still_frame(source: Path) -> int:
+    """Pick a later, visually richer frame for static thumbnails."""
+    try:
+        info = subprocess.run(["webpmux", "-info", str(source)], text=True, capture_output=True, check=True).stdout
+    except subprocess.CalledProcessError:
+        return 1
+    count_match = re.search(r"Number of frames:\s*(\d+)", info)
+    count = int(count_match.group(1)) if count_match else 1
+    if count <= 1:
+        return 1
+    rows: list[tuple[int, int]] = []
+    for line in info.splitlines():
+        row = re.match(r"\s*(\d+):.*?\s+(\d+)\s+lossy\s*$", line)
+        if row:
+            rows.append((int(row.group(1)), int(row.group(2))))
+    lo = max(2, int(count * 0.25))
+    hi = max(lo, int(count * 0.85))
+    window = [row for row in rows if lo <= row[0] <= hi]
+    if window:
+        return max(window, key=lambda row: row[1])[0]
+    return max(2, int(count * 0.4))
+
+
 def make_still_preview(motion_preview: str | None, tweet_id: str, dry_run: bool) -> str | None:
     if not motion_preview:
         return None
@@ -194,8 +217,10 @@ def make_still_preview(motion_preview: str | None, tweet_id: str, dry_run: bool)
     if dry_run or not source.exists():
         return motion_preview
     if source.suffix.lower() == ".webp" and have_webpmux():
-        subprocess.run(["webpmux", "-get", "frame", "1", str(source), "-o", str(target)], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        return str(target.relative_to(SITE))
+        frame = choose_webp_still_frame(source)
+        subprocess.run(["webpmux", "-get", "frame", str(frame), str(source), "-o", str(target)], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        if target.exists() and target.stat().st_size > 0:
+            return str(target.relative_to(SITE))
     if have_ffmpeg():
         subprocess.run(["ffmpeg", "-y", "-i", str(source), "-frames:v", "1", str(target)], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         return str(target.relative_to(SITE))
