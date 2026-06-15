@@ -20,9 +20,18 @@ function runnerSrcDoc(code){
   return `<!doctype html><html><head><meta charset="utf-8"><script>p5={};p5.disableFriendlyErrors=true;<\/script><script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/p5.min.js"><\/script><style>html,body{margin:0;height:100%;overflow:hidden;background:#07080b}canvas{display:block;width:100%!important;height:100%!important;object-fit:contain;margin:auto}</style></head><body><script>${escaped}<\/script></body></html>`;
 }
 
+function mediaTemplate(sketch, code){
+  if (sketch.preview_file) {
+    const src = sketch.preview_file;
+    const isVideo = /\.(mp4|webm)$/i.test(src);
+    return isVideo ? `<video src="${src}" autoplay muted loop playsinline></video>` : `<img src="${src}" alt="Preview for ${sketch.title}" loading="lazy">`;
+  }
+  return `<iframe loading="lazy" sandbox="allow-scripts" srcdoc="${runnerSrcDoc(code).replaceAll('&','&amp;').replaceAll('\"','&quot;')}"></iframe>`;
+}
+
 function cardTemplate(sketch, code){
   return `<a class="card" href="sketch.html?id=${encodeURIComponent(sketch.id)}" data-user="${sketch.author.username}" data-date="${sketch.created_at}" data-title="${sketch.title.toLowerCase()} ${sketch.author.username.toLowerCase()}">
-    <div class="thumb"><iframe loading="lazy" sandbox="allow-scripts" srcdoc="${runnerSrcDoc(code).replaceAll('&','&amp;').replaceAll('"','&quot;')}"></iframe><span class="badge">${sketch.status}</span></div>
+    <div class="thumb">${mediaTemplate(sketch, code)}<span class="badge">${sketch.status}</span></div>
     <div class="card-body"><h2>${sketch.title}</h2><div class="meta"><span>@${sketch.author.username}</span><span>•</span><span>${fmtDate(sketch.created_at)}</span></div><p class="summary">${sketch.summary}</p></div>
   </a>`;
 }
@@ -61,6 +70,12 @@ async function initDetail(){
   $('#profile').href = sketch.author.url;
   $('#raw').href = sketch.code_file;
   $('#runner').srcdoc = runnerSrcDoc(code);
+  if (sketch.preview_file) {
+    const isVideo = /\.(mp4|webm)$/i.test(sketch.preview_file);
+    $('#previewSlot').innerHTML = isVideo ? `<video src="${sketch.preview_file}" autoplay muted loop playsinline></video>` : `<img src="${sketch.preview_file}" alt="Original X preview">`;
+  } else {
+    $('#previewCard').style.display = 'none';
+  }
   $('#code').textContent = code;
   $('#copy').addEventListener('click', async () => { await navigator.clipboard.writeText(code); $('#copy').textContent = 'Copied'; setTimeout(()=>$('#copy').textContent='Copy code',1200); });
   $('#reset').addEventListener('click', () => { $('#runner').srcdoc = runnerSrcDoc(code); });
