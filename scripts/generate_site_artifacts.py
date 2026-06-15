@@ -47,6 +47,7 @@ def generate_latest(items: list[dict]) -> None:
             "preview_still_file": item.get("preview_still_file"),
             "preview_motion_file": item.get("preview_motion_file"),
             "runtime_status": item.get("runtime_status"),
+            "tsubuyaki": item.get("tsubuyaki"),
         })
     out = SITE / "data" / "latest.json"
     out.write_text(json.dumps(latest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -70,7 +71,8 @@ def generate_feed(items: list[dict]) -> None:
         url = detail_url(item)
         pub = format_datetime(dt(item["created_at"]))
         desc = html.escape(
-            f"Archived p5.js sketch by @{item['author']['username']}. "
+            f"Verified single-tweet p5.js sketch by @{item['author']['username']} "
+            f"({(item.get('tsubuyaki') or {}).get('code_chars', '≤280')} code chars). "
             f"Original post: {item['tweet_url']}"
         )
         parts.extend([

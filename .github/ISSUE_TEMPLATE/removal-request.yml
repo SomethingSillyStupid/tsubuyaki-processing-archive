@@ -1,0 +1,39 @@
+name: Removal request
+description: Request removal of an archived #つぶやきProcessing sketch
+title: "Removal request: <post URL or sketch ID>"
+labels: ["removal-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks. This archive is intended to be attribution-forward and artist-respecting. Please include enough information to identify the sketch.
+  - type: input
+    id: post-url
+    attributes:
+      label: Original X post URL
+      description: Link to the original post, if available.
+      placeholder: https://x.com/user/status/...
+    validations:
+      required: false
+  - type: input
+    id: sketch-id
+    attributes:
+      label: Archive sketch ID
+      description: The tweet/sketch ID from the archive URL, if known.
+      placeholder: "2066461532918358382"
+    validations:
+      required: false
+  - type: textarea
+    id: requester
+    attributes:
+      label: Requester / artist info
+      description: Briefly explain your relationship to the work so the maintainer can resolve the request.
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Optional context or preferred handling.
+    validations:
+      required: false

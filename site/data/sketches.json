@@ -13,7 +13,7 @@
     "tweet_url": "https://x.com/SnowEsamosc/status/2066461532918358382",
     "code_file": "sketches/2066461532918358382.js",
     "preview_file": "previews/2066461532918358382-still.webp",
-    "summary": "Archived from #つぶやきProcessing.",
+    "summary": "Verified single-tweet p5.js sketch from #つぶやきProcessing.",
     "tags": [
       "#つぶやきProcessing"
     ],
@@ -24,7 +24,17 @@
     "runtime_status": "runs",
     "runtime_errors": [],
     "runtime_canvas_count": 1,
-    "last_verified_at": "2026-06-15T18:49:40Z"
+    "last_verified_at": "2026-06-15T18:49:40Z",
+    "tsubuyaki": {
+      "tweet_chars": null,
+      "code_chars": 232,
+      "tweet_under_280": null,
+      "code_under_280": true,
+      "code_detected": true,
+      "single_tweet_full_code": true,
+      "status": "verified-from-archived-code",
+      "note": "Archived before raw tweet text was stored; verification is based on extracted single-tweet code length."
+    }
   },
   {
     "id": "2066391828509966530",
@@ -40,7 +50,7 @@
     "tweet_url": "https://x.com/TakagiHitoshi/status/2066391828509966530",
     "code_file": "sketches/2066391828509966530.js",
     "preview_file": "previews/2066391828509966530-still.webp",
-    "summary": "Archived from #つぶやきProcessing.",
+    "summary": "Verified single-tweet p5.js sketch from #つぶやきProcessing.",
     "tags": [
       "#つぶやきProcessing"
     ],
@@ -51,7 +61,17 @@
     "runtime_status": "runs",
     "runtime_errors": [],
     "runtime_canvas_count": 1,
-    "last_verified_at": "2026-06-15T18:49:40Z"
+    "last_verified_at": "2026-06-15T18:49:40Z",
+    "tsubuyaki": {
+      "tweet_chars": null,
+      "code_chars": 244,
+      "tweet_under_280": null,
+      "code_under_280": true,
+      "code_detected": true,
+      "single_tweet_full_code": true,
+      "status": "verified-from-archived-code",
+      "note": "Archived before raw tweet text was stored; verification is based on extracted single-tweet code length."
+    }
   },
   {
     "id": "2066274261107618062",
@@ -67,7 +87,7 @@
     "tweet_url": "https://x.com/TakagiHitoshi/status/2066274261107618062",
     "code_file": "sketches/2066274261107618062.js",
     "preview_file": "previews/2066274261107618062-still.webp",
-    "summary": "Archived from #つぶやきProcessing.",
+    "summary": "Verified single-tweet p5.js sketch from #つぶやきProcessing.",
     "tags": [
       "#つぶやきProcessing"
     ],
@@ -78,7 +98,17 @@
     "runtime_status": "runs",
     "runtime_errors": [],
     "runtime_canvas_count": 1,
-    "last_verified_at": "2026-06-15T18:49:40Z"
+    "last_verified_at": "2026-06-15T18:49:40Z",
+    "tsubuyaki": {
+      "tweet_chars": null,
+      "code_chars": 202,
+      "tweet_under_280": null,
+      "code_under_280": true,
+      "code_detected": true,
+      "single_tweet_full_code": true,
+      "status": "verified-from-archived-code",
+      "note": "Archived before raw tweet text was stored; verification is based on extracted single-tweet code length."
+    }
   },
   {
     "id": "2066164351745372563",
@@ -94,7 +124,7 @@
     "tweet_url": "https://x.com/SnowEsamosc/status/2066164351745372563",
     "code_file": "sketches/2066164351745372563.js",
     "preview_file": "previews/2066164351745372563-still.webp",
-    "summary": "Archived from #つぶやきProcessing.",
+    "summary": "Verified single-tweet p5.js sketch from #つぶやきProcessing.",
     "tags": [
       "#つぶやきProcessing"
     ],
@@ -105,7 +135,17 @@
     "runtime_status": "runs",
     "runtime_errors": [],
     "runtime_canvas_count": 1,
-    "last_verified_at": "2026-06-15T18:49:40Z"
+    "last_verified_at": "2026-06-15T18:49:40Z",
+    "tsubuyaki": {
+      "tweet_chars": null,
+      "code_chars": 234,
+      "tweet_under_280": null,
+      "code_under_280": true,
+      "code_detected": true,
+      "single_tweet_full_code": true,
+      "status": "verified-from-archived-code",
+      "note": "Archived before raw tweet text was stored; verification is based on extracted single-tweet code length."
+    }
   },
   {
     "id": "2066094192431116763",
@@ -121,7 +161,7 @@
     "tweet_url": "https://x.com/Sad_Juno/status/2066094192431116763",
     "code_file": "sketches/2066094192431116763.js",
     "preview_file": "previews/2066094192431116763-still.webp",
-    "summary": "Archived from #つぶやきProcessing.",
+    "summary": "Verified single-tweet p5.js sketch from #つぶやきProcessing.",
     "tags": [
       "#つぶやきProcessing"
     ],
@@ -132,7 +172,17 @@
     "runtime_status": "runs",
     "runtime_errors": [],
     "runtime_canvas_count": 1,
-    "last_verified_at": "2026-06-15T18:49:40Z"
+    "last_verified_at": "2026-06-15T18:49:40Z",
+    "tsubuyaki": {
+      "tweet_chars": null,
+      "code_chars": 251,
+      "tweet_under_280": null,
+      "code_under_280": true,
+      "code_detected": true,
+      "single_tweet_full_code": true,
+      "status": "verified-from-archived-code",
+      "note": "Archived before raw tweet text was stored; verification is based on extracted single-tweet code length."
+    }
   },
   {
     "id": "2066055989439451149",
@@ -148,7 +198,7 @@
     "tweet_url": "https://x.com/TakagiHitoshi/status/2066055989439451149",
     "code_file": "sketches/2066055989439451149.js",
     "preview_file": "previews/2066055989439451149-still.webp",
-    "summary": "Archived from #つぶやきProcessing.",
+    "summary": "Verified single-tweet p5.js sketch from #つぶやきProcessing.",
     "tags": [
       "#つぶやきProcessing"
     ],
@@ -159,7 +209,17 @@
     "runtime_status": "runs",
     "runtime_errors": [],
     "runtime_canvas_count": 1,
-    "last_verified_at": "2026-06-15T18:49:40Z"
+    "last_verified_at": "2026-06-15T18:49:40Z",
+    "tsubuyaki": {
+      "tweet_chars": null,
+      "code_chars": 224,
+      "tweet_under_280": null,
+      "code_under_280": true,
+      "code_detected": true,
+      "single_tweet_full_code": true,
+      "status": "verified-from-archived-code",
+      "note": "Archived before raw tweet text was stored; verification is based on extracted single-tweet code length."
+    }
   },
   {
     "id": "2065944751849996333",
@@ -175,7 +235,7 @@
     "tweet_url": "https://x.com/TakagiHitoshi/status/2065944751849996333",
     "code_file": "sketches/2065944751849996333.js",
     "preview_file": "previews/2065944751849996333-still.webp",
-    "summary": "Archived from #つぶやきProcessing.",
+    "summary": "Verified single-tweet p5.js sketch from #つぶやきProcessing.",
     "tags": [
       "#つぶやきProcessing"
     ],
@@ -186,7 +246,17 @@
     "runtime_status": "runs",
     "runtime_errors": [],
     "runtime_canvas_count": 1,
-    "last_verified_at": "2026-06-15T18:49:40Z"
+    "last_verified_at": "2026-06-15T18:49:40Z",
+    "tsubuyaki": {
+      "tweet_chars": null,
+      "code_chars": 252,
+      "tweet_under_280": null,
+      "code_under_280": true,
+      "code_detected": true,
+      "single_tweet_full_code": true,
+      "status": "verified-from-archived-code",
+      "note": "Archived before raw tweet text was stored; verification is based on extracted single-tweet code length."
+    }
   },
   {
     "id": "2065922503365857344",
@@ -202,7 +272,7 @@
     "tweet_url": "https://x.com/TakagiHitoshi/status/2065922503365857344",
     "code_file": "sketches/2065922503365857344.js",
     "preview_file": "previews/2065922503365857344-still.webp",
-    "summary": "Archived from #つぶやきProcessing.",
+    "summary": "Verified single-tweet p5.js sketch from #つぶやきProcessing.",
     "tags": [
       "#つぶやきProcessing"
     ],
@@ -213,7 +283,17 @@
     "runtime_status": "runs",
     "runtime_errors": [],
     "runtime_canvas_count": 1,
-    "last_verified_at": "2026-06-15T18:49:40Z"
+    "last_verified_at": "2026-06-15T18:49:40Z",
+    "tsubuyaki": {
+      "tweet_chars": null,
+      "code_chars": 250,
+      "tweet_under_280": null,
+      "code_under_280": true,
+      "code_detected": true,
+      "single_tweet_full_code": true,
+      "status": "verified-from-archived-code",
+      "note": "Archived before raw tweet text was stored; verification is based on extracted single-tweet code length."
+    }
   },
   {
     "id": "2065676799758258365",
@@ -229,7 +309,7 @@
     "tweet_url": "https://x.com/SnowEsamosc/status/2065676799758258365",
     "code_file": "sketches/2065676799758258365.js",
     "preview_file": "previews/2065676799758258365-still.webp",
-    "summary": "Archived from #つぶやきProcessing.",
+    "summary": "Verified single-tweet p5.js sketch from #つぶやきProcessing.",
     "tags": [
       "#つぶやきProcessing"
     ],
@@ -240,7 +320,17 @@
     "runtime_status": "runs",
     "runtime_errors": [],
     "runtime_canvas_count": 1,
-    "last_verified_at": "2026-06-15T18:49:40Z"
+    "last_verified_at": "2026-06-15T18:49:40Z",
+    "tsubuyaki": {
+      "tweet_chars": null,
+      "code_chars": 234,
+      "tweet_under_280": null,
+      "code_under_280": true,
+      "code_detected": true,
+      "single_tweet_full_code": true,
+      "status": "verified-from-archived-code",
+      "note": "Archived before raw tweet text was stored; verification is based on extracted single-tweet code length."
+    }
   },
   {
     "id": "2065560398875824568",
@@ -256,7 +346,7 @@
     "tweet_url": "https://x.com/TakagiHitoshi/status/2065560398875824568",
     "code_file": "sketches/2065560398875824568.js",
     "preview_file": "previews/2065560398875824568-still.webp",
-    "summary": "Archived from #つぶやきProcessing.",
+    "summary": "Verified single-tweet p5.js sketch from #つぶやきProcessing.",
     "tags": [
       "#つぶやきProcessing"
     ],
@@ -267,6 +357,16 @@
     "runtime_status": "runs",
     "runtime_errors": [],
     "runtime_canvas_count": 1,
-    "last_verified_at": "2026-06-15T18:49:40Z"
+    "last_verified_at": "2026-06-15T18:49:40Z",
+    "tsubuyaki": {
+      "tweet_chars": null,
+      "code_chars": 243,
+      "tweet_under_280": null,
+      "code_under_280": true,
+      "code_detected": true,
+      "single_tweet_full_code": true,
+      "status": "verified-from-archived-code",
+      "note": "Archived before raw tweet text was stored; verification is based on extracted single-tweet code length."
+    }
   }
 ]

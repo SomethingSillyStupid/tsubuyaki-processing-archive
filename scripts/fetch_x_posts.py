@@ -78,7 +78,7 @@ def api_get(url: str, token: str) -> FetchResult:
         raise RuntimeError(f"X API network error: {e}") from e
 
 
-def search_recent(token: str, query: str, max_results: int) -> dict[str, Any]:
+def search_recent(token: str, query: str, max_results: int, next_token: str | None = None, since_id: str | None = None) -> dict[str, Any]:
     params = {
         "query": query,
         "max_results": str(max(10, min(max_results, 100))),
@@ -87,6 +87,10 @@ def search_recent(token: str, query: str, max_results: int) -> dict[str, Any]:
         "user.fields": "username,name,profile_image_url",
         "media.fields": "type,url,preview_image_url,variants,width,height,duration_ms",
     }
+    if next_token:
+        params["next_token"] = next_token
+    if since_id:
+        params["since_id"] = since_id
     url = API_URL + "?" + urlencode(params)
     return api_get(url, token).data
 
@@ -136,6 +140,28 @@ def looks_like_code(code: str) -> bool:
     if len(code) < 20:
         return False
     return any(h in code for h in CODE_HINTS)
+
+
+def char_count(value: str) -> int:
+    # Python counts Unicode code points here, matching the archive's practical
+    # definition closely enough for public verification metadata.
+    return len(value)
+
+
+def verify_tsubuyaki(text: str, code: str) -> dict[str, Any]:
+    cleaned_tweet = html.unescape(text or "").strip()
+    tweet_chars = char_count(cleaned_tweet)
+    code_chars = char_count(code)
+    checks = {
+        "tweet_chars": tweet_chars,
+        "code_chars": code_chars,
+        "tweet_under_280": tweet_chars <= 280,
+        "code_under_280": code_chars <= 280,
+        "code_detected": looks_like_code(code),
+        "single_tweet_full_code": tweet_chars <= 280 and code_chars <= 280 and looks_like_code(code),
+    }
+    checks["status"] = "verified" if checks["single_tweet_full_code"] else "not-tsubuyaki"
+    return checks
 
 
 def safe_slug(value: str) -> str:
@@ -252,7 +278,11 @@ def make_preview(media: dict[str, Any], tweet_id: str, dry_run: bool) -> str | N
 
 def build_record(tweet: dict[str, Any], user: dict[str, Any], media: dict[str, Any] | None, dry_run: bool) -> tuple[dict[str, Any], str] | None:
     tweet_id = tweet["id"]
-    code = normalize_code(tweet.get("text", ""))
+    tweet_text = tweet.get("text", "")
+    code = normalize_code(tweet_text)
+    tsubuyaki = verify_tsubuyaki(tweet_text, code)
+    if not tsubuyaki["single_tweet_full_code"]:
+        return None
     status = status_for_code(code)
     if status == "no-code":
         return None
@@ -277,7 +307,8 @@ def build_record(tweet: dict[str, Any], user: dict[str, Any], media: dict[str, A
         "preview_file": still_preview,
         "preview_still_file": still_preview,
         "preview_motion_file": motion_preview,
-        "summary": "Archived from #つぶやきProcessing.",
+        "summary": "Verified single-tweet p5.js sketch from #つぶやきProcessing.",
+        "tsubuyaki": tsubuyaki,
         "tags": ["#つぶやきProcessing"],
         "source": "x-api-v2",
         "archived_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
@@ -309,6 +340,9 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--query", default=DEFAULT_QUERY)
     ap.add_argument("--max-results", type=int, default=50)
+    ap.add_argument("--pages", type=int, default=1, help="Recent-search result pages to fetch; use sparingly to conserve X API credits")
+    ap.add_argument("--next-token", help="Start from a specific X recent-search pagination token")
+    ap.add_argument("--since-id", help="Only return posts newer than this tweet ID")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--print-json", action="store_true", help="Print fetched candidate records to stdout")
     args = ap.parse_args()
@@ -320,27 +354,43 @@ def main() -> int:
     SKETCH_DIR.mkdir(parents=True, exist_ok=True)
     PREVIEW_DIR.mkdir(parents=True, exist_ok=True)
 
-    payload = search_recent(token, args.query, args.max_results)
-    tweets = payload.get("data") or []
-    includes = payload.get("includes") or {}
-    users = {u["id"]: u for u in includes.get("users", [])}
-    media = {m["media_key"]: m for m in includes.get("media", [])}
+    all_tweets: list[dict[str, Any]] = []
+    users: dict[str, dict[str, Any]] = {}
+    media: dict[str, dict[str, Any]] = {}
+    payload: dict[str, Any] = {}
+    next_token = args.next_token
+    pages = max(1, min(args.pages, 10))
+    for page_num in range(pages):
+        payload = search_recent(token, args.query, args.max_results, next_token=next_token, since_id=args.since_id)
+        tweets = payload.get("data") or []
+        includes = payload.get("includes") or {}
+        users.update({u["id"]: u for u in includes.get("users", [])})
+        media.update({m["media_key"]: m for m in includes.get("media", [])})
+        all_tweets.extend(tweets)
+        next_token = (payload.get("meta") or {}).get("next_token")
+        if not next_token:
+            break
+        log(f"Fetched page {page_num + 1}; next_token available for backfill continuation.")
 
     candidates: list[tuple[dict[str, Any], str]] = []
-    for tweet in tweets:
-        user = users.get(tweet.get("author_id"), {})
+    skipped_not_tsubuyaki = 0
+    for tweet in all_tweets:
+        author_id = tweet.get("author_id")
+        user = users.get(str(author_id), {}) if author_id is not None else {}
         keys = ((tweet.get("attachments") or {}).get("media_keys") or [])
         first_media = media.get(keys[0]) if keys else None
         item = build_record(tweet, user, first_media, args.dry_run)
         if item:
             candidates.append(item)
+        else:
+            skipped_not_tsubuyaki += 1
 
     if args.print_json:
         print(json.dumps([r for r, _ in candidates], ensure_ascii=False, indent=2))
 
     existing = load_json(DATA_FILE, [])
     added = merge_records(existing, candidates, args.dry_run)
-    log(f"Fetched {len(tweets)} tweets; {len(candidates)} candidate sketches; added {added} new records.")
+    log(f"Fetched {len(all_tweets)} tweets across up to {pages} page(s); {len(candidates)} candidate sketches; skipped {skipped_not_tsubuyaki} non-tsubuyaki/invalid posts; added {added} new records.")
     if payload.get("meta"):
         log("X meta: " + json.dumps(payload["meta"], ensure_ascii=False))
     return 0

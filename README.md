@@ -6,7 +6,8 @@ The site preserves each sketch as local runnable JavaScript while linking back t
 
 Features:
 
-- Gallery view with sorting, search, artist filtering, and artist permalinks
+- Gallery view with sorting, search, artist filtering, status filtering, artist permalinks, and load-more pagination
+- Verified tsubuyaki metadata: full minimized p5.js code must fit in one standard 280-character tweet
 - Still thumbnail previews that animate only on hover/focus
 - Sketch detail pages with a live p5.js runner
 - Original-code panel with copy button
@@ -75,4 +76,18 @@ Real archive update:
 ```bash
 set -a; source ~/.hermes/secrets/tsubuyaki-x.env; set +a
 python3 scripts/fetch_x_posts.py --max-results 50
+```
+
+Careful backfill / pagination, for manual use only because it consumes more X API credits:
+
+```bash
+python3 scripts/fetch_x_posts.py --max-results 100 --pages 3 --dry-run --print-json
+python3 scripts/fetch_x_posts.py --max-results 100 --pages 3
+```
+
+Continuation controls:
+
+```bash
+python3 scripts/fetch_x_posts.py --next-token <token-from-x-meta>
+python3 scripts/fetch_x_posts.py --since-id <newest-known-tweet-id>
 ```
