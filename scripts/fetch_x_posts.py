@@ -187,8 +187,10 @@ def make_still_preview(motion_preview: str | None, tweet_id: str, dry_run: bool)
         return motion_preview
     source = SITE / motion_preview
     target = PREVIEW_DIR / f"{tweet_id}-still.webp"
-    if target.exists():
+    if target.exists() and target.stat().st_size > 0:
         return str(target.relative_to(SITE))
+    if target.exists():
+        target.unlink()
     if dry_run or not source.exists():
         return motion_preview
     if source.suffix.lower() == ".webp" and have_webpmux():
