@@ -241,8 +241,8 @@ def make_preview(media: dict[str, Any], tweet_id: str, dry_run: bool) -> str | N
             download(url, src)
             cmd = [
                 "ffmpeg", "-y", "-i", str(src),
-                "-vf", "fps=15,scale=480:-1:flags=lanczos",
-                "-c:v", "libwebp", "-loop", "0", "-lossless", "0", "-q:v", "68",
+                "-vf", "fps=12,scale=360:-1:flags=lanczos",
+                "-c:v", "libwebp", "-loop", "0", "-lossless", "0", "-q:v", "58",
                 "-an", "-vsync", "0", str(target),
             ]
             subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
@@ -257,7 +257,7 @@ def build_record(tweet: dict[str, Any], user: dict[str, Any], media: dict[str, A
     if status == "no-code":
         return None
     username = user.get("username") or "unknown"
-    title = extract_title(tweet.get("text", ""), username, tweet_id)
+    title = None
     created_at = tweet.get("created_at") or datetime.now(timezone.utc).isoformat()
     motion_preview = make_preview(media, tweet_id, dry_run) if media else None
     still_preview = make_still_preview(motion_preview, tweet_id, dry_run)
@@ -301,6 +301,7 @@ def merge_records(existing: list[dict[str, Any]], new_items: list[tuple[dict[str
     merged.sort(key=lambda s: s.get("created_at", ""), reverse=True)
     if not dry_run and added:
         save_json(DATA_FILE, merged)
+        subprocess.run([sys.executable, str(ROOT / "scripts" / "generate_site_artifacts.py")], check=True)
     return added
 
 

@@ -2,14 +2,16 @@
 
 A public static archive for tweet-sized p5.js sketches tagged `#つぶやきProcessing`.
 
-The site preserves each sketch as local runnable JavaScript while linking back to the original X post and artist profile.
+The site preserves each sketch as local runnable JavaScript while linking back to the original X post and artist profile. Sketches are presented by artist username and date rather than archive-invented titles.
 
 Features:
 
-- Gallery view with sorting, search, and artist filtering
+- Gallery view with sorting, search, artist filtering, and artist permalinks
 - Still thumbnail previews that animate only on hover/focus
 - Sketch detail pages with a live p5.js runner
 - Original-code panel with copy button
+- Runtime verification metadata for archived sketches
+- RSS, latest JSON, and sitemap artifacts
 - Scheduled X API ingestion via GitHub Actions
 - GitHub Pages hosting from the static files under `site/`
 
@@ -21,6 +23,28 @@ python3 -m http.server 8080
 ```
 
 Open `http://localhost:8080/`.
+
+## Generate static artifacts
+
+```bash
+python3 scripts/generate_site_artifacts.py
+```
+
+This writes:
+
+- `site/data/latest.json`
+- `site/feed.xml`
+- `site/sitemap.xml`
+
+## Runtime verification
+
+Runtime verification uses Playwright to load each local detail page and record whether the sketch creates a canvas without console/page errors.
+
+```bash
+npm install
+npx playwright install chromium
+npm run verify:runtime
+```
 
 ## Secrets
 

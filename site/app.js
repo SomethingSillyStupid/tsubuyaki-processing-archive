@@ -1,7 +1,10 @@
 const DATA_URL = 'data/sketches.json';
 const $ = (sel, el=document) => el.querySelector(sel);
 const fmtDate = (iso) => new Intl.DateTimeFormat(undefined,{year:'numeric',month:'short',day:'numeric'}).format(new Date(iso));
+const fmtDateTime = (iso) => new Intl.DateTimeFormat(undefined,{year:'numeric',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}).format(new Date(iso));
 const esc = (value='') => String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+const displayName = (sketch) => `@${sketch.author.username}`;
+const displayLabel = (sketch) => `${displayName(sketch)} · ${fmtDate(sketch.created_at)}`;
 
 async function getSketches(){
   const res = await fetch(DATA_URL, {cache:'no-store'});
@@ -24,7 +27,7 @@ function previewImage(sketch, className='hover-preview'){
   const still = sketch.preview_still_file || sketch.preview_file;
   const motion = sketch.preview_motion_file || sketch.preview_file;
   if (!still) return '';
-  return `<img class="${className}" src="${esc(still)}" data-motion="${esc(motion)}" alt="Preview for ${esc(sketch.title)}" loading="lazy" decoding="async">`;
+  return `<img class="${className}" src="${esc(still)}" data-motion="${esc(motion)}" alt="Preview of ${esc(displayLabel(sketch))}" loading="lazy" decoding="async">`;
 }
 
 function mediaTemplate(sketch, code){
@@ -68,27 +71,50 @@ function activateHoverPreviews(root=document){
   });
 }
 
+function statusBadge(sketch){
+  const runtime = sketch.runtime_status;
+  if (runtime === 'runs') return 'runs';
+  if (runtime === 'runs-with-warnings') return 'warnings';
+  if (runtime === 'runtime-error') return 'review';
+  return sketch.status || 'unverified';
+}
+
 function cardTemplate(sketch, code){
-  return `<a class="card" href="sketch.html?id=${encodeURIComponent(sketch.id)}" data-user="${esc(sketch.author.username)}" data-date="${esc(sketch.created_at)}" data-title="${esc(`${sketch.title.toLowerCase()} ${sketch.author.username.toLowerCase()}`)}">
-    <div class="thumb">${mediaTemplate(sketch, code)}<span class="badge">${esc(sketch.status)}</span></div>
-    <div class="card-body"><h2>${esc(sketch.title)}</h2><div class="meta"><span>@${esc(sketch.author.username)}</span><span>•</span><span>${fmtDate(sketch.created_at)}</span></div><p class="summary">${esc(sketch.summary)}</p></div>
+  const detailUrl = `sketch.html?id=${encodeURIComponent(sketch.id)}`;
+  return `<a class="card" href="${detailUrl}" data-user="${esc(sketch.author.username)}" data-date="${esc(sketch.created_at)}" data-title="${esc(`${sketch.author.username} ${sketch.author.name || ''} ${code}`.toLowerCase())}">
+    <div class="thumb">${mediaTemplate(sketch, code)}<span class="badge">${esc(statusBadge(sketch))}</span></div>
+    <div class="card-body"><h2>${esc(displayName(sketch))}</h2><div class="meta"><span>${fmtDate(sketch.created_at)}</span><span>•</span><span>${esc(sketch.author.name || sketch.author.username)}</span></div><p class="summary">${esc(sketch.summary || 'Archived from #つぶやきProcessing.')}</p></div>
   </a>`;
+}
+
+function syncUrl({artist, sort, search}){
+  const params = new URLSearchParams(location.search);
+  artist ? params.set('artist', artist) : params.delete('artist');
+  sort && sort !== 'newest' ? params.set('sort', sort) : params.delete('sort');
+  search ? params.set('q', search) : params.delete('q');
+  const next = `${location.pathname}${params.toString() ? `?${params}` : ''}`;
+  history.replaceState(null, '', next);
 }
 
 async function initIndex(){
   const sketches = await getSketches();
   const withCode = await Promise.all(sketches.map(async s => [s, await getCode(s.code_file)]));
   const grid = $('#grid'); const search = $('#search'); const artist = $('#artist'); const sort = $('#sort');
+  const params = new URLSearchParams(location.search);
   $('#count').textContent = `${sketches.length} sketches`;
   $('#artistCount').textContent = `${new Set(sketches.map(s=>s.author.username)).size} artists`;
   for(const u of [...new Set(sketches.map(s=>s.author.username))].sort()) artist.insertAdjacentHTML('beforeend',`<option value="${esc(u)}">@${esc(u)}</option>`);
+  artist.value = params.get('artist') || '';
+  sort.value = params.get('sort') || 'newest';
+  search.value = params.get('q') || '';
   function render(){
     let rows = [...withCode];
     const q = search.value.trim().toLowerCase();
     const a = artist.value;
-    if(q) rows = rows.filter(([s,c]) => `${s.title} ${s.author.username} ${s.summary} ${c}`.toLowerCase().includes(q));
+    if(q) rows = rows.filter(([s,c]) => `${s.author.username} ${s.author.name || ''} ${s.summary || ''} ${c}`.toLowerCase().includes(q));
     if(a) rows = rows.filter(([s]) => s.author.username === a);
     rows.sort((A,B) => sort.value === 'oldest' ? new Date(A[0].created_at)-new Date(B[0].created_at) : new Date(B[0].created_at)-new Date(A[0].created_at));
+    syncUrl({artist:a, sort:sort.value, search:q});
     grid.innerHTML = rows.length ? rows.map(([s,c])=>cardTemplate(s,c)).join('') : '<div class="empty">No sketches match that filter.</div>';
     activateHoverPreviews(grid);
   }
@@ -101,13 +127,14 @@ async function initDetail(){
   const sketches = await getSketches();
   const sketch = sketches.find(s => s.id === id) || sketches[0];
   const code = await getCode(sketch.code_file);
-  document.title = `${sketch.title} — #つぶやきProcessing Archive`;
-  $('#title').textContent = sketch.title;
-  $('#artist').textContent = `@${sketch.author.username}`;
-  $('#date').textContent = fmtDate(sketch.created_at);
-  $('#summary').textContent = sketch.summary;
+  document.title = `${displayLabel(sketch)} — #つぶやきProcessing Archive`;
+  $('#title').textContent = displayName(sketch);
+  $('#artist').textContent = fmtDateTime(sketch.created_at);
+  $('#date').textContent = sketch.author.name || sketch.author.username;
+  $('#summary').textContent = sketch.summary || 'Archived from #つぶやきProcessing.';
   $('#tweet').href = sketch.tweet_url;
   $('#profile').href = sketch.author.url;
+  $('#artistArchive').href = `index.html?artist=${encodeURIComponent(sketch.author.username)}`;
   $('#raw').href = sketch.code_file;
   $('#runner').srcdoc = runnerSrcDoc(code);
   const preview = previewImage(sketch, 'hover-preview detail-preview');
