@@ -1,7 +1,7 @@
-
 const DATA_URL = 'data/sketches.json';
 const $ = (sel, el=document) => el.querySelector(sel);
 const fmtDate = (iso) => new Intl.DateTimeFormat(undefined,{year:'numeric',month:'short',day:'numeric'}).format(new Date(iso));
+const esc = (value='') => String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 
 async function getSketches(){
   const res = await fetch(DATA_URL, {cache:'no-store'});
@@ -16,23 +16,42 @@ async function getCode(file){
 }
 
 function runnerSrcDoc(code){
-  const escaped = code.replace(/<\/script/gi,'<\/script');
+  const escaped = code.replace(/<\/script/gi,'<\\/script');
   return `<!doctype html><html><head><meta charset="utf-8"><script>p5={};p5.disableFriendlyErrors=true;<\/script><script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/p5.min.js"><\/script><style>html,body{margin:0;height:100%;overflow:hidden;background:#07080b}canvas{display:block;width:100%!important;height:100%!important;object-fit:contain;margin:auto}</style></head><body><script>${escaped}<\/script></body></html>`;
 }
 
+function previewImage(sketch, className='hover-preview'){
+  const still = sketch.preview_still_file || sketch.preview_file;
+  const motion = sketch.preview_motion_file || sketch.preview_file;
+  if (!still) return '';
+  return `<img class="${className}" src="${esc(still)}" data-still="${esc(still)}" data-motion="${esc(motion)}" alt="Preview for ${esc(sketch.title)}" loading="lazy" decoding="async">`;
+}
+
 function mediaTemplate(sketch, code){
-  if (sketch.preview_file) {
-    const src = sketch.preview_file;
-    const isVideo = /\.(mp4|webm)$/i.test(src);
-    return isVideo ? `<video src="${src}" autoplay muted loop playsinline></video>` : `<img src="${src}" alt="Preview for ${sketch.title}" loading="lazy">`;
-  }
-  return `<iframe loading="lazy" sandbox="allow-scripts" srcdoc="${runnerSrcDoc(code).replaceAll('&','&amp;').replaceAll('\"','&quot;')}"></iframe>`;
+  const preview = previewImage(sketch);
+  if (preview) return preview;
+  return `<iframe loading="lazy" sandbox="allow-scripts" srcdoc="${esc(runnerSrcDoc(code))}"></iframe>`;
+}
+
+function activateHoverPreviews(root=document){
+  root.querySelectorAll('.hover-preview[data-motion]').forEach((img) => {
+    const still = img.dataset.still;
+    const motion = img.dataset.motion;
+    if (!still || !motion || still === motion) return;
+    const showMotion = () => { if (img.src !== new URL(motion, location.href).href) img.src = motion; };
+    const showStill = () => { if (img.src !== new URL(still, location.href).href) img.src = still; };
+    const host = img.closest('.card, .preview-media') || img;
+    host.addEventListener('pointerenter', showMotion);
+    host.addEventListener('pointerleave', showStill);
+    host.addEventListener('focusin', showMotion);
+    host.addEventListener('focusout', showStill);
+  });
 }
 
 function cardTemplate(sketch, code){
-  return `<a class="card" href="sketch.html?id=${encodeURIComponent(sketch.id)}" data-user="${sketch.author.username}" data-date="${sketch.created_at}" data-title="${sketch.title.toLowerCase()} ${sketch.author.username.toLowerCase()}">
-    <div class="thumb">${mediaTemplate(sketch, code)}<span class="badge">${sketch.status}</span></div>
-    <div class="card-body"><h2>${sketch.title}</h2><div class="meta"><span>@${sketch.author.username}</span><span>•</span><span>${fmtDate(sketch.created_at)}</span></div><p class="summary">${sketch.summary}</p></div>
+  return `<a class="card" href="sketch.html?id=${encodeURIComponent(sketch.id)}" data-user="${esc(sketch.author.username)}" data-date="${esc(sketch.created_at)}" data-title="${esc(`${sketch.title.toLowerCase()} ${sketch.author.username.toLowerCase()}`)}">
+    <div class="thumb">${mediaTemplate(sketch, code)}<span class="badge">${esc(sketch.status)}</span><span class="play-hint">hover to play</span></div>
+    <div class="card-body"><h2>${esc(sketch.title)}</h2><div class="meta"><span>@${esc(sketch.author.username)}</span><span>•</span><span>${fmtDate(sketch.created_at)}</span></div><p class="summary">${esc(sketch.summary)}</p></div>
   </a>`;
 }
 
@@ -42,7 +61,7 @@ async function initIndex(){
   const grid = $('#grid'); const search = $('#search'); const artist = $('#artist'); const sort = $('#sort');
   $('#count').textContent = `${sketches.length} sketches`;
   $('#artistCount').textContent = `${new Set(sketches.map(s=>s.author.username)).size} artists`;
-  for(const u of [...new Set(sketches.map(s=>s.author.username))].sort()) artist.insertAdjacentHTML('beforeend',`<option value="${u}">@${u}</option>`);
+  for(const u of [...new Set(sketches.map(s=>s.author.username))].sort()) artist.insertAdjacentHTML('beforeend',`<option value="${esc(u)}">@${esc(u)}</option>`);
   function render(){
     let rows = [...withCode];
     const q = search.value.trim().toLowerCase();
@@ -51,6 +70,7 @@ async function initIndex(){
     if(a) rows = rows.filter(([s]) => s.author.username === a);
     rows.sort((A,B) => sort.value === 'oldest' ? new Date(A[0].created_at)-new Date(B[0].created_at) : new Date(B[0].created_at)-new Date(A[0].created_at));
     grid.innerHTML = rows.length ? rows.map(([s,c])=>cardTemplate(s,c)).join('') : '<div class="empty">No sketches match that filter.</div>';
+    activateHoverPreviews(grid);
   }
   [search,artist,sort].forEach(el=>el.addEventListener('input',render));
   render();
@@ -70,9 +90,10 @@ async function initDetail(){
   $('#profile').href = sketch.author.url;
   $('#raw').href = sketch.code_file;
   $('#runner').srcdoc = runnerSrcDoc(code);
-  if (sketch.preview_file) {
-    const isVideo = /\.(mp4|webm)$/i.test(sketch.preview_file);
-    $('#previewSlot').innerHTML = isVideo ? `<video src="${sketch.preview_file}" autoplay muted loop playsinline></video>` : `<img src="${sketch.preview_file}" alt="Original X preview">`;
+  const preview = previewImage(sketch, 'hover-preview detail-preview');
+  if (preview) {
+    $('#previewSlot').innerHTML = preview;
+    activateHoverPreviews($('#previewSlot'));
   } else {
     $('#previewCard').style.display = 'none';
   }
@@ -81,5 +102,5 @@ async function initDetail(){
   $('#reset').addEventListener('click', () => { $('#runner').srcdoc = runnerSrcDoc(code); });
 }
 
-if(document.body.dataset.page === 'index') initIndex().catch(err => { console.error(err); $('#grid').innerHTML = `<div class="empty">${err.message}</div>`; });
-if(document.body.dataset.page === 'detail') initDetail().catch(err => { console.error(err); document.body.insertAdjacentHTML('beforeend', `<div class="empty">${err.message}</div>`); });
+if(document.body.dataset.page === 'index') initIndex().catch(err => { console.error(err); $('#grid').innerHTML = `<div class="empty">${esc(err.message)}</div>`; });
+if(document.body.dataset.page === 'detail') initDetail().catch(err => { console.error(err); document.body.insertAdjacentHTML('beforeend', `<div class="empty">${esc(err.message)}</div>`); });

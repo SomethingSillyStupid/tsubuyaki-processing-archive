@@ -176,6 +176,30 @@ def have_ffmpeg() -> bool:
     return subprocess.run(["bash", "-lc", "command -v ffmpeg >/dev/null"], stdout=subprocess.DEVNULL).returncode == 0
 
 
+def have_webpmux() -> bool:
+    return subprocess.run(["bash", "-lc", "command -v webpmux >/dev/null"], stdout=subprocess.DEVNULL).returncode == 0
+
+
+def make_still_preview(motion_preview: str | None, tweet_id: str, dry_run: bool) -> str | None:
+    if not motion_preview:
+        return None
+    if motion_preview.startswith("http"):
+        return motion_preview
+    source = SITE / motion_preview
+    target = PREVIEW_DIR / f"{tweet_id}-still.webp"
+    if target.exists():
+        return str(target.relative_to(SITE))
+    if dry_run or not source.exists():
+        return motion_preview
+    if source.suffix.lower() == ".webp" and have_webpmux():
+        subprocess.run(["webpmux", "-get", "frame", "1", str(source), "-o", str(target)], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        return str(target.relative_to(SITE))
+    if have_ffmpeg():
+        subprocess.run(["ffmpeg", "-y", "-i", str(source), "-frames:v", "1", str(target)], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        return str(target.relative_to(SITE))
+    return motion_preview
+
+
 def make_preview(media: dict[str, Any], tweet_id: str, dry_run: bool) -> str | None:
     PREVIEW_DIR.mkdir(parents=True, exist_ok=True)
     target = PREVIEW_DIR / f"{tweet_id}.webp"
@@ -208,7 +232,8 @@ def build_record(tweet: dict[str, Any], user: dict[str, Any], media: dict[str, A
     username = user.get("username") or "unknown"
     title = extract_title(tweet.get("text", ""), username, tweet_id)
     created_at = tweet.get("created_at") or datetime.now(timezone.utc).isoformat()
-    preview = make_preview(media, tweet_id, dry_run) if media else None
+    motion_preview = make_preview(media, tweet_id, dry_run) if media else None
+    still_preview = make_still_preview(motion_preview, tweet_id, dry_run)
     record = {
         "id": tweet_id,
         "status": status,
@@ -222,7 +247,9 @@ def build_record(tweet: dict[str, Any], user: dict[str, Any], media: dict[str, A
         },
         "tweet_url": f"https://x.com/{username}/status/{tweet_id}",
         "code_file": f"sketches/{safe_slug(tweet_id)}.js",
-        "preview_file": preview,
+        "preview_file": still_preview,
+        "preview_still_file": still_preview,
+        "preview_motion_file": motion_preview,
         "summary": "Archived from #つぶやきProcessing.",
         "tags": ["#つぶやきProcessing"],
         "source": "x-api-v2",

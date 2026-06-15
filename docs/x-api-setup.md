@@ -1,4 +1,4 @@
-# X API setup for Phase 2
+# X API setup
 
 The archive updater needs read-only access to recent X posts tagged `#つぶやきProcessing`.
 

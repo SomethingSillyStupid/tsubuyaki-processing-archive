@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install preview tooling
-        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg webp
       - name: Fetch recent #つぶやきProcessing posts
         env:
           X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
