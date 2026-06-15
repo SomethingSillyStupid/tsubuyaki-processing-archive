@@ -1,0 +1,32 @@
+name: Update archive
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 */4 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install preview tooling
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      - name: Fetch recent #つぶやきProcessing posts
+        env:
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+        run: python3 scripts/fetch_x_posts.py --max-results 50
+      - name: Commit archive updates
+        run: |
+          if git diff --quiet -- site/data site/sketches site/previews; then
+            echo "No archive changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site/data site/sketches site/previews
+          git commit -m "Update #つぶやきProcessing archive"
+          git push
