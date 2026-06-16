@@ -7,12 +7,22 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: update-archive
+  cancel-in-progress: false
 
 jobs:
   update:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
       - name: Install preview tooling
         run: sudo apt-get update && sudo apt-get install -y ffmpeg webp
       - name: Fetch recent #つぶやきProcessing posts
@@ -21,10 +31,12 @@ jobs:
         run: |
           python3 scripts/fetch_x_posts.py --max-results 50
           python3 scripts/generate_site_artifacts.py
-      - name: Commit archive updates
+      - id: commit
+        name: Commit archive updates
         run: |
           if git diff --quiet -- site/data site/sketches site/previews site/feed.xml site/sitemap.xml; then
             echo "No archive changes."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git config user.name "github-actions[bot]"
@@ -32,3 +44,11 @@ jobs:
           git add site/data site/sketches site/previews site/feed.xml site/sitemap.xml
           git commit -m "Update #つぶやきProcessing archive"
           git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-pages-artifact@v3
+        if: steps.commit.outputs.changed == 'true' || github.event_name == 'workflow_dispatch'
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4
+        if: steps.commit.outputs.changed == 'true' || github.event_name == 'workflow_dispatch'
