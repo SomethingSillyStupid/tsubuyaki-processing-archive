@@ -1,0 +1,9 @@
+t=0
+draw=_=>{
+frameRate(t+=.6)
+createCanvas(W=(w=200)*2,W)+colorMode(HSB)
+noStroke()
+for(i=0;i<7;i++)
+fill(i/7*W+30,w,W),
+arc(w,w,W,W,(I=i+t)/7*TAU,(I+1)/7*TAU)
+}
