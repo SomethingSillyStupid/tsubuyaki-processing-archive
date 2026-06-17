@@ -1,0 +1,9 @@
+t=0,d=6
+draw=_=>{
+createCanvas(W=(w=200)*2,W)+colorMode(HSB)
+strokeWeight(d)
+for(R=0;R<w;R+=d)
+for(T=0;T<TAU;T+=.1)
+stroke(X=(R^t*cos(T))+w,Y=(R^t*sin(T))+w,w),
+point(X,Y)
+t=++t%W}
