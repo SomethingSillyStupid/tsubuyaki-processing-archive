@@ -1,0 +1,1 @@
+t=0;setup=_=>{createCanvas(w=innerWidth,h=innerHeight);m=min(w,h);noStroke()};draw=_=>{background(0,40);t+=.02;for(i=700;i--;)fill(255,120-(s=sin(t+i*.1))*120),circle(w/2+cos(a=i+t)*(r=i*m/1550),h/2+sin(a)*r,s*m/25+10)}
