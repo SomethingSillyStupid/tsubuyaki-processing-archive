@@ -1,0 +1,9 @@
+t=0,d=4
+draw=_=>{
+createCanvas(W=(w=200)*2,W)+colorMode(HSB)
+strokeWeight(d)
+for(R=1;R<w;R+=d)
+for(T=0;T<TAU;T+=8/R)
+stroke(R*sin(R/13*TAU),w,w),
+point((t|R*cos(T))+w,(t|R*sin(T))+w)
+t=(t+=.1)%99}
