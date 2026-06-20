@@ -1,0 +1,13 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  noStroke()
+  for(x=0;x<W;x+=5){
+  for(y=0;y<W;y+=5){
+    c=((x+f*3)/20|0)*4+((y+f*3)/20|0)*4
+    fill(c*(4+noise(x/5,y/5))/5%255)
+    rect(x,y,5)
+  }
+  }
+}
