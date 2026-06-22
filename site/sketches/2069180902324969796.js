@@ -1,0 +1,10 @@
+t=0
+draw=_=>{
+createCanvas(W=(w=200)*2,W)
+colorMode(HSB)
+strokeWeight(8)
+for(i=0;i<40;i+=6)
+for(T=0;T<TAU*3;T+=.05)
+stroke((R=143+67*tan(T*3+i+t/W))%60*6,w,w),
+point(R*cos(U=R/71+T*7+i+t/w)+w,R*sin(U)+w)
+++t}
