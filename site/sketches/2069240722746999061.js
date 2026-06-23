@@ -1,0 +1,11 @@
+t=0
+draw=_=>{
+createCanvas(W=(w=200)*2,W)
+colorMode(HSB)
+strokeWeight(4)
+for(x=0;x<W;x+=4)
+for(y=0;y<W;y+=4)
+M=mag(x-w,y-w),
+stroke(abs(T=cos(M/41+t/17)*noise(x,y)+M),W,W),
+point(M*cos(M+T)+w,M*sin(M+T)+w)
+++t}
