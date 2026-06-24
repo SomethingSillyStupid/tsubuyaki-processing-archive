@@ -1,5 +1,29 @@
 [
   {
+    "id": "2069724671596269861",
+    "created_at": "2026-06-24T10:09:49.000Z",
+    "author": {
+      "name": "きんぞ",
+      "username": "TakagiHitoshi",
+      "url": "https://x.com/TakagiHitoshi",
+      "profile_image_url": "https://pbs.twimg.com/profile_images/1882774256393850880/AcqwIYlC_normal.jpg"
+    },
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2069724671596269861",
+    "archive_url": "https://somethingsillystupid.github.io/tsubuyaki-processing-archive/sketch.html?id=2069724671596269861",
+    "preview_still_file": "previews/2069724671596269861-still.webp",
+    "preview_motion_file": "previews/2069724671596269861.webp",
+    "runtime_status": null,
+    "tsubuyaki": {
+      "tweet_chars": 279,
+      "code_chars": 231,
+      "tweet_under_280": true,
+      "code_under_280": true,
+      "code_detected": true,
+      "single_tweet_full_code": true,
+      "status": "verified"
+    }
+  },
+  {
     "id": "2069548193105564115",
     "created_at": "2026-06-23T22:28:34.000Z",
     "author": {
@@ -450,31 +474,6 @@
     "tsubuyaki": {
       "tweet_chars": null,
       "code_chars": 202,
-      "tweet_under_280": null,
-      "code_under_280": true,
-      "code_detected": true,
-      "single_tweet_full_code": true,
-      "status": "verified-from-archived-code",
-      "note": "Archived before raw tweet text was stored; verification is based on extracted single-tweet code length."
-    }
-  },
-  {
-    "id": "2066164351745372563",
-    "created_at": "2026-06-14T14:22:23.000Z",
-    "author": {
-      "name": "Snow Esamosc",
-      "username": "SnowEsamosc",
-      "url": "https://x.com/SnowEsamosc",
-      "profile_image_url": "https://pbs.twimg.com/profile_images/1705130433795837952/8ZO9j8GL_normal.jpg"
-    },
-    "tweet_url": "https://x.com/SnowEsamosc/status/2066164351745372563",
-    "archive_url": "https://somethingsillystupid.github.io/tsubuyaki-processing-archive/sketch.html?id=2066164351745372563",
-    "preview_still_file": "previews/2066164351745372563-still.webp",
-    "preview_motion_file": "previews/2066164351745372563.webp",
-    "runtime_status": "runs",
-    "tsubuyaki": {
-      "tweet_chars": null,
-      "code_chars": 234,
       "tweet_under_280": null,
       "code_under_280": true,
       "code_detected": true,
