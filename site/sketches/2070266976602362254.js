@@ -1,0 +1,10 @@
+t=0,d=8
+draw=_=>{
+createCanvas(W=(w=200)*2,W)
+colorMode(HSB)
+for(x=1;x<W;x+=d)
+for(y=1;y<W;y+=d)
+strokeWeight(d),
+X=log(abs(x-w)),Y=log(abs(y-w)),
+abs(((D=X*X+Y*Y)*t/77)-2*X*Y-W)%80<76?(stroke(w*cos(t/D),w,w),point(x,y)):0
+t=++t%W}
