@@ -1,0 +1,11 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0,30)
+  noFill()
+  stroke(W)
+  strokeWeight(3)
+  for(i=0;i<TAU;i+=PI/30){
+    arc(250+200*cos(i*3+f/30),250+200*sin(i*3+f/30),200,200,i,i+.55+.5*sin(f/30+i))
+  }
+}
