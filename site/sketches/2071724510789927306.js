@@ -1,0 +1,11 @@
+t=0
+draw=_=>{
+t||createCanvas(W=(w=200)*2,W)
+colorMode(HSB)
+noStroke()
+for(x=0;x<W;x+=9)
+for(y=0;y<W;y+=9)
+A=w*sin(x+9+t/W),B=w*cos(y+9+t/W),
+fill(((D=log(A*A+B*B-3*A*B))*33)%360,w,w,.1),
+rect(x+A,y+B,D)
+++t}

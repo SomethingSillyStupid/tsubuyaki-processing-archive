@@ -1,0 +1,1 @@
+setup=_=>createCanvas(w=500,w);k=.1;draw=_=>{h=w/2;f=random(map(sin(PI*k)/PI*k,-1,1,0,h));background(0,f,f);for(i=0;i<99;i++){stroke(h);x=random(w);y=random(w);d=random(w/9);line(x,y,x+d,y+d)}k+=.005}⛈️
