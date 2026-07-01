@@ -1,0 +1,11 @@
+t=0
+draw=_=>{
+t||createCanvas(W=(w=200)*2,W)
+background(0,.1)
+colorMode(HSB)
+strokeWeight(3)
+for(R=1;R<w;R+=4)
+for(T=0;T<TAU;T+=6/R)
+point((Q=R+R/9*cos(T*9*cos(t/w)))*cos(U=Q/(w*cos(t/w))+T-t/w)+w,Q*sin(U)+w),
+stroke(Q,w,w,.5)
+t++}

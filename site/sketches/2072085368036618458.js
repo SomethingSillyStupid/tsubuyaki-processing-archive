@@ -1,0 +1,12 @@
+t=1
+draw=_=>{
+frameRate(1)
+createCanvas(W=(w=200)*2,W)
+colorMode(HSB)
+noStroke()
+N=t*t
+D=PI/N
+for(i=0;i<N*2;i+=2)
+fill((N*i)%360,w,w),
+arc(w,w,W,W,D*i,D*(i+1),PIE)
+t=++t%20}
