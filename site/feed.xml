@@ -5,8 +5,15 @@
 <link>https://somethingsillystupid.github.io/tsubuyaki-processing-archive/</link>
 <description>Recent archived #つぶやきProcessing p5.js sketches.</description>
 <language>en</language>
-<lastBuildDate>Wed, 01 Jul 2026 18:16:24 +0000</lastBuildDate>
+<lastBuildDate>Wed, 01 Jul 2026 21:46:29 +0000</lastBuildDate>
 <atom:link href="https://somethingsillystupid.github.io/tsubuyaki-processing-archive/feed.xml" rel="self" type="application/rss+xml" />
+<item>
+<title>@TakagiHitoshi · 2026-07-01</title>
+<link>https://somethingsillystupid.github.io/tsubuyaki-processing-archive/sketch.html?id=2072427055053209607</link>
+<guid isPermaLink="true">https://somethingsillystupid.github.io/tsubuyaki-processing-archive/sketch.html?id=2072427055053209607</guid>
+<pubDate>Wed, 01 Jul 2026 21:08:08 +0000</pubDate>
+<description>Verified single-tweet p5.js sketch by @TakagiHitoshi (214 code chars). Original post: https://x.com/TakagiHitoshi/status/2072427055053209607</description>
+</item>
 <item>
 <title>@SnowEsamosc · 2026-07-01</title>
 <link>https://somethingsillystupid.github.io/tsubuyaki-processing-archive/sketch.html?id=2072313852038173059</link>
@@ -209,13 +216,6 @@
 <guid isPermaLink="true">https://somethingsillystupid.github.io/tsubuyaki-processing-archive/sketch.html?id=2066094192431116763</guid>
 <pubDate>Sun, 14 Jun 2026 09:43:36 +0000</pubDate>
 <description>Verified single-tweet p5.js sketch by @Sad_Juno (251 code chars). Original post: https://x.com/Sad_Juno/status/2066094192431116763</description>
-</item>
-<item>
-<title>@TakagiHitoshi · 2026-06-14</title>
-<link>https://somethingsillystupid.github.io/tsubuyaki-processing-archive/sketch.html?id=2066055989439451149</link>
-<guid isPermaLink="true">https://somethingsillystupid.github.io/tsubuyaki-processing-archive/sketch.html?id=2066055989439451149</guid>
-<pubDate>Sun, 14 Jun 2026 07:11:48 +0000</pubDate>
-<description>Verified single-tweet p5.js sketch by @TakagiHitoshi (224 code chars). Original post: https://x.com/TakagiHitoshi/status/2066055989439451149</description>
 </item>
 </channel>
 </rss>

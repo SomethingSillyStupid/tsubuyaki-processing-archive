@@ -1,0 +1,10 @@
+t=0,d=4
+draw=_=>{a=abs
+createCanvas(W=(w=200)*2,W)
+colorMode(HSB)
+strokeWeight(d*2)
+for(x=0;x<W;x+=d)
+for(y=0;y<W;y+=d)
+stroke((X=a(x-w))*(Y=a(y-w))%360,w,w),
+sin((X+Y)+a(Y-X))<.3*a(sin(t/37+x*y))?point(x,y):0
+++t}
