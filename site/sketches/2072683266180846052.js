@@ -1,0 +1,11 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0,5)
+  stroke(W)
+  strokeWeight(3)
+  for(x=-W;x<1e3;x+=5){
+    y=(f+9e3)*noise(x)*3%700-99
+    line(x+y/40,y=(f+9e3)*noise(x,9)*3%700-99,x+y/9,y+99)
+  }
+}
