@@ -1,5 +1,29 @@
 [
   {
+    "id": "2073166766235349040",
+    "created_at": "2026-07-03T22:07:29.000Z",
+    "author": {
+      "name": "きんぞ",
+      "username": "TakagiHitoshi",
+      "url": "https://x.com/TakagiHitoshi",
+      "profile_image_url": "https://pbs.twimg.com/profile_images/1882774256393850880/AcqwIYlC_normal.jpg"
+    },
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2073166766235349040",
+    "archive_url": "https://somethingsillystupid.github.io/tsubuyaki-processing-archive/sketch.html?id=2073166766235349040",
+    "preview_still_file": "previews/2073166766235349040-still.webp",
+    "preview_motion_file": "previews/2073166766235349040.webp",
+    "runtime_status": null,
+    "tsubuyaki": {
+      "tweet_chars": 238,
+      "code_chars": 179,
+      "tweet_under_280": true,
+      "code_under_280": true,
+      "code_detected": true,
+      "single_tweet_full_code": true,
+      "status": "verified"
+    }
+  },
+  {
     "id": "2072956411894767754",
     "created_at": "2026-07-03T08:11:36.000Z",
     "author": {
@@ -448,30 +472,6 @@
     "tsubuyaki": {
       "tweet_chars": 256,
       "code_chars": 208,
-      "tweet_under_280": true,
-      "code_under_280": true,
-      "code_detected": true,
-      "single_tweet_full_code": true,
-      "status": "verified"
-    }
-  },
-  {
-    "id": "2068564058752868797",
-    "created_at": "2026-06-21T05:17:58.000Z",
-    "author": {
-      "name": "Snow Esamosc",
-      "username": "SnowEsamosc",
-      "url": "https://x.com/SnowEsamosc",
-      "profile_image_url": "https://pbs.twimg.com/profile_images/1705130433795837952/8ZO9j8GL_normal.jpg"
-    },
-    "tweet_url": "https://x.com/SnowEsamosc/status/2068564058752868797",
-    "archive_url": "https://somethingsillystupid.github.io/tsubuyaki-processing-archive/sketch.html?id=2068564058752868797",
-    "preview_still_file": "previews/2068564058752868797-still.webp",
-    "preview_motion_file": "previews/2068564058752868797.webp",
-    "runtime_status": null,
-    "tsubuyaki": {
-      "tweet_chars": 256,
-      "code_chars": 193,
       "tweet_under_280": true,
       "code_under_280": true,
       "code_detected": true,
