@@ -1,0 +1,10 @@
+t=0
+draw=_=>{
+t++||createCanvas(W=(w=200)*2,W)+(X=Y=T=w)
+rectMode(CENTER)
+blendMode([DODGE,BURN][X%2])
+fill(99,w,T=(T*131+17)%251)
+X=(X*37+T)%401
+Y=(Y*53+T)%401
+rect(X,Y,T/4)
+}
