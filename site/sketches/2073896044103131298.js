@@ -1,0 +1,11 @@
+t=0
+draw=_=>{
+t||createCanvas(W=(w=200)*2,W)
+background(1,9)
+C=(x,t)=>w*cos(t*x+z)+w
+for(x=-1;x<1;x+=.1)
+for(y=-1;y<1;y+=.1)
+strokeWeight(z=sin(y*x)*29),
+stroke(int(z*t)%2?'lime':'cyan'),
+point(C(x+z,T=t/W/2),C(y+z,T-1.6))
+t++}
