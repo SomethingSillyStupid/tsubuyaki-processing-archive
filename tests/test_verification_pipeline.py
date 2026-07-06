@@ -25,6 +25,25 @@ def test_code_that_passes_ingest_gets_pending_runtime_status_before_browser_chec
     assert fetch.status_for_code(code) == "pending-runtime"
 
 
+def test_media_url_does_not_count_against_tsubuyaki_tweet_limit():
+    fetch = load_fetch_module()
+    tweet = (
+        "setup=_=&gt;{t=0,createCanvas(w=400,w),angleMode(DEGREES)}, "
+        "draw=_=&gt;{background(0),fill(255),px=t%(w+100)-50;"
+        "for(i=floor(px/20);i&lt;20;i++){ellipse(20* i,w/2,12,12)};"
+        "translate(px,w/2),fill(255,255,0),arc(0, 0,100,100,a=sin(millis()*1.5)*30+30,-a),t++} "
+        "//#つぶやきProcessing https://t.co/TLbFu9NZGr"
+    )
+    code = fetch.normalize_code(tweet)
+
+    checks = fetch.verify_tsubuyaki(tweet, code)
+
+    assert checks["tweet_chars"] == 264
+    assert checks["tweet_under_280"] is True
+    assert checks["single_tweet_full_code"] is True
+    assert checks["status"] == "verified"
+
+
 def test_update_archive_workflow_runs_browser_runtime_verification_before_commit():
     workflow = (ROOT / ".github" / "workflows" / "update-archive.yml").read_text(encoding="utf-8")
 

@@ -142,6 +142,11 @@ def looks_like_code(code: str) -> bool:
     return any(h in code for h in CODE_HINTS)
 
 
+def countable_tweet_text(text: str) -> str:
+    """Return tweet text for 280-char verification, excluding X media/link URLs."""
+    return URL_RE.sub("", html.unescape(text or "")).strip()
+
+
 def char_count(value: str) -> int:
     # Python counts Unicode code points here, matching the archive's practical
     # definition closely enough for public verification metadata.
@@ -149,7 +154,7 @@ def char_count(value: str) -> int:
 
 
 def verify_tsubuyaki(text: str, code: str) -> dict[str, Any]:
-    cleaned_tweet = html.unescape(text or "").strip()
+    cleaned_tweet = countable_tweet_text(text)
     tweet_chars = char_count(cleaned_tweet)
     code_chars = char_count(code)
     checks = {

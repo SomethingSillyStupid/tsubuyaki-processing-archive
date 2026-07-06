@@ -1,0 +1,1 @@
+setup=_=>{t=0,createCanvas(w=400,w),angleMode(DEGREES)}, draw=_=>{background(0),fill(255),px=t%(w+100)-50;for(i=floor(px/20);i<20;i++){ellipse(20* i,w/2,12,12)};translate(px,w/2),fill(255,255,0),arc(0, 0,100,100,a=sin(millis()*1.5)*30+30,-a),t++} //
