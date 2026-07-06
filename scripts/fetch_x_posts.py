@@ -176,7 +176,7 @@ def status_for_code(code: str) -> str:
     # Lightweight brace sanity, not a JS parser.
     if abs(code.count("{") - code.count("}")) > 2:
         return "manual-review"
-    return "unverified"
+    return "pending-runtime"
 
 
 def pick_video_variant(media: dict[str, Any]) -> str | None:

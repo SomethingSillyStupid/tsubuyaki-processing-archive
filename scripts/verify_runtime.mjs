@@ -31,6 +31,10 @@ function serve(){
   return new Promise(resolve => server.listen(PORT, '127.0.0.1', () => resolve(server)));
 }
 
+function isIgnorableConsoleError(text){
+  return text.includes('Permissions policy violation: accelerometer is not allowed in this document.');
+}
+
 async function main(){
   let playwright;
   try {
@@ -48,14 +52,21 @@ async function main(){
       const page = await browser.newPage();
       const errors = [];
       page.on('pageerror', err => errors.push(String(err.message || err)));
-      page.on('console', msg => { if (msg.type() === 'error') errors.push(msg.text()); });
+      page.on('console', msg => {
+        if (msg.type() === 'error' && !isIgnorableConsoleError(msg.text())) errors.push(msg.text());
+      });
       await page.goto(`${BASE}/sketch.html?id=${encodeURIComponent(sketch.id)}`, {waitUntil:'networkidle'});
       await page.waitForTimeout(1800);
-      const canvasCount = await page.locator('#runner').evaluate(frame => {
-        const doc = frame.contentDocument;
-        return doc ? doc.querySelectorAll('canvas').length : 0;
-      }).catch(() => 0);
-      sketch.runtime_status = errors.length ? 'runtime-error' : (canvasCount ? 'runs' : 'manual-review');
+      const runner = await page.locator('#runner').elementHandle();
+      const frame = await runner?.contentFrame();
+      const canvasCount = frame ? await frame.locator('canvas').count() : 0;
+      const runtimeStatus = errors.length ? 'runtime-error' : (canvasCount ? 'runs' : 'manual-review');
+      sketch.runtime_status = runtimeStatus;
+      if (runtimeStatus === 'runs') {
+        sketch.status = 'verified';
+      } else {
+        sketch.status = 'review';
+      }
       sketch.runtime_errors = errors.slice(0, 5);
       sketch.runtime_canvas_count = canvasCount;
       sketch.last_verified_at = new Date().toISOString().replace(/\.\d{3}Z$/, 'Z');

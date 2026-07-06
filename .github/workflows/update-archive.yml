@@ -23,13 +23,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
-      - name: Install preview tooling
-        run: sudo apt-get update && sudo apt-get install -y ffmpeg webp
-      - name: Fetch recent #つぶやきProcessing posts
+      - name: Install preview and browser tooling
+        run: |
+          sudo apt-get update && sudo apt-get install -y ffmpeg webp
+          npm ci
+          npx playwright install --with-deps chromium
+      - name: Fetch and verify recent #つぶやきProcessing posts
         env:
           X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
         run: |
           python3 scripts/fetch_x_posts.py --max-results 50
+          npm run verify:runtime
           python3 scripts/generate_site_artifacts.py
       - id: commit
         name: Commit archive updates

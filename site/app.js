@@ -68,8 +68,8 @@ function activateHoverPreviews(root=document){
 
 function statusBadge(sketch){
   const runtime = sketch.runtime_status;
-  if (runtime === 'runs') return 'runs';
-  if (runtime === 'runs-with-warnings') return 'warnings';
+  if (runtime === 'runs') return 'verified';
+  if (runtime === 'runs-with-warnings') return 'verified with warnings';
   if (runtime === 'runtime-error') return 'review';
   return sketch.status || 'unverified';
 }
