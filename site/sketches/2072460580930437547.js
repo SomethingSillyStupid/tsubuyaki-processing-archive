@@ -1,0 +1,1 @@
+f=0;draw=_=>{f++||(createCanvas(w=innerWidth,h=innerHeight),noFill());R=min(w,h);background(0);stroke(0,255,100);circle(w/2,h/2,R);for(k=1;k<9;k++)for(a=0;a<6.29;a+=1/k){r=R*.16/k;d=R/2-r;stroke(k*30,0,255);circle(w/2+cos(a+f/200)*d,h/2+sin(a+f/200)*d,r*2)}}//

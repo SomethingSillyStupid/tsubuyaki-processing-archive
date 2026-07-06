@@ -1,0 +1,15 @@
+f=0
+draw=_=>{
+ f++||createCanvas(W=500,W)
+  background(0)
+  stroke(W)
+  noFill()
+  for(r=0;r<W;r+=5){
+  beginShape()
+  for(i=0;i<30;i++){
+   R=r*(1+sin(i/5+r))
+   vertex(250+R*cos(I=i/18*PI+(f+9e3)*noise(r)/30),250+R*sin(I))
+  }
+  endShape()
+ }
+}

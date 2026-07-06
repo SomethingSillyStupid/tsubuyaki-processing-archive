@@ -1,0 +1,12 @@
+f=0
+draw=_=>{
+ f++||createCanvas(W=500,W)
+ background(0)
+ stroke(W)
+ for(r=0;r<W;r+=50){
+ for(i=0;i<20;i++){
+   p=(R,I)=>[W*noise(R)+r*cos(I),W*noise(R,9)+r*sin(I)]
+   R=r+50
+   line(...p(r,i/10*PI+f/90+r),...p(r+50,(i+r)/10*PI))
+ }}
+}

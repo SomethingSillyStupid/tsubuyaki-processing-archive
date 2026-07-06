@@ -1,0 +1,12 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  noStroke()
+  for(r=.1;r<1.4;r+=.1){
+  for(i=0;i<TAU;i+=PI/30){
+    c=f*r/30
+    R=r*sin(f/30+r*2)
+    circle(W/PI*acos(cos(cos(i)*R+c+r)),W/PI*acos(cos(sin(i)*R+c)),9)
+  }}
+}
