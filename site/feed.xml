@@ -5,8 +5,15 @@
 <link>https://somethingsillystupid.github.io/tsubuyaki-processing-archive/</link>
 <description>Recent archived #つぶやきProcessing p5.js sketches.</description>
 <language>en</language>
-<lastBuildDate>Tue, 07 Jul 2026 15:17:18 +0000</lastBuildDate>
+<lastBuildDate>Tue, 07 Jul 2026 18:22:57 +0000</lastBuildDate>
 <atom:link href="https://somethingsillystupid.github.io/tsubuyaki-processing-archive/feed.xml" rel="self" type="application/rss+xml" />
+<item>
+<title>@MeatClock · 2026-07-07</title>
+<link>https://somethingsillystupid.github.io/tsubuyaki-processing-archive/sketch.html?id=2074546466719416392</link>
+<guid isPermaLink="true">https://somethingsillystupid.github.io/tsubuyaki-processing-archive/sketch.html?id=2074546466719416392</guid>
+<pubDate>Tue, 07 Jul 2026 17:29:55 +0000</pubDate>
+<description>Verified single-tweet p5.js sketch by @MeatClock (203 code chars). Original post: https://x.com/MeatClock/status/2074546466719416392</description>
+</item>
 <item>
 <title>@SnowEsamosc · 2026-07-07</title>
 <link>https://somethingsillystupid.github.io/tsubuyaki-processing-archive/sketch.html?id=2074507702286602452</link>
@@ -209,13 +216,6 @@
 <guid isPermaLink="true">https://somethingsillystupid.github.io/tsubuyaki-processing-archive/sketch.html?id=2072550435735642461</guid>
 <pubDate>Thu, 02 Jul 2026 05:18:24 +0000</pubDate>
 <description>Verified single-tweet p5.js sketch by @TakagiHitoshi (240 code chars). Original post: https://x.com/TakagiHitoshi/status/2072550435735642461</description>
-</item>
-<item>
-<title>@KAZOOOps · 2026-07-01</title>
-<link>https://somethingsillystupid.github.io/tsubuyaki-processing-archive/sketch.html?id=2072460580930437547</link>
-<guid isPermaLink="true">https://somethingsillystupid.github.io/tsubuyaki-processing-archive/sketch.html?id=2072460580930437547</guid>
-<pubDate>Wed, 01 Jul 2026 23:21:21 +0000</pubDate>
-<description>Verified single-tweet p5.js sketch by @KAZOOOps (260 code chars). Original post: https://x.com/KAZOOOps/status/2072460580930437547</description>
 </item>
 </channel>
 </rss>
