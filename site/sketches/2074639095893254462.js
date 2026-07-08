@@ -1,0 +1,13 @@
+t=0,d=8
+draw=_=>{
+createCanvas(W=(w=200)*2,W)
+noStroke()
+colorMode(HSB)
+rectMode(CENTER)
+for(x=0;x<W;x+=d)
+for(y=0;y<W;y+=d)
+T=atan2(Y=y-w,X=x-w),
+M=mag(X,Y),
+fill(abs(X=w*cos(A=T+t/M)),w,w,.8),
+rect(x,y,dist(x,y,X+w,w*sin(A-y)+w)/16)
+++t}
