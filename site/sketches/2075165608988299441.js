@@ -1,0 +1,12 @@
+t=0,d=20
+draw=_=>{
+p=point
+H=x=>p(20*(cos(T)+(x<w?1:-1)*sin(T+t/w)/5)+x,20*sin(T)+230)
+createCanvas(W=(w=200)*2,W)
+strokeWeight(8)
+for(T=0;T<TAU;T+=.01)
+p((R=99+10*sin(T*3))*cos(T)+w,R*sin(T)+250),
+H(160),H(240),
+p(100,100)
+p(300,100)
+++t}
