@@ -1,0 +1,1 @@
+t=0;draw=_=>{createCanvas(w=innerWidth,h=innerHeight);background(0);translate(w/2,h/2);strokeWeight(2);for(i=0;i<4e3;i++){a=i+t;r=i%200+99*sin(i*i+t);stroke(255,220+35*sin(i),255,90);point(r*sin(a)+80*sin(i+t),r*cos(a)+80*cos(i*3+t))}t+=.01}

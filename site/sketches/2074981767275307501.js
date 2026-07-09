@@ -1,0 +1,10 @@
+t=0,d=9
+draw=_=>{
+createCanvas(W=(w=200)*2,W)
+colorMode(HSB)
+for(x=0;x<W;x+=d)
+for(y=0;y<W;y+=d)
+stroke((D=atan2(abs(y-w),abs(x-w))*W)%51+160,E=W*sin(D+t/71)**2,w),
+strokeWeight(D/23),
+point((R=D/d)*cos(T=t*(D<E?-1:1)/w+E/D)+x,R*sin(T)+y)
+++t}
