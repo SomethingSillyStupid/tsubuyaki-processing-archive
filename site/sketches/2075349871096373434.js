@@ -1,0 +1,11 @@
+t=0,d=20
+draw=_=>{
+createCanvas(W=(w=200)*2,W)
+colorMode(HSB)
+rectMode(CENTER)
+for(x=-w;x<w;x+=d)
+for(y=-w;y<w;y+=d)
+T=atan2(y,x),M=mag(x,y),
+fill((x+y)%360,w,w),
+M<w?rect(M*2*cos(U=T+t/M)/(7.3-(Z=w-M*M/W)/11)+w,M*2*sin(U)/(9.4-Z/11)+w,Z/6):0
+++t}
