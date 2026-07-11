@@ -1,0 +1,10 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+background(0)
+stroke(W)
+for(x=-50;x<50;x++){
+t=(f*3+9e3)*noise(x+50)%700
+line(X=250+x/50*t,700-t,X,y=650-t)
+for(i=0;i<TAU;i+=PI/6){line(X,y,X+50*cos(x+i+f/30),y+20*sin(i))}
+}}
