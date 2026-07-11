@@ -1,0 +1,11 @@
+t=0
+draw=_=>{a=abs
+createCanvas(W=(w=200)*2,W)
+for(x=-1;x<1;x+=.1)
+for(y=-1;y<1;y+=.1)
+z=(x*x+30*sin(t/w)**2*mag(x,y)+y*y)/atan2(y,x),
+strokeWeight(a(z)*3),
+stroke(a(y*w),a(x*w),a(z*w),w),
+point(cos(x)/(T=t/w-z)*w+w,sin(y)/T*w+w)
+++t
+}
