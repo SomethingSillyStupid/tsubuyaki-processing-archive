@@ -1,0 +1,14 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+background(0)
+stroke(W)
+for(n=0;n<W;n+=20){
+for(i=0;i<10;i++){
+I=i/5*PI+n/W*PI
+r=(f*3+n)%W-50
+R=max(r,0)
+strokeWeight(R/20)
+line(250+R*cos(I),250+R*sin(I),250+(r+50)*cos(I),250+(r+50)*sin(I))
+}}
+}
