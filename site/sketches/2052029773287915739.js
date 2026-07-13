@@ -1,0 +1,11 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  noStroke()
+  for(x=c=0;x<W;x+=25,c^=1)
+  for(y=0;y<W;y+=25,c^=1){
+    fill(c?255*noise(x/30,y/30,f/60):0)
+    rect(x,y,25)
+  }
+}

@@ -1,0 +1,1 @@
+function setup(){createCanvas(600,600)}function draw(){for(background(255),stroke(0),l=0;l<n;l++){for(beginShape(),x=0,t=0;x<=600;x+=10)t+=.05,vertex(x,map(noise(t,y),0,1,200+0*l,400+10*l));y+=.01,vertex(600,600),vertex(0,600),endShape(CLOSE)}}y=0,n=8;//#つぶやきProcessing

@@ -1,0 +1,1 @@
+t=0,d=5e-4,draw=_=>{t++||createCanvas(w=400,w);background(9).stroke(w,96);for(x=y=z=9,i=3e4;i--;point((q=x*(e=sin(t*PI/20-x*x/99+i%9)+1)+89)*cos(k=z/59-e/29+t*PI/480+i%9*8)+200,200-(q+60*cos(k/2))*sin(k)))[x,y,z]=[x+9*(y-x)*d,y+(x*(28-z)-y)*d,z+(x*y-z-z)*d]}//#つぶやきProcessing

@@ -1,0 +1,1 @@
+f=0,draw=r=>{for(f++||createCanvas(W=500,W),background(0),noStroke(),rectMode(CENTER),x=-15;x<W+15;x+=2)for(y=-15;y<W+15;y+=2)a=atan2(y-W/2,x-W/2),d=dist(x,y,W/2,W/2),v=sin(3.2*a+.1*d+5.5*sin(2.8*a+.1*f)+2.2*sin(.06*d+.25*f)),fill(v>0?255:0),rect(x,y,6,6)};//#つぶやきProcessing

@@ -1,0 +1,12 @@
+f=0
+draw=_=>{f++||createCanvas(W=500,W)
+background(0,20)
+textSize(50)
+N=noise
+for(z=1;z<4;z+=.2)for(y=-f*z%99;y<600;y+=99){
+fill(z*60)
+k=1+N(Y=y+f*z,z)*15|0
+s='';for(i=1;i<k;i++)s+=char(N(z,i,99)>.5?N(z,Y,i)*2000+19968:12353+N(z,Y,i)*80)
+text(s,270-k*25,y)
+}
+}

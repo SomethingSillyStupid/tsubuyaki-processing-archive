@@ -1,0 +1,10 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  noStroke()
+  for(x=0;x<1e3;x+=20)for(y=0;y<1e3;y+=20){
+    s=3*sin(f/30+x+y)
+    rect(x-s,y-s,s*2)
+  }
+}

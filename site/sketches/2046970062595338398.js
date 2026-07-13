@@ -1,0 +1,16 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+background(0)
+for(n=15;n>0;n--){
+stroke(W)
+for(i=0;i<30;i++){
+ push()
+ translate(W*noise(n),W*noise(n,9))
+ rotate(i/30*TAU+f*(noise(n)-.5)/40)
+ strokeWeight(n/2)
+ line(9,0,W,0)
+ pop()
+}
+}
+}

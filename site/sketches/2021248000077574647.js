@@ -1,0 +1,11 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  noFill()
+  stroke(W)
+  for(z=1;z<5;z+=.3){
+    r=f*z%700
+    arc(250,250,r,r,R=f*z/99,R+6)
+  }
+}

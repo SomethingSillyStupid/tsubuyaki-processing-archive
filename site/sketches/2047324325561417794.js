@@ -1,0 +1,15 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  b=blendMode
+  b(BLEND)
+  background(0)
+  b(ADD)
+  noStroke()
+  for(x=0;x<W;x+=5)
+  for(c=80;c>5;c-=10){
+    C=(40-c)*.3
+    fill(W,c/2*noise(x))
+    circle(x-C,600-(f+9e3)*3*noise(x)%700-C,c)
+  }
+}

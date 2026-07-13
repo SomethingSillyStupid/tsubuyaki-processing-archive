@@ -1,0 +1,1 @@
+float x,y,t;void setup(){size(800,800,P3D);}void draw(){background(-1);camera(1000,0,500,1000,500,0,0,0,-1);for(x=0;x<2000;x+=5)for(y=0;y<2000;y+=5)line(x,y,a(0),x+5,y,a(5));t+=.1;}float a(float i){float h=200*noise((x+i)/99,y/99,t/99)-99;return h<0?0:h;}

@@ -1,0 +1,11 @@
+f=0
+draw=_=>{f++||createCanvas(W=500,W)
+background(0)
+for(y=0;y<1e3;y+=5){fill(y/2,99)
+stroke(y)
+for(i=0;i<6;i+=PI/4){push()
+translate(1e3*noise(y)-250,y)
+rotate(i+(f+9e3)*(noise(y,9)-.5)/9)
+c=1+y/200
+quad(-5*c,0,5*c,0,0,30*c)
+pop()}}}

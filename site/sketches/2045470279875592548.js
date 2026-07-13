@@ -1,0 +1,15 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+background(0)
+noStroke()
+for(r=20;r<W;r*=1.2)
+for(i=0;i<TAU;i+=PI/20){
+fill(W,60+60*sin(r+f/30+i*5))
+push()
+translate(250+(R=r+9*sin(i*8))*cos(i),250+R*sin(i))
+rotate(i)
+ellipse(0,0,r/8,r/4)
+pop()
+}
+}

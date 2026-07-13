@@ -1,0 +1,1 @@
+t=0,draw=o=>{for(t||(createCanvas(W=720,W,WEBGL),noStroke(H=W/2),colorMode(HSB,1,1,1,1),blendMode(ADD)),background(0),i=0;i<PI;i+=.05)for(rotate(i),a=0;a<1;a+=.01)fill(a,.2,1,.8),circle(atan2(a*PI,i)*sin(a+t)*H,sin(a*TAU+t)*cos(a*i)*H,2);t+=.001}//

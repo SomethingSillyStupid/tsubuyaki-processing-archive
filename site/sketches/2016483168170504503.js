@@ -1,0 +1,10 @@
+f=0
+draw=_=>{f++||createCanvas(W=500,W)
+background(0)
+noFill()
+strokeWeight(4)
+for(z=0;++z<3;)for(x=0;x<1e3;x+=99)for(y=0;y<1e3;y+=99){stroke(W,z*90)
+beginShape()
+for(i=0;i<TAU;i+=PI/3)
+vertex(x+99*cos(i),y+99*sin(i)+50*sin(x+y+f/30+z))
+endShape(CLOSE)}}

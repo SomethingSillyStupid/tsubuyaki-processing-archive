@@ -1,0 +1,15 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+b=blendMode
+b(BLEND)
+background(0,20)
+b(DIFFERENCE)
+strokeWeight(5)
+noFill()
+stroke(W)
+for(i=0;i<6;i+=PI/5){
+r=250*abs(sin(f/30+i*3))
+circle(250+r*cos(I=i+f/60),250+r*sin(I),r/5)
+}
+}

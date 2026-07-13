@@ -1,0 +1,13 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+b=blendMode
+b(BLEND)
+background(0)
+b(DIFFERENCE)
+t=(R,I)=>[250+R*cos(I),250+R*sin(I)]
+for(r=20;r<W;r+=50)for(i=0;i<(R=r/10|0);i++){
+c=(W-r)/W
+quad(...t(r+30,k=i/R*TAU+f*(noise(r)-.5)/20),...t(r,k-c),...t(r,k+c))
+}
+}

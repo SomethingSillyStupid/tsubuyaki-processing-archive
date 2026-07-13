@@ -1,0 +1,12 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  noStroke()
+  for(x=0;x<W;x+=7)
+  for(y=0;y<W;y+=7){
+    r=dist(250,250,x,y)
+    fill(W,r*sin(atan2(y-250,x-250)*2+r/9+sin(f/30+r/20)))
+    rect(x,y,10)
+  }
+}

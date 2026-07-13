@@ -1,0 +1,9 @@
+t=0
+draw=_=>{t++||createCanvas(W=720,W)
+B=blendMode
+colorMode(HSB)
+B(BLEND)
+background(F=4)
+B(ADD)
+for(r=0;r<TAU;r+=PI/16)for(d=300,F=-F;d-=3;)fill(noise(T=d/W-t/99)*W%360,80,W,.2)+arc(cos(R=r+noise(T)*F)*d+360,sin(R)*d+360,d/3,d/3,r-.5,r+.5)
+filter(INVERT)}

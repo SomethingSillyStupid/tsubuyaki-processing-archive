@@ -1,0 +1,10 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+background(0)
+noStroke()
+for(r=0;r<W;r+=99)for(i=0;i<50;i++){
+R=r+50*sin(i/25*PI+f*noise(r)/20)
+quad(250+R*cos(I=i/25*PI),250+R*sin(I),250+(R*1.2)*cos(I-=.3),250+(R*1.2)*sin(I),250+(R*.8)*cos(I),250+(R*.8)*sin(I))
+}
+}

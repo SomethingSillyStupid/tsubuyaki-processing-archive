@@ -1,0 +1,9 @@
+f=0
+draw=_=>{f++||createCanvas(W=500,W)
+background(0)
+stroke(W)
+for(r=0;r<W;r+=9)for(i=0;++i<5;){p=$=>[250+r*cos($),250+r*sin($)];[x,y]=p(I=i/2*PI);[X,Y]=p(I+PI/2)
+k=$=>(f/30+r)%2.2-$
+c=k(0.6)
+C=k(0)
+line(x+(X-x)*c,y+(Y-y)*c,x+(X-x)*C,y+(Y-y)*C)}}

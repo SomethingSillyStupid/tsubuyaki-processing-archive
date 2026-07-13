@@ -1,0 +1,14 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  clip(()=>circle(250,250,400))
+  for(x=-f%30;x<W;x+=30)
+  for(y=-f%30;y<W;y+=30)
+  for(z=6;z>1;z--){
+    c=noise(x+f,y+f,z)<.5?W:0
+    fill(c)
+    stroke(W-c)
+    rect(x,y,z*5)
+  }
+}

@@ -1,0 +1,12 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  for(r=25;r<W;r+=25){
+    d=2*atan(25/(sqrt(2)*r+25))
+    fill(250-r/2)
+  for(i=s=f*noise(r)/30;i<s+5;i+=d){
+    arc(250+r*cos(i),250+r*sin(i),50,50,i-PI/4,i+PI/4,PIE)
+  }
+  }
+}

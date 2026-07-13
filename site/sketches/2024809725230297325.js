@@ -1,0 +1,2 @@
+a=(d=mag(k=9*cos(i/61),e=i/792-12)**2/79+1)=>point((q=79-e*sin(k)+k/d*(8+4*sin(sin(d*d+e/8-t))))*sin(c=d/2-cos(d*2)/9+cos(t-d*2)/9-t/16+i%2*3)+200,(q+40)*cos(c)+200)
+t=0,draw=$=>{t||createCanvas(w=400,w);background(9).stroke(w,96);for(t+=PI/45,i=2e4;i--;)a()}//#つぶやきProcessing

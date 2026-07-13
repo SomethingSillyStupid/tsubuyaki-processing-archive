@@ -1,0 +1,11 @@
+t=0
+$=[]
+draw=_=>{t++||createCanvas(W=720,W,WEBGL)
+colorMode(HSB)
+B=blendMode
+B(BLEND)
+fill(W,.03)
+rect(H=-360,H,W)
+B(SUBTRACT)
+$[t%W]={x:t*89%W+H,y:t*71%W+H,c:t*17%H}
+$.map(p=>fill(p.c,W,W,.1)+circle(p.x+=cos(A=noise(p.x/W,p.y/W,t/1e4)*W),p.y+=sin(A),9))}

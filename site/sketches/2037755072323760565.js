@@ -1,0 +1,11 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0,20)
+  noStroke()
+  for(r=0;r<W;r+=5){
+    i=r/3
+    R=r*(1+sin(r+f/20)/3)
+    circle(250+R*cos(i),250+R*sin(i),5+r/9)
+  }
+}

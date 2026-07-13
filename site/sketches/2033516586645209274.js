@@ -1,0 +1,14 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+background(0)
+stroke(W)
+for(r=0;r<W;r+=20)for(i=0;i<20;i++){
+push()
+translate(250+r*cos(I=i/10*PI+f*noise(r)/40),250+r*sin(I))
+rotate(I)
+R=r/5
+rect(X=R*cos(I),Y=R*sin(I),-X*2,-Y*2)
+pop()
+}
+}

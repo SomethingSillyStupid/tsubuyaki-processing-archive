@@ -1,0 +1,13 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+ background(0)
+ noStroke()
+ colorMode(HSB,1)
+ for(i=0;i<60;i++)
+ for(r=0;r<1e3;r+=9){
+  I=i/30*PI+f/20
+  fill((1+sin(I))/9,1,1,.6)
+  circle(450+r*cos(I+=sin(r/9+f/60)),50+r*sin(I),9+r/10)
+ }
+}

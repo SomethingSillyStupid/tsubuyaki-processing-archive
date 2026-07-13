@@ -1,0 +1,16 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  b=blendMode
+  b(BLEND)
+  background(0)
+  b(DIFFERENCE)
+  noStroke()
+  translate(250,250)
+  for(r=1;r<200;r*=1.1){
+   push()
+   rotate(f*(noise(r)-.5)*(200-r)/1e3)
+   rect(-r,-r,r*2)
+   pop()
+  }
+}

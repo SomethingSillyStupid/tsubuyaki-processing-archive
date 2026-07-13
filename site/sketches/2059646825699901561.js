@@ -1,0 +1,9 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  for(y=-W;y<W;y+=5){
+    X=(f+9e3)*((y%2-.5)*y/60)%600
+    rect(X<0?W+X:X-100,y,50,200)
+  }
+}

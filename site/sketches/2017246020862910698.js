@@ -1,0 +1,12 @@
+f=0
+draw=_=>{
+ f++||createCanvas(W=500,W)
+ background(0)
+ noStroke()
+ for(y=W;y<1e3;y+=9)for(n=0;++n<90;){
+  c=noise(y,n)<.5?1:-1
+  F=c*f+n/3+y
+  r=400+100/PI*acos(cos(F/5+y))
+  rect(W*noise(y)+r*cos(F/50),y+r*sin(F/50),c<0?18-n/5:n/5)
+ }
+}

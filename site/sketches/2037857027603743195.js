@@ -1,0 +1,16 @@
+f=0
+draw=_=>{f++||createCanvas(W=500,W)
+background(0)
+stroke(W)
+noFill()
+t=translate
+for(x=0;x<=W;x+=50){k=0
+push()
+t(x,-20)
+rotate(PI/2)
+for(n=0;n<30;n++){rotate(-k+(k=sin(x+n+f/30)))
+circle(0,0,9)
+rect(0,-5,c=80*noise(x,n),10)
+t(c,0)}
+pop()}
+}

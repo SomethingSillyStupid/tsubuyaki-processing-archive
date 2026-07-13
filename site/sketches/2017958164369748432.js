@@ -1,0 +1,11 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  noStroke()
+  for(x=0;x<W;x+=5)
+  for(y=0;y<W;y+=5){
+    fill(W,(x+y*sin(f/99)+50*cos((f+x+y)/30)+f*3)%200)
+    rect(x,y,10)
+  }
+}

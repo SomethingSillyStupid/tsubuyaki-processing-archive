@@ -1,0 +1,11 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0,20)
+  noStroke()
+  for(x=0;x<1e3;x+=9){
+    t=(f*3+9e3)*noise(x)%600-50
+    d=20*sin(((x+f)/10|0)/3)
+    rect(x-t+d,W-t-d,30)
+  }
+}

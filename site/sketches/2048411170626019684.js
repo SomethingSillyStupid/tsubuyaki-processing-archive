@@ -1,0 +1,10 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+background(0)
+stroke(W)
+for(i=0;i<20;i++)for(r=1;r<W;r*=1.3){
+line(x=250+r*cos(I=i/10*PI+f*noise(r)/99),y=250+r*sin(I),x+(r+10)*cos(I+=.1),y+(r+10)*sin(I))
+line(x,y,x+(r+10)*cos(I-=.2),y+(r+10)*sin(I))
+}
+}

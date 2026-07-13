@@ -1,1 +1,1004 @@
-[]
+[
+  {
+    "id": "2011283832755073332",
+    "tweet_url": "https://x.com/0xB4K3D/status/2011283832755073332",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Runtime probe exceeded 10000ms hard timeout",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:09:52Z"
+  },
+  {
+    "id": "2012130813849321515",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2012130813849321515",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "p5.MonoSynth is not a constructor",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:09:52Z"
+  },
+  {
+    "id": "2013247647977762960",
+    "tweet_url": "https://x.com/reona396/status/2013247647977762960",
+    "classification_attempts": [
+      "processing"
+    ],
+    "reason": "invalid-source",
+    "error": "circle is not defined",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:09:52Z"
+  },
+  {
+    "id": "2013262120583061633",
+    "tweet_url": "https://x.com/hisadan/status/2013262120583061633",
+    "classification_attempts": [
+      "processing"
+    ],
+    "reason": "runtime-error",
+    "error": "circle is not defined",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:09:52Z"
+  },
+  {
+    "id": "2013977700189540704",
+    "tweet_url": "https://x.com/reona396/status/2013977700189540704",
+    "classification_attempts": [
+      "processing"
+    ],
+    "reason": "invalid-source",
+    "error": "circle is not defined",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:09:52Z"
+  },
+  {
+    "id": "2015988682096853113",
+    "tweet_url": "https://x.com/nicolasbaez/status/2015988682096853113",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "invalid-source",
+    "error": "Invalid or unexpected token",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:09:52Z"
+  },
+  {
+    "id": "2017768294951096630",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2017768294951096630",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "invalid-source",
+    "error": "Unexpected token ')'",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:17:38Z"
+  },
+  {
+    "id": "2017968467186799048",
+    "tweet_url": "https://x.com/yuruyurau/status/2017968467186799048",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Unexpected identifier '#つぶやきProcessing'",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:17:38Z"
+  },
+  {
+    "id": "2018468038585221314",
+    "tweet_url": "https://x.com/reona396/status/2018468038585221314",
+    "classification_attempts": [
+      "processing"
+    ],
+    "reason": "invalid-source",
+    "error": "circle is not defined",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:17:38Z"
+  },
+  {
+    "id": "2018522244709003539",
+    "tweet_url": "https://x.com/nicolasbaez/status/2018522244709003539",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "invalid-source",
+    "error": "Invalid or unexpected token",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:17:38Z"
+  },
+  {
+    "id": "2018651321927340069",
+    "tweet_url": "https://x.com/hisadan/status/2018651321927340069",
+    "classification_attempts": [
+      "processing"
+    ],
+    "reason": "runtime-error",
+    "error": "square is not defined",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:17:38Z"
+  },
+  {
+    "id": "2018943930717573305",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2018943930717573305",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:17:38Z"
+  },
+  {
+    "id": "2021050988241748028",
+    "tweet_url": "https://x.com/nicolasbaez/status/2021050988241748028",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "invalid-source",
+    "error": "Invalid or unexpected token",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:17:38Z"
+  },
+  {
+    "id": "2021238125285036136",
+    "tweet_url": "https://x.com/yuruyurau/status/2021238125285036136",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Unexpected identifier '#つぶやきProcessing'",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:17:38Z"
+  },
+  {
+    "id": "2021261078747910588",
+    "tweet_url": "https://x.com/ryojihido/status/2021261078747910588",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Unexpected identifier '#つぶやきProcessing'",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:17:38Z"
+  },
+  {
+    "id": "2021463673466920989",
+    "tweet_url": "https://x.com/CliffMust/status/2021463673466920989",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Private field '#つぶやきProcessing' must be declared in an enclosing class",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:17:38Z"
+  },
+  {
+    "id": "2021476882177458278",
+    "tweet_url": "https://x.com/CliffMust/status/2021476882177458278",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Private field '#つぶやきProcessing' must be declared in an enclosing class",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:17:38Z"
+  },
+  {
+    "id": "2022278799833125328",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2022278799833125328",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "invalid-source",
+    "error": "Unexpected token ':'",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:17:38Z"
+  },
+  {
+    "id": "2022319970823328032",
+    "tweet_url": "https://x.com/Hau_kun/status/2022319970823328032",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Private field '#つぶやきProcessing' must be declared in an enclosing class",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:17:38Z"
+  },
+  {
+    "id": "2022455263664771201",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2022455263664771201",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Unexpected identifier 'https'",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:17:38Z"
+  },
+  {
+    "id": "2022524457508835641",
+    "tweet_url": "https://x.com/yuruyurau/status/2022524457508835641",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Unexpected identifier '#つぶやきProcessing'",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:17:38Z"
+  },
+  {
+    "id": "2022526453779435912",
+    "tweet_url": "https://x.com/yuruyurau/status/2022526453779435912",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Unexpected identifier '#つぶやきProcessing'",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:17:38Z"
+  },
+  {
+    "id": "2022995578016387236",
+    "tweet_url": "https://x.com/yuruyurau/status/2022995578016387236",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Unexpected identifier '#つぶやきProcessing'",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:17:38Z"
+  },
+  {
+    "id": "2023558181591675181",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2023558181591675181",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:17:38Z"
+  },
+  {
+    "id": "2023841927683248142",
+    "tweet_url": "https://x.com/megamitts1/status/2023841927683248142",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:17:38Z"
+  },
+  {
+    "id": "2023951131718697031",
+    "tweet_url": "https://x.com/nicolasbaez/status/2023951131718697031",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "invalid-source",
+    "error": "Invalid or unexpected token",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:17:38Z"
+  },
+  {
+    "id": "2024121022929363391",
+    "tweet_url": "https://x.com/yuruyurau/status/2024121022929363391",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Unexpected identifier '#つぶやきProcessing'",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:17:38Z"
+  },
+  {
+    "id": "2024614573794615737",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2024614573794615737",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Runtime probe exceeded 10000ms hard timeout",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:17:38Z"
+  },
+  {
+    "id": "2024832801120661722",
+    "tweet_url": "https://x.com/yuruyurau/status/2024832801120661722",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Unexpected identifier '#つぶやきProcessing'",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:17:38Z"
+  },
+  {
+    "id": "2024890239437660179",
+    "tweet_url": "https://x.com/CliffMust/status/2024890239437660179",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:17:38Z"
+  },
+  {
+    "id": "2025114620676186436",
+    "tweet_url": "https://x.com/yuruyurau/status/2025114620676186436",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Unexpected identifier '#つぶやきProcessing'",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:17:38Z"
+  },
+  {
+    "id": "2025602268083699720",
+    "tweet_url": "https://x.com/yuruyurau/status/2025602268083699720",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Unexpected identifier '#つぶやきProcessing'",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:17:38Z"
+  },
+  {
+    "id": "2025603714883743849",
+    "tweet_url": "https://x.com/yuruyurau/status/2025603714883743849",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Unexpected identifier '#つぶやきProcessing'",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:17:38Z"
+  },
+  {
+    "id": "2025927451038318669",
+    "tweet_url": "https://x.com/Hau_kun/status/2025927451038318669",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Runtime probe exceeded 10000ms hard timeout",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:17:38Z"
+  },
+  {
+    "id": "2026500893311467793",
+    "tweet_url": "https://x.com/nicolasbaez/status/2026500893311467793",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "invalid-source",
+    "error": "Invalid or unexpected token",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:17:38Z"
+  },
+  {
+    "id": "2028608874547429645",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2028608874547429645",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Unexpected identifier 'https'",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:25:57Z"
+  },
+  {
+    "id": "2030288158626353226",
+    "tweet_url": "https://x.com/yuruyurau/status/2030288158626353226",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Unexpected identifier '#つぶやきProcessing'",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:25:57Z"
+  },
+  {
+    "id": "2030289783755546783",
+    "tweet_url": "https://x.com/yuruyurau/status/2030289783755546783",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Unexpected identifier '#つぶやきProcessing'",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:25:57Z"
+  },
+  {
+    "id": "2030558759433678971",
+    "tweet_url": "https://x.com/yuruyurau/status/2030558759433678971",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Unexpected identifier '#つぶやきProcessing'",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:25:57Z"
+  },
+  {
+    "id": "2030958283822141607",
+    "tweet_url": "https://x.com/reona396/status/2030958283822141607",
+    "classification_attempts": [
+      "processing"
+    ],
+    "reason": "invalid-source",
+    "error": "circle is not defined",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:25:57Z"
+  },
+  {
+    "id": "2031198470065823989",
+    "tweet_url": "https://x.com/nicolasbaez/status/2031198470065823989",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "invalid-source",
+    "error": "Invalid or unexpected token",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:25:57Z"
+  },
+  {
+    "id": "2031364521093431342",
+    "tweet_url": "https://x.com/reona396/status/2031364521093431342",
+    "classification_attempts": [
+      "processing"
+    ],
+    "reason": "invalid-source",
+    "error": "circle is not defined",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:25:57Z"
+  },
+  {
+    "id": "2031366569448886284",
+    "tweet_url": "https://x.com/yuruyurau/status/2031366569448886284",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Unexpected identifier '#つぶやきProcessing'",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:25:57Z"
+  },
+  {
+    "id": "2031708314657313231",
+    "tweet_url": "https://x.com/reona396/status/2031708314657313231",
+    "classification_attempts": [
+      "processing"
+    ],
+    "reason": "invalid-source",
+    "error": "circle is not defined",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:25:57Z"
+  },
+  {
+    "id": "2032394439759700320",
+    "tweet_url": "https://x.com/hisadan/status/2032394439759700320",
+    "classification_attempts": [
+      "processing"
+    ],
+    "reason": "runtime-error",
+    "error": "square is not defined",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:25:57Z"
+  },
+  {
+    "id": "2032699670083076105",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2032699670083076105",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:25:57Z"
+  },
+  {
+    "id": "2033739055364489499",
+    "tweet_url": "https://x.com/nicolasbaez/status/2033739055364489499",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "invalid-source",
+    "error": "Invalid or unexpected token",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:25:57Z"
+  },
+  {
+    "id": "2034038781519794288",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2034038781519794288",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "TimeoutError: page.waitForFunction: Timeout 10000ms exceeded.",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:25:57Z"
+  },
+  {
+    "id": "2034580671059161547",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2034580671059161547",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Failed to construct 'Request': Failed to parse URL from gw.png",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:25:57Z"
+  },
+  {
+    "id": "2034947839424627132",
+    "tweet_url": "https://x.com/Hau_kun/status/2034947839424627132",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "TimeoutError: page.waitForFunction: Timeout 10000ms exceeded.",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:25:57Z"
+  },
+  {
+    "id": "2035119045767569855",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2035119045767569855",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:25:57Z"
+  },
+  {
+    "id": "2035372863985967418",
+    "tweet_url": "https://x.com/hisadan/status/2035372863985967418",
+    "classification_attempts": [
+      "processing"
+    ],
+    "reason": "runtime-error",
+    "error": "push is not defined",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:25:57Z"
+  },
+  {
+    "id": "2036414079284531415",
+    "tweet_url": "https://x.com/reona396/status/2036414079284531415",
+    "classification_attempts": [
+      "processing"
+    ],
+    "reason": "invalid-source",
+    "error": "circle is not defined",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:25:57Z"
+  },
+  {
+    "id": "2036642786326282645",
+    "tweet_url": "https://x.com/nicolasbaez/status/2036642786326282645",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "invalid-source",
+    "error": "Invalid or unexpected token",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:25:57Z"
+  },
+  {
+    "id": "2036780883332788391",
+    "tweet_url": "https://x.com/reona396/status/2036780883332788391",
+    "classification_attempts": [
+      "processing"
+    ],
+    "reason": "invalid-source",
+    "error": "circle is not defined",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:25:57Z"
+  },
+  {
+    "id": "2039488539755504015",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2039488539755504015",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "invalid-source",
+    "error": "Unexpected token '}'",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:32:31Z"
+  },
+  {
+    "id": "2039722375625986239",
+    "tweet_url": "https://x.com/hisadan/status/2039722375625986239",
+    "classification_attempts": [
+      "processing"
+    ],
+    "reason": "runtime-error",
+    "error": "square is not defined",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:32:31Z"
+  },
+  {
+    "id": "2042945475855417675",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2042945475855417675",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "missing ) after argument list",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:32:31Z"
+  },
+  {
+    "id": "2044246176489238719",
+    "tweet_url": "https://x.com/nicolasbaez/status/2044246176489238719",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "invalid-source",
+    "error": "Invalid or unexpected token",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:32:31Z"
+  },
+  {
+    "id": "2046234454352629934",
+    "tweet_url": "https://x.com/hisadan/status/2046234454352629934",
+    "classification_attempts": [
+      "processing"
+    ],
+    "reason": "runtime-error",
+    "error": "square is not defined",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:32:31Z"
+  },
+  {
+    "id": "2046563750791307419",
+    "tweet_url": "https://x.com/hisadan/status/2046563750791307419",
+    "classification_attempts": [
+      "processing"
+    ],
+    "reason": "runtime-error",
+    "error": "square is not defined",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:32:31Z"
+  },
+  {
+    "id": "2046584749175832639",
+    "tweet_url": "https://x.com/hisadan/status/2046584749175832639",
+    "classification_attempts": [
+      "processing"
+    ],
+    "reason": "runtime-error",
+    "error": "square is not defined",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:32:31Z"
+  },
+  {
+    "id": "2047277218129404345",
+    "tweet_url": "https://x.com/reona396/status/2047277218129404345",
+    "classification_attempts": [
+      "processing"
+    ],
+    "reason": "runtime-error",
+    "error": "circle is not defined",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:32:31Z"
+  },
+  {
+    "id": "2047673845377831073",
+    "tweet_url": "https://x.com/reona396/status/2047673845377831073",
+    "classification_attempts": [
+      "processing"
+    ],
+    "reason": "runtime-error",
+    "error": "circle is not defined",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:32:31Z"
+  },
+  {
+    "id": "2048897636351218071",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2048897636351218071",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Unexpected identifier 'https'",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:32:31Z"
+  },
+  {
+    "id": "2048954145235755507",
+    "tweet_url": "https://x.com/nicolasbaez/status/2048954145235755507",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "invalid-source",
+    "error": "Invalid or unexpected token",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:32:31Z"
+  },
+  {
+    "id": "2050706798278218239",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2050706798278218239",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "invalid-source",
+    "error": "Unexpected token ','",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:41:19Z"
+  },
+  {
+    "id": "2050869316145619288",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2050869316145619288",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "p5.MonoSynth is not a constructor",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:41:19Z"
+  },
+  {
+    "id": "2051495082151579801",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2051495082151579801",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:41:19Z"
+  },
+  {
+    "id": "2051496769180373348",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2051496769180373348",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:41:19Z"
+  },
+  {
+    "id": "2051640428630315451",
+    "tweet_url": "https://x.com/nicolasbaez/status/2051640428630315451",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "invalid-source",
+    "error": "Invalid or unexpected token",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:41:19Z"
+  },
+  {
+    "id": "2052410599662072049",
+    "tweet_url": "https://x.com/yuruyurau/status/2052410599662072049",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Unexpected identifier '#つぶやきProcessing'",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:41:19Z"
+  },
+  {
+    "id": "2052752856256594032",
+    "tweet_url": "https://x.com/WalterGerhardt/status/2052752856256594032",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "t is not defined",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:41:19Z"
+  },
+  {
+    "id": "2052764481751851073",
+    "tweet_url": "https://x.com/newdaita/status/2052764481751851073",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Unexpected end of input",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:41:19Z"
+  },
+  {
+    "id": "2053434563360403653",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2053434563360403653",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Unexpected identifier 'https'",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:41:19Z"
+  },
+  {
+    "id": "2053476018686660958",
+    "tweet_url": "https://x.com/yu_truebank/status/2053476018686660958",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Private field '#つぶやきProcessing' must be declared in an enclosing class",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:41:19Z"
+  },
+  {
+    "id": "2054835924077551958",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2054835924077551958",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Unexpected identifier 'https'",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:41:19Z"
+  },
+  {
+    "id": "2054885305111691674",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2054885305111691674",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "invalid-source",
+    "error": "Unexpected token '}'",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:41:19Z"
+  },
+  {
+    "id": "2059113021989884213",
+    "tweet_url": "https://x.com/CliffMust/status/2059113021989884213",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:41:19Z"
+  },
+  {
+    "id": "2059524811718894003",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2059524811718894003",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:41:19Z"
+  },
+  {
+    "id": "2060123933337379099",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2060123933337379099",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Unexpected identifier 'https'",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:41:19Z"
+  },
+  {
+    "id": "2060231894101369242",
+    "tweet_url": "https://x.com/CliffMust/status/2060231894101369242",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:41:19Z"
+  },
+  {
+    "id": "2060232264135381169",
+    "tweet_url": "https://x.com/CliffMust/status/2060232264135381169",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:41:19Z"
+  },
+  {
+    "id": "2061794744305611123",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2061794744305611123",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Unexpected identifier 'https'",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:42:53Z"
+  },
+  {
+    "id": "2061966192382976171",
+    "tweet_url": "https://x.com/Acha_for_CS/status/2061966192382976171",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "invalid-source",
+    "error": "Unexpected token '>'",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:42:53Z"
+  },
+  {
+    "id": "2062027409571090476",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2062027409571090476",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Failed to construct 'Request': Failed to parse URL from glow.jpg",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:42:53Z"
+  },
+  {
+    "id": "2062152588641059122",
+    "tweet_url": "https://x.com/Hau_kun/status/2062152588641059122",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Event",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:42:53Z"
+  },
+  {
+    "id": "2062673832528466055",
+    "tweet_url": "https://x.com/Acha_for_CS/status/2062673832528466055",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "invalid-source",
+    "error": "Invalid or unexpected token",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:42:53Z"
+  },
+  {
+    "id": "2063471807051735156",
+    "tweet_url": "https://x.com/hisadan/status/2063471807051735156",
+    "classification_attempts": [
+      "processing"
+    ],
+    "reason": "runtime-error",
+    "error": "circle is not defined",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:42:53Z"
+  },
+  {
+    "id": "2063631027063726297",
+    "tweet_url": "https://x.com/hisadan/status/2063631027063726297",
+    "classification_attempts": [
+      "processing"
+    ],
+    "reason": "runtime-error",
+    "error": "circle is not defined",
+    "retryable": false,
+    "checked_at": "2026-07-13T18:42:53Z"
+  }
+]

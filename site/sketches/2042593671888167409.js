@@ -1,0 +1,15 @@
+f=0
+draw=_=>{f++||createCanvas(W=500,W)
+background(W,30)
+fill(0)
+for(x=0;x<W;x+=9)for(i=0;i<6;i+=PI/3){
+N=noise(x)
+push()
+translate(x,(F=(f*3+9e3)*N%700)-99)
+c=50*noise(i)
+h=W*N
+rotate(min(F,h)*N/20+i)
+circle(0,50+max(0,F-h)*3,min(30,(700-F)/9))
+pop()
+}
+}

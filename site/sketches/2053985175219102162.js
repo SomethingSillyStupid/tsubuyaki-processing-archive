@@ -1,0 +1,9 @@
+t=0
+draw=_=>{t++||createCanvas(W=800,W)
+S=strokeWeight
+background`#つぶやきProcessing`
+S(1)
+stroke`#0bf`
+for(i=4;i--;)noFill(text(1020-i*5,0,y=i*160+160)),line(1020,Y=y-5,40,Y)
+S(4)
+for(beginShape(),i=W;i--;endShape()){T=i+t,vertex(i,400+((noise(T/400)*2-1)-cos(T/W*6))*200)}}

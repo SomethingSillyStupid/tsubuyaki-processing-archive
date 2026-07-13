@@ -1,0 +1,13 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+background(0)
+stroke(W)
+noFill()
+for(r=0;r<W;r+=50)for(i=0;i<TAU;i+=PI/5){
+circle(250,250,r*2)
+strokeWeight((W-r)/100)
+k=$=>[250+r*cos(I=i+(f+9e3)*noise(r+$)/30),250+r*sin(I)]
+line(...k(0),...k(50))
+}
+}

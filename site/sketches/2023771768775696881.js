@@ -1,0 +1,12 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  stroke(W)
+  beginShape()
+  for(i=0;i<TAU;i+=PI/2)
+  for(r=200;r<W;r+=20){
+    vertex(250+r*cos(I=i+PI/4*sin(f/30+i+r)),250+r*sin(I))
+  }
+  endShape(CLOSE)
+}

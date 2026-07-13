@@ -1,0 +1,15 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+background(0)
+stroke(W)
+noFill()
+translate(50,450)
+rotate(PI/4)
+for(i=1;i<200;i++){
+d=abs(400*sin((i+f)/30))
+c=600-i*3
+N=$=>$(PI/2,PI/2+(noise(i,9)<.5?1:-1)*d/150)
+arc(0,-c/2,d,c,N(min),N(max))
+}
+}

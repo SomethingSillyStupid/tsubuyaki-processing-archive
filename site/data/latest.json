@@ -10,8 +10,8 @@
     },
     "tweet_url": "https://x.com/4__MOp/status/2076620254965617033",
     "archive_url": "https://tsubuyaki.art/sketch.html?id=2076620254965617033",
-    "preview_still_file": "https://pbs.twimg.com/amplify_video_thumb/2076620164964155392/img/hqxyMi119rNJaOWM.jpg",
-    "preview_motion_file": "https://pbs.twimg.com/amplify_video_thumb/2076620164964155392/img/hqxyMi119rNJaOWM.jpg",
+    "preview_still_file": "previews/2076620254965617033.jpg",
+    "preview_motion_file": "previews/2076620254965617033.jpg",
     "runtime_status": null,
     "language": "p5js",
     "runtime": {
@@ -266,8 +266,8 @@
     },
     "tweet_url": "https://x.com/inaba_darkfox/status/2075731082910310694",
     "archive_url": "https://tsubuyaki.art/sketch.html?id=2075731082910310694",
-    "preview_still_file": "https://pbs.twimg.com/media/HM56aqHbIAABVWg.jpg",
-    "preview_motion_file": "https://pbs.twimg.com/media/HM56aqHbIAABVWg.jpg",
+    "preview_still_file": "previews/2075731082910310694.jpg",
+    "preview_motion_file": "previews/2075731082910310694.jpg",
     "runtime_status": "runs",
     "language": "p5js",
     "runtime": {
@@ -490,8 +490,8 @@
     },
     "tweet_url": "https://x.com/TakagiHitoshi/status/2075184106107965733",
     "archive_url": "https://tsubuyaki.art/sketch.html?id=2075184106107965733",
-    "preview_still_file": "https://pbs.twimg.com/media/HMyI8b0bQAAKiSL.png",
-    "preview_motion_file": "https://pbs.twimg.com/media/HMyI8b0bQAAKiSL.png",
+    "preview_still_file": "previews/2075184106107965733.png",
+    "preview_motion_file": "previews/2075184106107965733.png",
     "runtime_status": "runs",
     "language": "p5js",
     "runtime": {

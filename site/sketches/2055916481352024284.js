@@ -1,0 +1,10 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0,5)
+  noStroke()
+  for(x=0;x<W;x++){
+    fill(c=1e3*noise(x)%255,90)
+    circle(x,600-(f+9e3)*noise(x)*3%700,c/5)
+  }
+}

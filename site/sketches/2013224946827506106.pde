@@ -1,0 +1,1 @@
+float i,j,x,y,t,w=50;void setup(){size(800,800);}void draw(){background(-1);noFill();for(i=0;i<800;i+=w)for(j=0;j<800;j+=w){line(i,j+w,x=i+sin(t*sin(t))*w/2+w/2,y=j+sin(t*cos(t))*w/4+w/2);line(x,y,i,j);line(i,j,x,y);line(x,y,i+w,j);}t=t>TAU*3?0:t+.01;}

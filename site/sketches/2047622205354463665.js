@@ -1,0 +1,9 @@
+t=0
+$=[]
+draw=_=>{t++||createCanvas(W=720,W)
+background(0,9)
+noStroke()
+N=noise
+F=(p,a)=>cos(p.r+N(p.x/99,p.y/99,t/W)-a)*p.s/5
+$[t%W]={x:cos(t)*W+N(T=t/360)*W,y:sin(t)*W+N(T+5)*W,r:t,s:20}
+$.map(p=>fill(W,p.s*9)+circle(p.x-=F(p,0),p.y-=F(p,PI/2),p.s*=.995))}

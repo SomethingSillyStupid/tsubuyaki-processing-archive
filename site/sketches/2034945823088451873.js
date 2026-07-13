@@ -1,0 +1,14 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  stroke(W)
+  noFill()
+  translate(250,250)
+  for(r=1;r<W;r*=1.1){
+    push()
+    rotate(f*r/1e4)
+    rect(-r,-r,r*4)
+    pop()
+  }
+}

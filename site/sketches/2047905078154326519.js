@@ -1,0 +1,15 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+background(W)
+stroke(0)
+noFill()
+for(r=0;r<W;r+=5){
+ beginShape()
+ strokeWeight(r/25)
+ for(i=0;i<4;i++){
+  vertex(250+r*cos(I=i/2*PI+f*r/1e4),250+r*sin(I))
+ }
+ endShape(CLOSE)
+ }
+}

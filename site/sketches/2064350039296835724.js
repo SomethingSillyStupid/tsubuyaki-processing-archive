@@ -1,0 +1,14 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+background(0)
+for(y=0;y<1e3;y+=50)for(x=-y/2;x<1e3;x+=50)
+for(r=100;r>0;r-=20){
+  push()
+  translate(x,y)
+  rotate(x+y+f/30+r)
+  s=max(0,4*sin(f/40+x*20+y*20)-3)*r
+  rect(-s/2,-s/2,s)
+  pop()
+}
+}

@@ -1,0 +1,14 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  d=25*sqrt(3)
+  stroke(W)
+  strokeWeight(5)
+  noFill()
+  for(y=-W;y<W;y+=d){
+  for(x=f*y/99%50-50;x<1e3;x+=50){
+    quad(x,y-d/2,x-25,y+d*1.5,x+25,y+d*1.5)
+  }
+  }
+}

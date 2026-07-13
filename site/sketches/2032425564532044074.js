@@ -1,0 +1,12 @@
+f=0
+draw=_=>{f++||createCanvas(W=500,W)
+background(0)
+noStroke()
+translate(350,99)
+for(r=30;r<W;r*=1.03)for(i=0;i<1;i+=.03){
+push()
+R=r/max(abs(cos(I=i+f/40+r)),abs(sin(I)))
+rect(min(k=r*1.4,R)*cos(I+r),min(k,R)*sin(I+r),r/20)
+pop()
+}
+}

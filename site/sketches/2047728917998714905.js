@@ -1,0 +1,14 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+background(0)
+noFill()
+S=strokeWeight
+for(z=0;z<5;z++)for(x=(k=f*(1+z/3))%60-120;x<700;x+=60){
+stroke(z*60)
+S(z*2)
+line(x,0,x,W)
+S(z)
+ellipse(x,250+150*sin((f+9e3)*noise(x-k,z)/30),40,5)
+}
+}

@@ -1,0 +1,17 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+b=blendMode
+b(BLEND)
+background(0)
+b(ADD)
+for(z=0;z<20;z++){
+beginShape()
+for(x=0;x<W;x+=3){
+fill(z*10,z*5)
+strokeWeight(5)
+vertex(x,250+250*cos(x/100*PI+z+f/30))
+}
+endShape()
+}
+}

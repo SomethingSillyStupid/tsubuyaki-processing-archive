@@ -1,0 +1,14 @@
+t=0
+draw=_=>{t||createCanvas(W=720,W)
+colorMode(HSB)
+background(0,t%90<80?t?0:W:.03)
+noStroke()
+F=(a,b=-1)=>square(360+X*a,360+Y*b,30)
+t%90!=0||(X=Y=-15)
+X+=cos(A=int(random(4))*PI/2)*15
+Y+=sin(A)*15
+fill(noise(t++/60)*W%360,60,W)
+F(1,1)
+F(1)
+F(-1,1)
+F(-1)}

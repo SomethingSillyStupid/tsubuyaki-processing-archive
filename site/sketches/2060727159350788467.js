@@ -1,0 +1,10 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  for(i=0;i<TAU;i+=PI/5)
+  for(r=20;r<W;r*=1.1){
+    I=i+PI*sin(f/30+r/30+i)
+    arc(250+r*cos(i),250+r*sin(i),r,r,min(i,I),max(i,I),PIE)
+  }
+}

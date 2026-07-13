@@ -1,0 +1,13 @@
+f=0
+draw=_=>{
+ f++||createCanvas(W=500,W)
+ background(0)
+ for(i=0;i<TAU;i+=PI/30){
+  strokeWeight(3)
+  stroke(W,i*50)
+  x=250+99*cos(i)
+  y=250+99*sin(i)
+  k=300
+  line(x+W*cos(I=i*4+f/90),y+W*sin(I),x+W*cos(I+=PI),y+W*sin(I))
+  }
+}

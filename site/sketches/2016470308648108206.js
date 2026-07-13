@@ -1,0 +1,1 @@
+a=b=c=d=f=0,w=200,draw=s=>{for(f||createCanvas(W=400,W),background(B=PI/124),L=line,stroke(W,77),j=0;j<TAU;j+=B/2)r=cos(2*f)*W,p=sin(2*f)*w,L(x=cos(A=j+f)*p+w,y=sin(R=j+f)*p+w,X=sin(A+9*f)*r+w,Y=cos(R+9*f)*r+w);f+=B/12};//#つぶやきProcessing #p5js #generativeart #creativecoding

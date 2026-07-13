@@ -1,0 +1,1 @@
+t=0,draw=e=>{for(t||(createCanvas(W=720,W,WEBGL),noFill(H=W/2),ellipseMode(CENTER),colorMode(HSB,1,1,1,1),blendMode(ADD)),background(0),i=0;i<1;i+=.02)push(),stroke(i,.5,1,.3),rotate(noise(t)-.5),ellipse(0,0,1.6*H+H*noise(i,t),H*noise(t,i)),pop();t+=.001}//

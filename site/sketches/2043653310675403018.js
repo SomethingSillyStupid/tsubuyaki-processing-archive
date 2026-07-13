@@ -1,0 +1,10 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(W)
+  fill(0)
+  for(x=0;x<W;x+=50)
+  for(n=0;n<600;n+=20){
+    rect(x,(n+f*noise(x)*3)%600-50,65,10)
+  }
+}

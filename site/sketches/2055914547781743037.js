@@ -1,0 +1,1 @@
+t=0,setup=t=>createCanvas(800,450),draw=n=>{for(background(0),y=0;y<450;y+=2)for(x=0;x<800;x+=2)sin(y/7+5*sin(x/11+t/35)+12*noise(y/80,x/80,t/45))>.12&&stroke(220+35*sin(t/15+y/40))&&point(x,y);t++};//#つぶやきProcessing

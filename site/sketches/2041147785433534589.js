@@ -1,0 +1,16 @@
+t=0;
+draw=_=>{
+  t+=0.02
+  createCanvas(W=400,W)
+  stroke(0)
+  background(W)
+  translate(W/2,W/2)
+noFill()
+  beginShape()
+  for(i=0;i<25;i++){
+  b=50*sin(t*i/4)
+  v=t*i/3
+  vertex(sin(v)*b,b*cos(v))
+  }
+  endShape()
+}

@@ -1,0 +1,13 @@
+f=0;
+draw=_=>{
+ f++||createCanvas(W=500,W)
+ background(0)
+ stroke(W)
+ noFill()
+ for(z=3;z<9;z++)
+ for(x=(F=-f*z/4)%100;x<W;x+=100)
+ for(y=(G=-f*z/4)%100;y<W;y+=100){
+  strokeWeight(12-z)
+  if(noise(x-F,y-G,z)<.4)rect(x,y,100)
+ }
+}

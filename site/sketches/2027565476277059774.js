@@ -1,0 +1,1 @@
+f=0,setup=i=>createCanvas(500,500),draw=n=>{for(background(0),noStroke(),x=-50;x<550;x+=3)for(i=0;i<5;i++)y=250+90*sin(.02*x+.04*f)+65*sin(.05*x+.018*f)+20*i-40,w=5*sin(.03*x+.012*f)|0,d=constrain(1-abs(y-250)/180,0,1),fill(255*d|0),rect(x,y-3,5,6+w);f++};//#つぶやきProcessing

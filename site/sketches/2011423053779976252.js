@@ -1,0 +1,1 @@
+f=0,draw=a=>{for(f||createCanvas(W=400,W),background(B=PI/64),scale(2),noStroke(P=PI),j=-P;j<TAU;j+=B)for(i=0;i<=P;i+=B)n=(f+cos(j+f))%B,g=f+cos(i+n),x=(i+n)*(W/P),y=(j+2*sin(g))*(W/P),circle(tan(x/W)*W,s=200*sin(y/200),s/99);f+=B/8};//#つぶやきProcessing #p5js #generativeart

@@ -1,0 +1,1 @@
+t=0,draw=n=>{for(t||(createCanvas(W=720,W,WEBGL),noFill(H=W/2),stroke(0,64)),background(255),a=0;a<TAU;a+=.01)rotate(-.01),rotateY(.01),x=cos(a)*noise(t+a)*H,y=sin(a)*noise(t-a)*H,n1=noise(a,t)*H,n2=noise(t,a)*H,bezier(x,y,n1,n2,n2,n1,-y,-x);t+=.001}//

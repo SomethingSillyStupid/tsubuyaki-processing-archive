@@ -1,0 +1,11 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  noStroke()
+  for(x=0;x<600;x+=50)
+  for(y=-x/2;y<600;y+=50)
+  for(n=-30;n<30;n+=3){
+    circle(x+n,y+20*sin(n/20+x+y+f/30),7)
+  }
+}

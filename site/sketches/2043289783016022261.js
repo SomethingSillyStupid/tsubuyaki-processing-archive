@@ -1,0 +1,11 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0,30)
+  stroke(W)
+  for(r=0;r<1e3;r+=4){
+    c=min(r,200)
+    strokeWeight(r/20)
+    line((x=250+r*cos(i=r*.7))+c*cos(i+f/37),(y=250+r*sin(i))+c*sin(i+f/30),x,y)
+  }
+}

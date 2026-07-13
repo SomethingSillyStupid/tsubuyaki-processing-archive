@@ -1,0 +1,9 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0,20)
+  noStroke()
+  for(r=0;r<W;r+=5){
+    circle(99+r*cos(i=sin(r/5+f/40)*3),99+r*sin(i),sin(r/9)*r/10+5)
+  }
+}

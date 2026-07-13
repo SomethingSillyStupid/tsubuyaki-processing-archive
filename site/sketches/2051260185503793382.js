@@ -1,0 +1,10 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+background(0)
+noFill()
+strokeWeight(5)
+t=250
+for(r=0;r<W;r+=50){for(i=0;++i<20;stroke((r/20+i/9+f/99)%1*255)){
+R=r+50
+quad(t+r*cos(I=i/9*PI),t+r*sin(I),t+R*cos(I+=PI/9),t+R*sin(I),t+r*cos(I+=PI/9),t+r*sin(I))}}}

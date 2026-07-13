@@ -1,0 +1,10 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  stroke(W)
+  for(x=-200;x<200;x+=10)
+  for(n=0;n<99;n+=3){
+    circle(250+x,250+sqrt(4e4-x*x)*sin((f+n)/90+x),n/9)
+  }
+}

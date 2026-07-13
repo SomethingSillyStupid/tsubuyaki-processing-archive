@@ -1,0 +1,1 @@
+f=0,w=200,draw=a=>{for(f||createCanvas(W=400,W),stroke(W,k=80),background(B=PI/k),S=sin,j=0;j<TAU;j+=B/2)r=cos(Z=2*f)*w,p=S(Z)*k,line(x=cos(A=j+f)*p+w+10*tan(Z),y=S(R=j+f)*p+w,X=S(A)*r+w,Y=cos(R)*r+w+tan(Z-1.6)*w),C=circle,C(Y,X,Q=2*S(j+22*f)),C(y,x,Q);f+=B/9}

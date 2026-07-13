@@ -1,0 +1,15 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+background(0)
+stroke(W)
+noFill()
+for(d=0;d<2000;d+=20){
+push()
+translate(0,250)
+rotate(f*(noise(d,4)-.5)/30)
+strokeWeight(d/200)
+arc(0,0,d,d*noise(d,9),t=(f+9e3)*noise(d)/20,t+PI)
+pop()
+}
+}

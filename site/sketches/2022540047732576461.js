@@ -1,0 +1,14 @@
+f=0
+draw=_=>{
+ f++||createCanvas(W=500,W)
+ b=blendMode
+ b(BLEND)
+ background(0)
+ b(ADD)
+ fill(W,80)
+ noStroke()
+ for(c=0;++c<70;)for(n=0;n<30;n+=3){
+  F=f+n
+ circle(x=250+250*cos(F/60+c),y=250+250*sin(F/60+c*c),(x+y)*noise(x/99,y/99)/10)
+  }
+}

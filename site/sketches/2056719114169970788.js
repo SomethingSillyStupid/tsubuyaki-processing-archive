@@ -1,0 +1,10 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  noStroke()
+  for(r=0;r<W;r+=20)
+  for(n=0;n<99;n++){
+    circle(250+r*cos(i=n/99*TAU),250+r*sin(i),(n/99*90+(9e3-f/2)*noise(r))%30*r/150)
+  }
+}

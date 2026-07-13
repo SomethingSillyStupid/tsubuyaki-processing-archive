@@ -1,0 +1,10 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  stroke(W)
+  for(i=0;i<TAU;i+=PI/60){
+    r=70+20*acos(cos(i*6))
+    line(250+r*cos(I=i+f/99),250+r*sin(I),250+r*r*cos(I),250+r*2*sin(I))
+  }
+}

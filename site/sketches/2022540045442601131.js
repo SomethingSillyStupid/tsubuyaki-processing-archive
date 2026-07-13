@@ -1,0 +1,14 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  b=blendMode
+  b(BLEND)
+  background(0)
+  noStroke()
+  b(DIFFERENCE)
+  for(c=0;++c<70;)
+  for(n=0;n<30;n+=5){
+    F=f+n
+    circle(250+250*cos(F/60+c),250+250*sin(F/60+c*c),n)
+  }
+}

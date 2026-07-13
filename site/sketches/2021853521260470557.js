@@ -1,0 +1,1 @@
+function setup(){createCanvas(500,500),stroke(0),strokeWeight(3)}function draw(){for(background(255),y=0;y<500;y++)for(x=0;x<500;x++)sin(x/6+5*sin(y/12+f/15)+12*noise(x/80,y/80,f/40))>0&&point(x,y);f++}f=0;//#つぶやきProcessing

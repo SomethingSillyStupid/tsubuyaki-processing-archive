@@ -1,0 +1,12 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  noStroke()
+  for(t=0;t<100;t++)
+  for(n=0;n<99;n++){
+    F=f-n+9e3
+    r=1e3-(F*(t%5)/2)%1e3
+    circle(250+r*cos(I=t/99*TAU+n/200+r/99),250+r*sin(I),min(r,n/3))
+  }
+}

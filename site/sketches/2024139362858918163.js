@@ -1,0 +1,13 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+background(0)
+stroke(W)
+fill(0)
+for(i=f/90;i<f/90+TAU;i+=PI/20){
+line(250,250,250+400*cos(i),250+400*sin(i))
+for(d=(f*abs(cos(i*2-f/45)))%50;d<W;d+=50){
+ circle(250+d*cos(i),250+d*sin(i),d/8)
+}
+}
+}

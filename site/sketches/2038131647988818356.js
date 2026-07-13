@@ -1,0 +1,15 @@
+f=0
+draw=_=>{f++||createCanvas(W=500,W)
+b=blendMode
+b(BLEND)
+background(0)
+b(ADD)
+fill(W,99)
+for(x=0;x<W;x+=2){N=noise(x)
+v=(r,i)=>vertex(x+r*cos(i+=f*(N-.5)/3),(f*5+9e3)*N%700-99+r*sin(i))
+beginShape()
+v(50,0)
+v(20,PI/2)
+v(25,PI)
+v(20,-PI/2)
+endShape(CLOSE)}}

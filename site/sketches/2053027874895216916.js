@@ -1,0 +1,10 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  noStroke()
+  fill(W)
+  for(x=0;x<W;x+=20){
+    quad(x,Y=350+200*sin((f+9e3)*noise(x)/30),x,Y-200,x+20,Y=150+200*sin(f*noise(x,9)/30),x+20,Y+200)
+  }
+}

@@ -1,0 +1,1 @@
+f=0,draw=c=>{for(f||createCanvas(W=400,W),background(B=PI/64),noStroke(P=PI),j=-P;j<TAU;j+=B)for(i=0;i<=P;i+=B)n=(f+cos(j+f))%B,x=(i+n)*(W/P),y=(j+2*sin(f+cos(i+n)))*(W/P),circle(X=200*sin(y/200),Y=tan(x/W)*W,s=3*sin(i-j)),circle(W-X,Y,s);f+=B/8};//#つぶやきProcessing #p5js

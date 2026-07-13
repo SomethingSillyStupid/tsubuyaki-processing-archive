@@ -1,0 +1,10 @@
+f=0
+draw=_=>{f++||createCanvas(W=500,W)
+b=blendMode
+b(BLEND)
+background(0)
+b(DIFFERENCE)
+for(c=0;c<5;c++){beginShape()
+for(r=W;r>=50;r-=30){for(n=0;n<(N=r/5|0);n++){
+i=(n*30/N+f+9e3)*noise(r,c)/20
+vertex(250+r*cos(i),r+r*sin(i))}}endShape()}}

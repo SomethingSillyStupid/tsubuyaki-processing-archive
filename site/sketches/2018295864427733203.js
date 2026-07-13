@@ -1,0 +1,11 @@
+t=0
+draw=_=>{t++||createCanvas(W=720,W,WEBGL)
+frameRate(9)
+colorMode(HSB)
+B=blendMode
+B(BLEND)
+fill(W,.2)
+rect(H=-360,H,W,W)
+B(SUBTRACT)
+R=random
+for(y=H;y<-H;y+=89)for(x=H;x<-H;x+=89)stroke(R(-H),W,W)+line(x+R(9),y,x+R(9),y+89)+line(x,y+R(9),x+89,y+R(9))}

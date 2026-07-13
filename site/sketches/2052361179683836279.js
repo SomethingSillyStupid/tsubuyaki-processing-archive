@@ -1,0 +1,12 @@
+f=0
+draw=_=>{
+ f++||createCanvas(W=500,W)
+ background(0)
+ noStroke()
+ for(z=1,t=1;z<31;z++,t*=-1)
+ for(c=0;c<60;c++){
+  y=(f*z/5)%800
+  fill(300-y/2)
+  circle(250+t*300*noise(z)+300*noise(z,c)-150,650-y+150*noise(z,c,9)-75,50)
+ }
+}

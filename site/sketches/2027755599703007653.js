@@ -1,0 +1,11 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  noStroke()
+  for(x=0;x<W;x+=3)
+  for(n=0;n<30;n++){
+    t=(f+n)*3*noise(x)*3%1e3
+    circle(x+t*cos(x),250+t*sin(x),min(t/5,n/2))
+  }
+}

@@ -1,0 +1,12 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+background(0)
+stroke(W)
+noFill()
+circle(250,250,400)
+for(i=0;i<TAU;i+=PI/30)for(r=150;r<250;r+=5){
+  fill(W)
+  circle(250+r*cos(i),250+r*sin(i),20*sin((r-150)/50*PI+f*cos(i)/30))
+}
+}

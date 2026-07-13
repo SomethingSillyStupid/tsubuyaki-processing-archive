@@ -1,0 +1,13 @@
+//#つぶやきProcessing #p5js
+t=0
+draw=_=>{
+t||createCanvas(W=(w=200)*2,W)
+colorMode(HSB)
+P=t=>t*w+w
+for(x=-1;x<1;x+=.1)
+for(y=-1;y<1;y+=.1)
+for(i=0,[u,v]=[x,y];i<9;i++)
+[U,V]=[v*.3+u,(u-3*u**3*cos(t/13))*.3+v],
+line(P(u),P(v),P(u=U),P(v=V)),
+stroke(P(i/16)%255,w,w)
+t+=.1}

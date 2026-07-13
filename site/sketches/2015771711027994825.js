@@ -1,0 +1,1 @@
+a=b=c=d=f=0,w=200,draw=s=>{for(f||createCanvas(W=400,W),background(B=.048),L=line,stroke(W,k=99),j=0;j<TAU;j+=B)L(x=sin(A=j+f/4-PI/2)*k+w+40*sin(4*f),y=cos(R=j+f/4)*k+w,X=cos(A)*k+w,Y=sin(R)*k+w+40*cos(4*f)),a&&L(x,y,a,b),a=x,b=y,c&&L(X,Y,c,d),c=X,d=Y;f+=B/9}

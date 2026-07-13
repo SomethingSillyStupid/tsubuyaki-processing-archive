@@ -1,0 +1,13 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0,.03)
+  colorMode(HSB,1)
+  noStroke()
+  for(x=0;x<W;x+=60)
+  for(y=-x/2-f%60;y<W;y+=60)
+  for(t=0;t<60;t+=5){
+    fill((t+x+y+f)/50%1,.5,1,.3)
+    rect(x+t,y,5)
+  }
+}

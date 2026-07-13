@@ -1,0 +1,14 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+background(0)
+stroke(W)
+fill(W,99)
+for(x=-W;x<1e3;x+=50)for(y=(Y=-f*noise(x))%50-W;y<1e3;y+=50){
+ push()
+ translate(x,y)
+ rotate(PI/2+sin((f+9e3)*noise(x,y-Y)/30))
+ rect(50,-25,50)
+ pop()
+}
+}

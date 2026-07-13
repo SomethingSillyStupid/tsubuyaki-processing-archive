@@ -1,0 +1,10 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)+background(0)
+  noStroke()
+  for(x=-f%20;x<W;x+=10)
+  for(y=-f%20;y<W;y+=10){
+    fill((x+y+2*f)%40<9?W:0)
+    rect(x,y,5)
+  }
+}

@@ -1,0 +1,12 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  noFill()
+  for(n=0;n<250;n++){
+    F=(f+n)%250
+    strokeWeight(n/50)
+    stroke(W,250-F)
+    circle(250,200,F*F*F/1e4)
+  }
+}

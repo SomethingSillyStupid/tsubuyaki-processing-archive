@@ -1,0 +1,15 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  stroke(W)
+  strokeWeight(7)
+  translate(250,250)
+  for(z=1;z<5;z++){
+  stroke(z*50)
+  for(x=-250;x<=250;x+=20){
+    l=50+z*10
+    line(x,Y=150*sin((x/3+f)/30+z/2)-l,x,Y+l*2)
+  }
+  }
+}

@@ -1,0 +1,13 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+noStroke()
+for(x=0;x<W;x+=9)for(y=0;y<W;y+=9){
+ c=0
+ for(z=0;z<20;z++){
+  c=(atan2(W*noise(z)-y,W*noise(z,9)-x)+PI+(f+9e3)*noise(z,4)/50)%TAU<.2?c+80:c
+ }
+ fill(c)
+ rect(x,y,9)
+}
+}

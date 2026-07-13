@@ -1,0 +1,10 @@
+f=0
+draw=_=>{f++||createCanvas(W=500,W)
+background(0)
+noStroke()
+push()
+clip(()=>rect(100+50*cos(f/30),100+50*sin(f/37),300))
+for(i=0;i<TAU;i+=.01){
+fill(255*noise(i))
+r=(f*5+9e3)*noise(i*9)%600
+circle(250+r*cos(i),250+r*sin(i),min(r/5,90))}pop()}

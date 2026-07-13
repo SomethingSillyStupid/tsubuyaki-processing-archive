@@ -1,0 +1,14 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+for(r=1e3;r>0;r-=5){
+beginShape()
+for(i=f/30;i<f/30+5;i+=PI/5){
+p=$=>[250+r/4*cos(r*$),250+r/4*sin(r*7*$)];
+[x,y]=p(1);
+[X,Y]=p(5)
+quad(x,y,X+r*cos(i),Y+r*sin(i),X+r*cos(i+PI/5),Y+r*sin(i+PI/5))
+}
+endShape(CLOSE)
+}
+}

@@ -1,0 +1,14 @@
+f=0
+draw=_=>{
+ f++||createCanvas(W=500,W)
+ background(0)
+ v=(r,i)=>vertex(250+r*cos(i),250+r*sin(i))
+ for(r=1e3;r>0;r-=50){
+ beginShape()
+  for(i=0;i<TAU;i+=PI/9){
+    v(r,i)
+    v(r,i+r*sin(f/2e4+r+i))
+  }
+ endShape(CLOSE)
+ }
+}

@@ -1,0 +1,11 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  noFill()
+  strokeWeight(3)
+  for(d=f%5;d<2e3;d+=5){
+  stroke((f-d+W)%255)
+    arc(250,250,d,d,d/9,d/9+PI)
+  }
+}

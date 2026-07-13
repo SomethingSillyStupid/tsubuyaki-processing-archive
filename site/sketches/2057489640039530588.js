@@ -1,0 +1,14 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0,20)
+  noStroke()
+  for(x=-W;x<1e3;x++){
+  fill((x+f*3)%255,20)
+    push()
+    translate(x,(f+9e3)*3*noise(x)%600-50)
+    s=50*noise(x)
+    rect(-s,-s,s*2)
+    pop()
+  }
+}

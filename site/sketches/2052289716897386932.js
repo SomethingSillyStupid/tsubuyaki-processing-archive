@@ -1,0 +1,2 @@
+// はじめての #つぶやきprocessing Day1 #p5js
+W=400,C=W/2,L=W/4,t=0,N=250;draw=_=>{t++||(v=createCanvas(W,W),background("#00F"),textAlign(TC=CENTER, TC));t<N&&(translate(C,C),r=0.6*t, textSize(0.001*t**2),fill(255),text(floor(random(10)),x=r*cos(t),y=r*sin(t)))}

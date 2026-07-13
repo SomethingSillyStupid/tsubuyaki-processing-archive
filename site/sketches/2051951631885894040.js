@@ -1,0 +1,1 @@
+t=0,setup=e=>createCanvas(800,500),draw=e=>{for(background(255),fill(0),circle(240,250,240),circle(560,250,110),i=9;i--;endShape())for(beginShape(),stroke(255*(1&i)),strokeWeight(18),x=90;x<740;x+=9)curveVertex(x,250+100*sin(x/70+t+.6*i)+18*sin(t+i));t+=.02};//#つぶやきProcessing

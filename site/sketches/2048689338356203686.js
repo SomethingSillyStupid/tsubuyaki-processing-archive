@@ -1,0 +1,9 @@
+t=0
+$=[]
+draw=_=>{t++||createCanvas(W=720,W)
+R=random
+colorMode(HSB)
+noStroke()
+t%20>3||background(W,.04)
+$[t%W]={x:R(W),y:R(W),r:t,s:20}
+$.map(p=>fill((N=noise(p.x/W,p.y/W,t/180))*W%360,99-(S=p.s)*2,S*3)+circle(p.x+=cos(p.r+=N*2)*S,p.y+=sin(p.r)*S,p.s*=.9))}

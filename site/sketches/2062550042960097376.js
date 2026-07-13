@@ -1,0 +1,12 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  noStroke()
+  for(z=9;z>0;z--)
+  for(x=-W;x<W;x+=4){
+    c=5*z
+    fill(z*25*(5+sin(abs(x)+z+f/30))/6)
+    quad(X=250+x-c,W,X+c*2,W,X+c,W-50*(z+3)*noise(x,z))
+  }
+}

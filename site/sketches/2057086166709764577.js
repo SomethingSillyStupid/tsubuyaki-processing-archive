@@ -1,0 +1,10 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  noStroke()
+  for(r=0;r<W;r++){
+    fill(99+99*sin(r+f/30))
+    circle(250+r*cos(r*3),250+r*sin(r*3),r/2+3)
+  }
+}

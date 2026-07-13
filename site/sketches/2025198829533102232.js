@@ -1,0 +1,11 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0,9)
+  noStroke()
+  for(x=-W;x<W;x+=10)
+  for(n=0;n<200;n+=3){
+    t=$=>((F=f*5+n+9e3)*noise(x,$)%1e3)*(5+sin(x+F/60))/6
+    circle(noise(x,4)<.5?t(0):1e3-t(0),t(9),n/40)
+  }
+}

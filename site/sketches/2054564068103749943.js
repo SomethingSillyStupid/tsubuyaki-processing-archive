@@ -1,0 +1,15 @@
+f=0
+draw=_=>{
+ f++||createCanvas(W=500,W)
+ background(0)
+ noStroke()
+ for(z=1;z<20;z++)
+ for(t=0;t<1e3;t+=6){
+  push()
+  fill(z*20)
+  translate(-700+1e3*noise(z),-100,0)
+  rotate(PI/4)
+  circle(t,50*sin(t/30-f*noise(z)/10),15)
+  pop()
+ }
+}

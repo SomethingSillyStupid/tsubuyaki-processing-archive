@@ -1,0 +1,11 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0,60)
+  noStroke()
+  for(x=-f%30-60;x<W;x+=30)
+  for(y=-f%30-60;y<W;y+=30){
+    N=$=>50*noise(x+f*.99,y+f*.99,$)
+    rect(x+N(0),y+N(4),N(9))
+  }
+}
