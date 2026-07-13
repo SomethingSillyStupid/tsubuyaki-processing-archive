@@ -13,6 +13,14 @@
     "preview_still_file": "previews/2076438197819814288-still.webp",
     "preview_motion_file": "previews/2076438197819814288.webp",
     "runtime_status": "runs",
+    "language": "p5js",
+    "runtime": {
+      "engine": "p5.js",
+      "engine_version": "1.11.3",
+      "status": "runs",
+      "canvas_count": 1,
+      "verified_at": "2026-07-13T04:41:50Z"
+    },
     "tsubuyaki": {
       "tweet_chars": 276,
       "code_chars": 252,
@@ -37,6 +45,14 @@
     "preview_still_file": "previews/2076331358117675421-still.webp",
     "preview_motion_file": "previews/2076331358117675421.webp",
     "runtime_status": "runs",
+    "language": "p5js",
+    "runtime": {
+      "engine": "p5.js",
+      "engine_version": "1.11.3",
+      "status": "runs",
+      "canvas_count": 1,
+      "verified_at": "2026-07-13T04:41:50Z"
+    },
     "tsubuyaki": {
       "tweet_chars": 263,
       "code_chars": 237,
@@ -60,7 +76,15 @@
     "archive_url": "https://somethingsillystupid.github.io/tsubuyaki-processing-archive/sketch.html?id=2076113590977974481",
     "preview_still_file": "previews/2076113590977974481-still.webp",
     "preview_motion_file": "previews/2076113590977974481.webp",
-    "runtime_status": "runtime-error",
+    "runtime_status": "runs",
+    "language": "processing",
+    "runtime": {
+      "engine": "processing.js",
+      "engine_version": "1.6.6",
+      "status": "runs",
+      "canvas_count": 1,
+      "verified_at": "2026-07-13T04:41:50Z"
+    },
     "tsubuyaki": {
       "tweet_chars": 276,
       "code_chars": 258,
@@ -84,7 +108,15 @@
     "archive_url": "https://somethingsillystupid.github.io/tsubuyaki-processing-archive/sketch.html?id=2076103984876765477",
     "preview_still_file": "previews/2076103984876765477-still.webp",
     "preview_motion_file": "previews/2076103984876765477.webp",
-    "runtime_status": "runtime-error",
+    "runtime_status": "runs",
+    "language": "processing",
+    "runtime": {
+      "engine": "processing.js",
+      "engine_version": "1.6.6",
+      "status": "runs",
+      "canvas_count": 1,
+      "verified_at": "2026-07-13T04:41:50Z"
+    },
     "tsubuyaki": {
       "tweet_chars": 249,
       "code_chars": 212,
@@ -109,6 +141,14 @@
     "preview_still_file": "previews/2076074072749084753-still.webp",
     "preview_motion_file": "previews/2076074072749084753.webp",
     "runtime_status": "runs",
+    "language": "p5js",
+    "runtime": {
+      "engine": "p5.js",
+      "engine_version": "1.11.3",
+      "status": "runs",
+      "canvas_count": 1,
+      "verified_at": "2026-07-13T04:41:50Z"
+    },
     "tsubuyaki": {
       "tweet_chars": 242,
       "code_chars": 218,
@@ -133,6 +173,14 @@
     "preview_still_file": "previews/2075921039813668932-still.webp",
     "preview_motion_file": "previews/2075921039813668932.webp",
     "runtime_status": "runs",
+    "language": "p5js",
+    "runtime": {
+      "engine": "p5.js",
+      "engine_version": "1.11.3",
+      "status": "runs",
+      "canvas_count": 1,
+      "verified_at": "2026-07-13T04:41:50Z"
+    },
     "tsubuyaki": {
       "tweet_chars": 255,
       "code_chars": 216,
@@ -157,6 +205,14 @@
     "preview_still_file": "previews/2075843415481405463-still.webp",
     "preview_motion_file": "previews/2075843415481405463.webp",
     "runtime_status": "runs",
+    "language": "p5js",
+    "runtime": {
+      "engine": "p5.js",
+      "engine_version": "1.11.3",
+      "status": "runs",
+      "canvas_count": 1,
+      "verified_at": "2026-07-13T04:41:50Z"
+    },
     "tsubuyaki": {
       "tweet_chars": 259,
       "code_chars": 235,
@@ -181,6 +237,14 @@
     "preview_still_file": "https://pbs.twimg.com/media/HM56aqHbIAABVWg.jpg",
     "preview_motion_file": "https://pbs.twimg.com/media/HM56aqHbIAABVWg.jpg",
     "runtime_status": "runs",
+    "language": "p5js",
+    "runtime": {
+      "engine": "p5.js",
+      "engine_version": "1.11.3",
+      "status": "runs",
+      "canvas_count": 1,
+      "verified_at": "2026-07-13T04:41:50Z"
+    },
     "tsubuyaki": {
       "tweet_chars": 209,
       "code_chars": 187,
@@ -205,6 +269,14 @@
     "preview_still_file": "previews/2075710138116350217-still.webp",
     "preview_motion_file": "previews/2075710138116350217.webp",
     "runtime_status": "runs",
+    "language": "p5js",
+    "runtime": {
+      "engine": "p5.js",
+      "engine_version": "1.11.3",
+      "status": "runs",
+      "canvas_count": 1,
+      "verified_at": "2026-07-13T04:41:50Z"
+    },
     "tsubuyaki": {
       "tweet_chars": 258,
       "code_chars": 234,
@@ -229,6 +301,14 @@
     "preview_still_file": "previews/2075542543765553291-still.webp",
     "preview_motion_file": "previews/2075542543765553291.webp",
     "runtime_status": "runs",
+    "language": "p5js",
+    "runtime": {
+      "engine": "p5.js",
+      "engine_version": "1.11.3",
+      "status": "runs",
+      "canvas_count": 1,
+      "verified_at": "2026-07-13T04:41:50Z"
+    },
     "tsubuyaki": {
       "tweet_chars": 240,
       "code_chars": 216,
@@ -253,6 +333,14 @@
     "preview_still_file": "previews/2075541329749430300-still.webp",
     "preview_motion_file": "previews/2075541329749430300.webp",
     "runtime_status": "runs",
+    "language": "p5js",
+    "runtime": {
+      "engine": "p5.js",
+      "engine_version": "1.11.3",
+      "status": "runs",
+      "canvas_count": 1,
+      "verified_at": "2026-07-13T04:41:50Z"
+    },
     "tsubuyaki": {
       "tweet_chars": 216,
       "code_chars": 187,
@@ -277,6 +365,14 @@
     "preview_still_file": "previews/2075349871096373434-still.webp",
     "preview_motion_file": "previews/2075349871096373434.webp",
     "runtime_status": "runs",
+    "language": "p5js",
+    "runtime": {
+      "engine": "p5.js",
+      "engine_version": "1.11.3",
+      "status": "runs",
+      "canvas_count": 1,
+      "verified_at": "2026-07-13T04:41:50Z"
+    },
     "tsubuyaki": {
       "tweet_chars": 271,
       "code_chars": 247,
@@ -301,6 +397,14 @@
     "preview_still_file": "previews/2075246434732151085-still.webp",
     "preview_motion_file": "previews/2075246434732151085.webp",
     "runtime_status": "runs",
+    "language": "p5js",
+    "runtime": {
+      "engine": "p5.js",
+      "engine_version": "1.11.3",
+      "status": "runs",
+      "canvas_count": 1,
+      "verified_at": "2026-07-13T04:41:50Z"
+    },
     "tsubuyaki": {
       "tweet_chars": 263,
       "code_chars": 233,
@@ -324,7 +428,15 @@
     "archive_url": "https://somethingsillystupid.github.io/tsubuyaki-processing-archive/sketch.html?id=2075214387615580373",
     "preview_still_file": "previews/2075214387615580373-still.webp",
     "preview_motion_file": "previews/2075214387615580373.webp",
-    "runtime_status": "runtime-error",
+    "runtime_status": "runs",
+    "language": "p5js",
+    "runtime": {
+      "engine": "p5.js",
+      "engine_version": "1.11.3",
+      "status": "runs",
+      "canvas_count": 1,
+      "verified_at": "2026-07-13T04:41:50Z"
+    },
     "tsubuyaki": {
       "tweet_chars": 246,
       "code_chars": 222,
@@ -349,6 +461,14 @@
     "preview_still_file": "https://pbs.twimg.com/media/HMyI8b0bQAAKiSL.png",
     "preview_motion_file": "https://pbs.twimg.com/media/HMyI8b0bQAAKiSL.png",
     "runtime_status": "runs",
+    "language": "p5js",
+    "runtime": {
+      "engine": "p5.js",
+      "engine_version": "1.11.3",
+      "status": "runs",
+      "canvas_count": 1,
+      "verified_at": "2026-07-13T04:41:50Z"
+    },
     "tsubuyaki": {
       "tweet_chars": 268,
       "code_chars": 234,
@@ -373,6 +493,14 @@
     "preview_still_file": "previews/2075165608988299441-still.webp",
     "preview_motion_file": "previews/2075165608988299441.webp",
     "runtime_status": "runs",
+    "language": "p5js",
+    "runtime": {
+      "engine": "p5.js",
+      "engine_version": "1.11.3",
+      "status": "runs",
+      "canvas_count": 1,
+      "verified_at": "2026-07-13T04:41:50Z"
+    },
     "tsubuyaki": {
       "tweet_chars": 263,
       "code_chars": 239,
@@ -397,6 +525,14 @@
     "preview_still_file": "previews/2075165064378962226-still.webp",
     "preview_motion_file": "previews/2075165064378962226.webp",
     "runtime_status": "runs",
+    "language": "p5js",
+    "runtime": {
+      "engine": "p5.js",
+      "engine_version": "1.11.3",
+      "status": "runs",
+      "canvas_count": 1,
+      "verified_at": "2026-07-13T04:41:50Z"
+    },
     "tsubuyaki": {
       "tweet_chars": 242,
       "code_chars": 209,
@@ -421,6 +557,14 @@
     "preview_still_file": "previews/2074995611599098277-still.webp",
     "preview_motion_file": "previews/2074995611599098277.webp",
     "runtime_status": "runs",
+    "language": "p5js",
+    "runtime": {
+      "engine": "p5.js",
+      "engine_version": "1.11.3",
+      "status": "runs",
+      "canvas_count": 1,
+      "verified_at": "2026-07-13T04:41:50Z"
+    },
     "tsubuyaki": {
       "tweet_chars": 263,
       "code_chars": 241,
@@ -445,6 +589,14 @@
     "preview_still_file": "previews/2074981767275307501-still.webp",
     "preview_motion_file": "previews/2074981767275307501.webp",
     "runtime_status": "runs",
+    "language": "p5js",
+    "runtime": {
+      "engine": "p5.js",
+      "engine_version": "1.11.3",
+      "status": "runs",
+      "canvas_count": 1,
+      "verified_at": "2026-07-13T04:41:50Z"
+    },
     "tsubuyaki": {
       "tweet_chars": 267,
       "code_chars": 243,
@@ -469,6 +621,14 @@
     "preview_still_file": "previews/2074980250791076117-still.webp",
     "preview_motion_file": "previews/2074980250791076117.webp",
     "runtime_status": "runs",
+    "language": "p5js",
+    "runtime": {
+      "engine": "p5.js",
+      "engine_version": "1.11.3",
+      "status": "runs",
+      "canvas_count": 1,
+      "verified_at": "2026-07-13T04:41:50Z"
+    },
     "tsubuyaki": {
       "tweet_chars": 265,
       "code_chars": 241,

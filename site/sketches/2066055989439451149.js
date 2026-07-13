@@ -1,3 +1,4 @@
+//#minacoding Day 14 #つぶやきProcessing #p5js
 t=0
 draw=_=>{
 createCanvas(W=(w=200)*2,W)

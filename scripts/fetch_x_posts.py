@@ -47,6 +47,13 @@ class FetchResult:
     status: int
 
 
+@dataclass(frozen=True)
+class ExtractionResult:
+    source: str
+    removed_prefix: str = ""
+    removed_suffix: str = ""
+
+
 def log(msg: str) -> None:
     print(msg, file=sys.stderr)
 
@@ -99,7 +106,15 @@ def line_looks_like_code(line: str) -> bool:
     stripped = line.strip()
     if not stripped:
         return False
+    # Mentions and hashtag-only lines are social wrapping even when a marker
+    # contains the substring "p5" from CODE_HINTS.
+    if stripped.startswith("@") or re.fullmatch(r"(?:#[^\s#]+)(?:\s+#[^\s#]+)*", stripped):
+        return False
     if any(h in stripped for h in CODE_HINTS):
+        return True
+    # Processing sketches commonly put typed globals before setup.  Starting at
+    # `void setup` silently deletes those declarations and changes the program.
+    if re.match(r"^(?:(?:float|double|int|long|boolean|byte|char|color|String|PVector)\s+[A-Za-z_$]\w*(?:\s*[=,;\[])|(?:public|private|static)\s+)", stripped):
         return True
     return bool(re.match(r"^(\w+\s*=|draw\s*=|setup\s*=|function\s+|for\s*\(|if\s*\(|while\s*\()", stripped))
 
@@ -123,17 +138,93 @@ def extract_title(text: str, username: str, tweet_id: str) -> str:
     return f"@{username} / {tweet_id}"
 
 
-def normalize_code(text: str) -> str:
-    """Extract likely p5 code while preserving the artist's code as much as possible."""
-    t = normalize_social_text(text)
+def extract_source(text: str) -> ExtractionResult:
+    """Separate only boundary social wrapping; never rewrite source tokens."""
+    t = html.unescape(text).replace("\u00a0", " ").strip()
+    removed: list[str] = []
+
+    # A bare campaign marker is social text only at the beginning.  The same
+    # bytes inside a string (notably in for-loop update expressions) are code.
+    marker = re.match(r"^#つぶやきProcessing(?:\s+|$)", t)
+    if marker:
+        removed.append(marker.group(0).strip())
+        t = t[marker.end():]
+
     lines = [ln.rstrip() for ln in t.splitlines()]
     start = 0
     for i, line in enumerate(lines):
         if line_looks_like_code(line):
             start = i
             break
-    lines = lines[start:]
-    return "\n".join(lines).strip()
+    prefix = "\n".join(lines[:start]).strip()
+    if prefix:
+        removed.insert(0, prefix)
+    source = "\n".join(lines[start:]).strip()
+
+    suffix_parts: list[str] = []
+    # X appends its media t.co URL after whitespace.  Restrict this to t.co at
+    # the source boundary instead of deleting URL-looking text throughout code.
+    media = re.search(r"\s+https?://t\.co/\S+\s*$", source)
+    if media:
+        suffix_parts.append(source[media.start():].strip())
+        source = source[:media.start()].rstrip()
+
+    # This known tweet has a weather emoji between a syntactically complete
+    # closing brace and its media URL.  Strip symbol/variation-selector runs at
+    # that boundary only; malformed punctuation and strings remain untouched.
+    social_emoji = re.search(r"(?<=\})[\u2600-\u27bf\ufe0f]+$", source, flags=re.I)
+    if social_emoji:
+        suffix_parts.insert(0, social_emoji.group(0))
+        source = source[:social_emoji.start()].rstrip()
+
+    # Remove only complete trailing lines made entirely of hashtags.  This is
+    # deliberately line- and boundary-aware so hashtag text inside strings or
+    # comments in the source remains byte-for-byte intact.
+    source_lines = source.splitlines()
+    social_lines: list[str] = []
+    while source_lines and re.fullmatch(r"(?:#[^\s#]+)(?:\s+#[^\s#]+)*", source_lines[-1].strip()):
+        social_lines.insert(0, source_lines.pop().strip())
+    if social_lines:
+        suffix_parts.insert(0, "\n".join(social_lines))
+        source = "\n".join(source_lines).rstrip()
+
+    tail = re.search(r"(?:\s+//#つぶやきProcessing|\s+#つぶやきProcessing)\s*$", source)
+    if tail:
+        suffix_parts.insert(0, source[tail.start():].strip())
+        source = source[:tail.start()].rstrip()
+    return ExtractionResult(source, "\n".join(removed), " ".join(suffix_parts))
+
+
+def normalize_code(text: str) -> str:
+    """Backward-compatible name for exact source extraction."""
+    return extract_source(text).source
+
+
+def _without_comments(code: str) -> str:
+    return re.sub(r"/\*.*?\*/|//[^\n]*", "", code, flags=re.S)
+
+
+def classify_language(code: str) -> str:
+    """Classify only from strong, deterministic syntax signals."""
+    clean = _without_comments(code)
+    processing = bool(re.search(r"\bvoid\s+(?:setup|draw)\s*\(|\b(?:float|int|boolean|color|PVector|String)\s+[A-Za-z_$]\w*|\bsize\s*\(", clean))
+    p5js = bool(re.search(r"\bfunction\s+(?:setup|draw)\s*\(|\b(?:setup|draw)\s*=.*=>|\bcreateCanvas\s*\(|\b(?:let|const|var)\s+[A-Za-z_$]", clean, flags=re.S))
+    if processing == p5js:
+        return "ambiguous"
+    return "processing" if processing else "p5js"
+
+
+def validate_accepted_record(record: dict[str, Any]) -> list[str]:
+    errors: list[str] = []
+    if record.get("language") not in {"p5js", "processing"}:
+        errors.append("language must be p5js or processing")
+    runtime = record.get("runtime")
+    required = {"engine", "engine_version", "status", "canvas_count", "verified_at"}
+    if not isinstance(runtime, dict) or not required.issubset(runtime):
+        errors.append("complete runtime metadata is required")
+    elif runtime.get("status") != "runs" or int(runtime.get("canvas_count", 0)) < 1:
+        errors.append("runtime must be a successful canvas run")
+    return errors
 
 
 def looks_like_code(code: str) -> bool:
@@ -284,7 +375,7 @@ def make_preview(media: dict[str, Any], tweet_id: str, dry_run: bool) -> str | N
 def build_record(tweet: dict[str, Any], user: dict[str, Any], media: dict[str, Any] | None, dry_run: bool) -> tuple[dict[str, Any], str] | None:
     tweet_id = tweet["id"]
     tweet_text = tweet.get("text", "")
-    code = normalize_code(tweet_text)
+    code = extract_source(tweet_text).source
     tsubuyaki = verify_tsubuyaki(tweet_text, code)
     if not tsubuyaki["single_tweet_full_code"]:
         return None
@@ -296,9 +387,12 @@ def build_record(tweet: dict[str, Any], user: dict[str, Any], media: dict[str, A
     created_at = tweet.get("created_at") or datetime.now(timezone.utc).isoformat()
     motion_preview = make_preview(media, tweet_id, dry_run) if media else None
     still_preview = make_still_preview(motion_preview, tweet_id, dry_run)
+    language = classify_language(code)
+    extension = "pde" if language == "processing" else "js"
     record = {
         "id": tweet_id,
         "status": status,
+        "language": language,
         "created_at": created_at,
         "title": title,
         "author": {
@@ -308,17 +402,30 @@ def build_record(tweet: dict[str, Any], user: dict[str, Any], media: dict[str, A
             "profile_image_url": user.get("profile_image_url"),
         },
         "tweet_url": f"https://x.com/{username}/status/{tweet_id}",
-        "code_file": f"sketches/{safe_slug(tweet_id)}.js",
+        "code_file": f"sketches/{safe_slug(tweet_id)}.{extension}",
         "preview_file": still_preview,
         "preview_still_file": still_preview,
         "preview_motion_file": motion_preview,
-        "summary": "Verified single-tweet p5.js sketch from #つぶやきProcessing.",
+        "summary": f"Verified single-tweet {'Processing' if language == 'processing' else 'p5.js'} sketch from #つぶやきProcessing.",
         "tsubuyaki": tsubuyaki,
         "tags": ["#つぶやきProcessing"],
         "source": "x-api-v2",
         "archived_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
     }
     return record, code
+
+
+def stage_candidates(items: list[tuple[dict[str, Any], str]], candidate_dir: Path) -> int:
+    """Write private candidates only; admission owns every public write."""
+    staged = 0
+    for record, source in items:
+        directory = candidate_dir / safe_slug(record["id"])
+        directory.mkdir(parents=True, exist_ok=True)
+        extension = "pde" if record["language"] == "processing" else "js"
+        (directory / f"source.{extension}").write_text(source, encoding="utf-8")
+        save_json(directory / "candidate.json", record)
+        staged += 1
+    return staged
 
 
 def merge_records(existing: list[dict[str, Any]], new_items: list[tuple[dict[str, Any], str]], dry_run: bool) -> int:
@@ -349,6 +456,8 @@ def main() -> int:
     ap.add_argument("--next-token", help="Start from a specific X recent-search pagination token")
     ap.add_argument("--since-id", help="Only return posts newer than this tweet ID")
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--candidate-dir", type=Path, default=ROOT / ".work" / "candidates")
+    ap.add_argument("--state-dir", type=Path, default=ROOT / "archive_state")
     ap.add_argument("--print-json", action="store_true", help="Print fetched candidate records to stdout")
     args = ap.parse_args()
 
@@ -384,7 +493,9 @@ def main() -> int:
         user = users.get(str(author_id), {}) if author_id is not None else {}
         keys = ((tweet.get("attachments") or {}).get("media_keys") or [])
         first_media = media.get(keys[0]) if keys else None
-        item = build_record(tweet, user, first_media, args.dry_run)
+        # Fetching stages metadata/source only. Media publication belongs to the
+        # atomic admission step, so this path has no public-site side effects.
+        item = build_record(tweet, user, first_media, True)
         if item:
             candidates.append(item)
         else:
@@ -393,9 +504,8 @@ def main() -> int:
     if args.print_json:
         print(json.dumps([r for r, _ in candidates], ensure_ascii=False, indent=2))
 
-    existing = load_json(DATA_FILE, [])
-    added = merge_records(existing, candidates, args.dry_run)
-    log(f"Fetched {len(all_tweets)} tweets across up to {pages} page(s); {len(candidates)} candidate sketches; skipped {skipped_not_tsubuyaki} non-tsubuyaki/invalid posts; added {added} new records.")
+    staged = 0 if args.dry_run else stage_candidates(candidates, args.candidate_dir)
+    log(f"Fetched {len(all_tweets)} tweets across up to {pages} page(s); {len(candidates)} candidate sketches; skipped {skipped_not_tsubuyaki} non-tsubuyaki/invalid posts; staged {staged} candidates.")
     if payload.get("meta"):
         log("X meta: " + json.dumps(payload["meta"], ensure_ascii=False))
     return 0

@@ -3,6 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "admit": "node scripts/admit_candidates.mjs",
     "verify:runtime": "node scripts/verify_runtime.mjs"
   },
   "devDependencies": {

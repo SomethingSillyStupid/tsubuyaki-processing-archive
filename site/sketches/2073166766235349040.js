@@ -1,3 +1,4 @@
+//まだ疑似乱数やってる #つぶやきProcessing #p5js
 t=0,R=T=0,X=Y=200
 draw=_=>{
 t++||createCanvas(W=(w=200)*2,W)+background(0)

@@ -1,3 +1,4 @@
+//疑似乱数でπ #つぶやきProcessing #p5js
 t=0,S=0
 draw=_=>{
 t||createCanvas(W=(w=200)*2,W)+(X=Y=w)

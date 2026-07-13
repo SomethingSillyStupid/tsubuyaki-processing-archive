@@ -1,3 +1,4 @@
+//今日は7月1日。今年ももう半分終わった #つぶやきProcessing #p5js
 t=1
 draw=_=>{
 frameRate(1)

@@ -1,3 +1,5 @@
+import { runnerSrcDoc } from './runner.js';
+
 const DATA_URL = 'data/sketches.json';
 const PAGE_SIZE = 24;
 const $ = (sel, el=document) => el.querySelector(sel);
@@ -19,11 +21,6 @@ async function getCode(file){
   return res.text();
 }
 
-function runnerSrcDoc(code){
-  const escaped = code.replace(/<\/script/gi,'<\\/script');
-  return `<!doctype html><html><head><meta charset="utf-8"><script>p5={};p5.disableFriendlyErrors=true;<\/script><script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/p5.min.js"><\/script><style>html,body{margin:0;height:100%;overflow:hidden;background:#07080b}canvas{display:block;width:100%!important;height:100%!important;object-fit:contain;margin:auto}</style></head><body><script>${escaped}<\/script></body></html>`;
-}
-
 function previewImage(sketch, className='hover-preview'){
   const still = sketch.preview_still_file || sketch.preview_file;
   const motion = sketch.preview_motion_file || sketch.preview_file;
@@ -34,7 +31,7 @@ function previewImage(sketch, className='hover-preview'){
 function mediaTemplate(sketch, code){
   const preview = previewImage(sketch);
   if (preview) return preview;
-  return `<iframe loading="lazy" sandbox="allow-scripts" srcdoc="${esc(runnerSrcDoc(code))}"></iframe>`;
+  return `<iframe loading="lazy" sandbox="allow-scripts" srcdoc="${esc(runnerSrcDoc({code, language:sketch.language}))}"></iframe>`;
 }
 
 function activateHoverPreviews(root=document){
@@ -67,7 +64,7 @@ function activateHoverPreviews(root=document){
 }
 
 function statusBadge(sketch){
-  const runtime = sketch.runtime_status;
+  const runtime = sketch.runtime?.status || sketch.runtime_status;
   if (runtime === 'runs') return 'verified';
   if (runtime === 'runs-with-warnings') return 'verified with warnings';
   if (runtime === 'runtime-error') return 'review';
@@ -81,22 +78,25 @@ function tsubuyakiBadge(sketch){
   return ok ? `≤280 chars${Number.isFinite(chars) ? ` · ${chars}` : ''}` : 'over 280';
 }
 
+function languageLabel(sketch){ return sketch.language === 'processing' ? 'Processing' : 'p5.js'; }
+
 function searchableText(sketch, code){
-  return `${sketch.author.username} ${sketch.author.name || ''} ${sketch.summary || ''} ${statusBadge(sketch)} ${tsubuyakiBadge(sketch)} ${code}`.toLowerCase();
+  return `${languageLabel(sketch)} ${sketch.author.username} ${sketch.author.name || ''} ${sketch.summary || ''} ${statusBadge(sketch)} ${tsubuyakiBadge(sketch)} ${code}`.toLowerCase();
 }
 
 function cardTemplate(sketch, code){
   const detailUrl = `sketch.html?id=${encodeURIComponent(sketch.id)}`;
   return `<a class="card" href="${detailUrl}" data-user="${esc(sketch.author.username)}" data-date="${esc(sketch.created_at)}" data-title="${esc(searchableText(sketch, code))}">
     <div class="thumb">${mediaTemplate(sketch, code)}<span class="badge">${esc(statusBadge(sketch))}</span></div>
-    <div class="card-body"><h2>${esc(displayName(sketch))}</h2><div class="meta"><span>${fmtDate(sketch.created_at)}</span><span>•</span><span>${esc(sketch.author.name || sketch.author.username)}</span></div><div class="mini-badges"><span>${esc(tsubuyakiBadge(sketch))}</span><span>${esc(statusBadge(sketch))}</span></div><p class="summary">${esc(sketch.summary || 'Verified single-tweet p5.js sketch from #つぶやきProcessing.')}</p></div>
+    <div class="card-body"><h2>${esc(displayName(sketch))}</h2><div class="meta"><span>${fmtDate(sketch.created_at)}</span><span>•</span><span>${esc(sketch.author.name || sketch.author.username)}</span></div><div class="mini-badges"><span>${esc(languageLabel(sketch))}</span><span>${esc(tsubuyakiBadge(sketch))}</span><span>${esc(statusBadge(sketch))}</span></div><p class="summary">${esc(sketch.summary || `Verified single-tweet ${languageLabel(sketch)} sketch from #つぶやきProcessing.`)}</p></div>
   </a>`;
 }
 
-function syncUrl({artist, sort, search, status}){
+function syncUrl({artist, language, sort, search, status}){
   const params = new URLSearchParams(location.search);
   artist ? params.set('artist', artist) : params.delete('artist');
   status ? params.set('status', status) : params.delete('status');
+  language ? params.set('language', language) : params.delete('language');
   sort && sort !== 'newest' ? params.set('sort', sort) : params.delete('sort');
   search ? params.set('q', search) : params.delete('q');
   const next = `${location.pathname}${params.toString() ? `?${params}` : ''}`;
@@ -106,7 +106,7 @@ function syncUrl({artist, sort, search, status}){
 async function initIndex(){
   const sketches = await getSketches();
   const withCode = await Promise.all(sketches.map(async s => [s, await getCode(s.code_file)]));
-  const grid = $('#grid'); const search = $('#search'); const artist = $('#artist'); const sort = $('#sort'); const status = $('#status'); const loadMore = $('#loadMore'); const resultCount = $('#resultCount');
+  const grid = $('#grid'); const search = $('#search'); const artist = $('#artist'); const language = $('#language'); const sort = $('#sort'); const status = $('#status'); const loadMore = $('#loadMore'); const resultCount = $('#resultCount');
   const params = new URLSearchParams(location.search);
   let visibleLimit = PAGE_SIZE;
   $('#count').textContent = `${sketches.length} sketches`;
@@ -116,6 +116,7 @@ async function initIndex(){
   sort.value = params.get('sort') || 'newest';
   search.value = params.get('q') || '';
   status.value = params.get('status') || '';
+  language.value = params.get('language') || '';
 
   function filteredRows(){
     let rows = [...withCode];
@@ -124,7 +125,8 @@ async function initIndex(){
     const st = status.value;
     if(q) rows = rows.filter(([s,c]) => searchableText(s,c).includes(q));
     if(a) rows = rows.filter(([s]) => s.author.username === a);
-    if(st) rows = rows.filter(([s]) => statusBadge(s) === st || s.runtime_status === st);
+    if(st) rows = rows.filter(([s]) => statusBadge(s) === st || s.runtime?.status === st || s.runtime_status === st);
+    if(language.value) rows = rows.filter(([s]) => s.language === language.value);
     rows.sort((A,B) => sort.value === 'oldest' ? new Date(A[0].created_at)-new Date(B[0].created_at) : new Date(B[0].created_at)-new Date(A[0].created_at));
     return rows;
   }
@@ -132,7 +134,7 @@ async function initIndex(){
   function render(){
     const rows = filteredRows();
     const shown = rows.slice(0, visibleLimit);
-    syncUrl({artist:artist.value, sort:sort.value, search:search.value.trim().toLowerCase(), status:status.value});
+    syncUrl({artist:artist.value, language:language.value, sort:sort.value, search:search.value.trim().toLowerCase(), status:status.value});
     resultCount.textContent = `${rows.length} matching sketch${rows.length === 1 ? '' : 'es'}`;
     grid.innerHTML = shown.length ? shown.map(([s,c])=>cardTemplate(s,c)).join('') : '<div class="empty">No sketches match that filter.</div>';
     loadMore.hidden = shown.length >= rows.length;
@@ -140,7 +142,7 @@ async function initIndex(){
     activateHoverPreviews(grid);
   }
 
-  [search,artist,sort,status].forEach(el=>el.addEventListener('input',() => { visibleLimit = PAGE_SIZE; render(); }));
+  [search,artist,language,sort,status].forEach(el=>el.addEventListener('input',() => { visibleLimit = PAGE_SIZE; render(); }));
   loadMore.addEventListener('click', () => { visibleLimit += PAGE_SIZE; render(); });
   render();
 }
@@ -148,20 +150,28 @@ async function initIndex(){
 async function initDetail(){
   const id = new URLSearchParams(location.search).get('id');
   const sketches = await getSketches();
-  const sketch = sketches.find(s => s.id === id) || sketches[0];
+  const sketch = sketches.find(s => s.id === id);
+  if(!sketch) throw new Error(`Sketch ${id || '(missing ID)'} not found`);
   const code = await getCode(sketch.code_file);
   document.title = `${displayLabel(sketch)} — #つぶやきProcessing Archive`;
   $('#title').textContent = displayName(sketch);
   $('#artist').textContent = fmtDateTime(sketch.created_at);
   $('#date').textContent = sketch.author.name || sketch.author.username;
-  $('#summary').textContent = sketch.summary || 'Verified single-tweet p5.js sketch from #つぶやきProcessing.';
+  $('#summary').textContent = sketch.summary || `Verified single-tweet ${languageLabel(sketch)} sketch from #つぶやきProcessing.`;
+  $('#languageMeta').textContent = languageLabel(sketch);
   $('#tsubuyakiMeta').textContent = `${tsubuyakiBadge(sketch)} · full code in one standard tweet`;
-  $('#runtimeMeta').textContent = `${statusBadge(sketch)}${sketch.last_verified_at ? ` · verified ${fmtDate(sketch.last_verified_at)}` : ''}`;
+  $('#runtimeMeta').textContent = `${statusBadge(sketch)}${(sketch.runtime?.verified_at || sketch.last_verified_at) ? ` · verified ${fmtDate(sketch.runtime?.verified_at || sketch.last_verified_at)}` : ''}`;
   $('#tweet').href = sketch.tweet_url;
   $('#profile').href = sketch.author.url;
   $('#artistArchive').href = `index.html?artist=${encodeURIComponent(sketch.author.username)}`;
   $('#raw').href = sketch.code_file;
-  $('#runner').srcdoc = runnerSrcDoc(code);
+  $('#raw').textContent = sketch.language === 'processing' ? 'Original Processing source (PDE)' : 'Original p5.js source (JS)';
+  const renderRunner = () => { $('#runnerError').hidden = true; $('#runner').srcdoc = runnerSrcDoc({code, language:sketch.language}); };
+  renderRunner();
+  addEventListener('message', event => {
+    if (event.source !== $('#runner').contentWindow || !event.data || event.data.language !== sketch.language) return;
+    if (event.data.type === 'tsubuyaki-error') { $('#runnerError').hidden = false; $('#runnerError').textContent = `${languageLabel(sketch)} ${event.data.phase} error: ${event.data.message}`; }
+  });
   const preview = previewImage(sketch, 'hover-preview detail-preview');
   if (preview) {
     $('#previewSlot').innerHTML = preview;
@@ -171,7 +181,7 @@ async function initDetail(){
   }
   $('#code').textContent = code;
   $('#copy').addEventListener('click', async () => { await navigator.clipboard.writeText(code); $('#copy').textContent = 'Copied'; setTimeout(()=>$('#copy').textContent='Copy code',1200); });
-  $('#reset').addEventListener('click', () => { $('#runner').srcdoc = runnerSrcDoc(code); });
+  $('#reset').addEventListener('click', renderRunner);
 }
 
 if(document.body.dataset.page === 'index') initIndex().catch(err => { console.error(err); $('#grid').innerHTML = `<div class="empty">${esc(err.message)}</div>`; });

@@ -1,3 +1,4 @@
+//ポアンカレの円盤2 #つぶやきProcessing #p5js
 draw=_=>{E=TAU,s=sin,c=cos
 createCanvas(W=(w=200)*2,W)
 circle(w,w,W)

@@ -1,3 +1,4 @@
+//シャドウ・マスクとトリニトロン #つぶやきProcessing #p5js
 t=0
 draw=_=>{createCanvas(W=(w=200)*2,W)+background(0)
 C=['green','red','blue']

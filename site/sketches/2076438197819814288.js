@@ -1,3 +1,4 @@
+//#つぶやきProcessing #p5js
 t=0
 draw=_=>{t++||createCanvas(W=(w=200)*2,W)+noFill(x=y=h=.2,P=[])+colorMode(HSB)
 P.push(x+=h*(cos(t*y)-x/8),y+=h*(sin(t*x)-y/8))

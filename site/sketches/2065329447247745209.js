@@ -1,3 +1,4 @@
+//#つぶやきProcessing #p5js
 t=0,p=0
 draw=_=>{
 frameRate(3)

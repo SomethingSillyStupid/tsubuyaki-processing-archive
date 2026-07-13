@@ -1,3 +1,4 @@
+//疑似乱数 #つぶやきProcessing #p5js
 s=0,X=Y=Z=3
 draw=_=>{
 createCanvas(W=(w=200)*2,W,WEBGL)

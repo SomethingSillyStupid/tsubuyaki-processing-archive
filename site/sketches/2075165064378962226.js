@@ -1,3 +1,4 @@
+//ポアンカレの円盤 #つぶやきProcessing #p5js
 t=0
 draw=_=>{
 E=TAU,s=sin,c=cos

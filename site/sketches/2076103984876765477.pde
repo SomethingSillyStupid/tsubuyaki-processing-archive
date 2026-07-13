@@ -1,3 +1,4 @@
+float i,x,y,n,k,t;
 void setup(){
 size(800,800);
 colorMode(HSB);

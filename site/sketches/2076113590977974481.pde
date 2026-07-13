@@ -1,0 +1,2 @@
+float i,x,y,z,n,k,t;void setup(){size(800,800,P3D);
+}void draw(){background(-1);camera(-99,0,700*cos(t*2),500,0,0,0,0,-1);for(i=0;i<800;i++){x=i/200;k=(1-cos(t))/2;for(n=0;n<99;n++){y=x*k*(1-k);for(z=0;z<8;z++){rotateX(PI/4);point(i,y*500);}k=y;}}t+=PI/400;}

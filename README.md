@@ -1,16 +1,16 @@
 # #つぶやきProcessing Archive
 
-A public static archive for tweet-sized p5.js sketches tagged `#つぶやきProcessing`.
+A public static archive for tweet-sized p5.js and Processing sketches tagged `#つぶやきProcessing`.
 
-The site preserves each sketch as local runnable JavaScript while linking back to the original X post and artist profile. Sketches are presented by artist username and date rather than archive-invented titles.
+The site preserves and runs each artist's original source while linking back to the original X post and artist profile. p5.js source is stored as `.js`; Processing source is stored as `.pde` and is not converted to p5.js. Sketches are presented by artist username and date rather than archive-invented titles.
 
 Features:
 
-- Gallery view with sorting, search, artist filtering, status filtering, artist permalinks, and load-more pagination
-- Verified tsubuyaki metadata: full minimized p5.js code must fit in one standard 280-character tweet
+- Gallery view with sorting, search, artist/language/status filtering, artist permalinks, and load-more pagination
+- Verified tsubuyaki metadata: the full sketch source must fit in one standard 280-character tweet
 - Still thumbnail previews that animate only on hover/focus
-- Sketch detail pages with a live p5.js runner
-- Original-code panel with copy button
+- Sketch detail pages with language-aware p5.js and Processing runners
+- Original-source panel with copy button
 - Runtime verification metadata for archived sketches
 - RSS, latest JSON, and sitemap artifacts
 - Scheduled X API ingestion via GitHub Actions
@@ -39,7 +39,7 @@ This writes:
 
 ## Runtime verification
 
-Runtime verification uses Playwright to load each local detail page and record whether the sketch creates a canvas without console/page errors.
+Runtime verification uses isolated Playwright workers and the same pinned, self-hosted runtimes as the public site. A candidate must create a canvas and remain free of console/page errors through the observation window. Blocking sketches are force-terminated at a hard deadline.
 
 ```bash
 npm install
@@ -71,11 +71,14 @@ set -a; source ~/.hermes/secrets/tsubuyaki-x.env; set +a
 python3 scripts/fetch_x_posts.py --max-results 10 --dry-run --print-json
 ```
 
-Real archive update:
+Real archive update stages private candidates, verifies them, and only then admits successful sketches:
 
 ```bash
 set -a; source ~/.hermes/secrets/tsubuyaki-x.env; set +a
-python3 scripts/fetch_x_posts.py --max-results 50
+python3 scripts/fetch_x_posts.py --max-results 50 --candidate-dir .work/candidates --state-dir archive_state
+node scripts/admit_candidates.mjs --candidate-dir .work/candidates --site-dir site --state-dir archive_state
+python3 scripts/generate_site_artifacts.py
+npm run verify:runtime
 ```
 
 Careful backfill / pagination, for manual use only because it consumes more X API credits:

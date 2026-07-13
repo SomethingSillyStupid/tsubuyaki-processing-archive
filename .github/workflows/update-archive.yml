@@ -28,24 +28,26 @@ jobs:
           sudo apt-get update && sudo apt-get install -y ffmpeg webp
           npm ci
           npx playwright install --with-deps chromium
-      - name: Fetch and verify recent #つぶやきProcessing posts
+      - name: Fetch candidates, verify, and admit fail-closed
         env:
           X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
         run: |
-          python3 scripts/fetch_x_posts.py --max-results 50
-          npm run verify:runtime
+          python3 scripts/fetch_x_posts.py --max-results 50 --candidate-dir .work/candidates --state-dir archive_state
+          node scripts/admit_candidates.mjs --candidate-dir .work/candidates --site-dir site --state-dir archive_state
           python3 scripts/generate_site_artifacts.py
+          npm run verify:runtime
+          rm -rf .work/candidates
       - id: commit
         name: Commit archive updates
         run: |
-          if git diff --quiet -- site/data site/sketches site/previews site/feed.xml site/sitemap.xml; then
+          if git diff --quiet -- archive_state/rejections.json site/data site/sketches site/previews site/feed.xml site/sitemap.xml; then
             echo "No archive changes."
             echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add site/data site/sketches site/previews site/feed.xml site/sitemap.xml
+          git add archive_state/rejections.json site/data site/sketches site/previews site/feed.xml site/sitemap.xml
           git commit -m "Update #つぶやきProcessing archive"
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"

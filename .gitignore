@@ -1,6 +1,12 @@
 node_modules/
+test-results/
+.work/
 .DS_Store
 site/previews/*.tmp
 
 __pycache__/
 *.py[cod]
+.hermes/
+.pytest_cache/
+spikes/**/node_modules/
+spikes/**/test-results/

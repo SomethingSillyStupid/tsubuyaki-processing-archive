@@ -35,6 +35,10 @@ def label(item: dict) -> str:
     return f"@{item['author']['username']} · {dt(item['created_at']).strftime('%Y-%m-%d')}"
 
 
+def language_label(item: dict) -> str:
+    return "Processing" if item.get("language") == "processing" else "p5.js"
+
+
 def generate_latest(items: list[dict]) -> None:
     latest = []
     for item in items[:20]:
@@ -47,6 +51,8 @@ def generate_latest(items: list[dict]) -> None:
             "preview_still_file": item.get("preview_still_file"),
             "preview_motion_file": item.get("preview_motion_file"),
             "runtime_status": item.get("runtime_status"),
+            "language": item.get("language"),
+            "runtime": item.get("runtime"),
             "tsubuyaki": item.get("tsubuyaki"),
         })
     out = SITE / "data" / "latest.json"
@@ -61,7 +67,7 @@ def generate_feed(items: list[dict]) -> None:
         '<channel>',
         '<title>#つぶやきProcessing Archive</title>',
         f'<link>{BASE_URL}</link>',
-        '<description>Recent archived #つぶやきProcessing p5.js sketches.</description>',
+        '<description>Recent archived #つぶやきProcessing p5.js and Processing sketches.</description>',
         '<language>en</language>',
         f'<lastBuildDate>{escape(now)}</lastBuildDate>',
         f'<atom:link href="{BASE_URL}feed.xml" rel="self" type="application/rss+xml" />',
@@ -71,7 +77,7 @@ def generate_feed(items: list[dict]) -> None:
         url = detail_url(item)
         pub = format_datetime(dt(item["created_at"]))
         desc = html.escape(
-            f"Verified single-tweet p5.js sketch by @{item['author']['username']} "
+            f"Verified single-tweet {language_label(item)} sketch by @{item['author']['username']} "
             f"({(item.get('tsubuyaki') or {}).get('code_chars', '≤280')} code chars). "
             f"Original post: {item['tweet_url']}"
         )

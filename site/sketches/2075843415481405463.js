@@ -1,3 +1,4 @@
+//#つぶやきProcessing #p5js
 t=0
 draw=_=>{a=abs
 createCanvas(W=(w=200)*2,W)

@@ -1,3 +1,4 @@
+//虹色の円盤を回転すると何色に見えるか？ #つぶやきProcessing #p5js
 t=0
 draw=_=>{
 frameRate(t+=.6)

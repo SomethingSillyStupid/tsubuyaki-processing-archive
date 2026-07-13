@@ -1,1 +1,1 @@
-setup=()=>{createCanvas(w=windowWidth,h=windowHeight);pixelDensity(1);background(255)};draw=()=>{loadPixels();f=frameCount;for(i=0;i<w*h;i++)x=i%w,y=i/w|0,b=sin(f+(x*x+y*y)*.009)*127+128,pixels[j=i*4]=pixels[j+1]=pixels[j+2]=b;updatePixels()} //
+setup=()=>{createCanvas(w=windowWidth,h=windowHeight);pixelDensity(1);background(255)};draw=()=>{loadPixels();f=frameCount;for(i=0;i<w*h;i++)x=i%w,y=i/w|0,b=sin(f+(x*x+y*y)*.009)*127+128,pixels[j=i*4]=pixels[j+1]=pixels[j+2]=b;updatePixels()} // #つぶやきprocessing #p5js
