@@ -2,11 +2,16 @@
 from __future__ import annotations
 
 import importlib.util
+import io
 import json
+from email.message import Message
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
+from urllib.error import HTTPError
+from urllib.parse import parse_qs, urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -94,6 +99,63 @@ class LanguageTests(unittest.TestCase):
             self.assertEqual((root / ".work/candidates/1/source.js").read_text(), tweet["text"])
             metadata = json.loads((root / ".work/candidates/1/candidate.json").read_text())
             self.assertEqual(metadata["language"], "p5js")
+
+    def test_full_archive_search_uses_bounded_all_endpoint_and_500_result_pages(self):
+        captured = {}
+        def fake_get(url, token):
+            captured.update(url=url, token=token)
+            return self.fetch.FetchResult({"meta": {"result_count": 0}}, 200)
+        with patch.object(self.fetch, "api_get", side_effect=fake_get):
+            result = self.fetch.search_posts(
+                "secret", "#つぶやきProcessing", 500,
+                archive=True,
+                start_time="2026-01-13T00:00:00Z",
+                end_time="2026-02-01T00:00:00Z",
+            )
+        parsed = urlparse(captured["url"])
+        params = parse_qs(parsed.query)
+        self.assertEqual(parsed.path, "/2/tweets/search/all")
+        self.assertEqual(params["max_results"], ["500"])
+        self.assertEqual(params["start_time"], ["2026-01-13T00:00:00Z"])
+        self.assertEqual(params["end_time"], ["2026-02-01T00:00:00Z"])
+        self.assertEqual(result["meta"]["result_count"], 0)
+
+    def test_backfill_cli_accepts_bounded_archive_arguments(self):
+        parser = self.fetch.build_arg_parser()
+        args = parser.parse_args([
+            "--archive",
+            "--start-time", "2026-01-13T00:00:00Z",
+            "--end-time", "2026-02-01T00:00:00Z",
+            "--max-results", "500",
+            "--max-posts", "500",
+        ])
+        self.assertTrue(args.archive)
+        self.assertEqual(args.start_time, "2026-01-13T00:00:00Z")
+        self.assertEqual(args.end_time, "2026-02-01T00:00:00Z")
+        self.assertEqual(args.max_posts, 500)
+
+    def test_api_get_retries_rate_limits_before_succeeding(self):
+        class Response:
+            status = 200
+            def __enter__(self): return self
+            def __exit__(self, *args): return False
+            def read(self): return b'{"meta":{"result_count":1}}'
+        headers = Message()
+        headers["Retry-After"] = "0"
+        limited = HTTPError(
+            "https://api.x.com/test", 429, "Too Many Requests",
+            headers, io.BytesIO(b'{"title":"Too Many Requests"}'),
+        )
+        with patch.object(self.fetch, "urlopen", side_effect=[limited, Response()]) as opened, \
+             patch.object(self.fetch.time, "sleep") as slept:
+            result = self.fetch.api_get("https://api.x.com/test", "secret")
+        self.assertEqual(result.data["meta"]["result_count"], 1)
+        self.assertEqual(opened.call_count, 2)
+        slept.assert_called_once()
+
+    def test_full_archive_search_requires_start_and_end_times(self):
+        with self.assertRaisesRegex(ValueError, "start_time and end_time"):
+            self.fetch.search_posts("secret", "query", 100, archive=True)
 
 
 if __name__ == "__main__": unittest.main()

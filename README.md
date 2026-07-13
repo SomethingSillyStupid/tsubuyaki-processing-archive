@@ -83,12 +83,31 @@ python3 scripts/generate_site_artifacts.py
 npm run verify:runtime
 ```
 
-Careful backfill / pagination, for manual use only because it consumes more X API credits:
+Careful recent-search pagination, for manual use only because it consumes more X API credits:
 
 ```bash
 python3 scripts/fetch_x_posts.py --max-results 100 --pages 3 --dry-run --print-json
 python3 scripts/fetch_x_posts.py --max-results 100 --pages 3
 ```
+
+Bounded full-archive backfills use the paid search-all endpoint. Always count the interval first in the X Developer Console, set a spending limit, use a private candidate directory, and process manageable time windows:
+
+```bash
+python3 scripts/fetch_x_posts.py \
+  --archive \
+  --start-time 2026-01-01T00:00:00Z \
+  --end-time 2026-02-01T00:00:00Z \
+  --max-results 500 \
+  --max-posts 500 \
+  --candidate-dir .work/backfill-2026-01
+
+node scripts/admit_candidates.mjs \
+  --candidate-dir .work/backfill-2026-01 \
+  --site-dir site \
+  --state-dir archive_state
+```
+
+Fetching only stages private candidates. Public data changes only after the real browser verifier finishes and atomic admission succeeds.
 
 Continuation controls:
 

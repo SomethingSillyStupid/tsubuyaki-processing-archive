@@ -28,7 +28,8 @@ SITE = ROOT / "site"
 DATA_FILE = SITE / "data" / "sketches.json"
 SKETCH_DIR = SITE / "sketches"
 PREVIEW_DIR = SITE / "previews"
-API_URL = "https://api.x.com/2/tweets/search/recent"
+RECENT_SEARCH_URL = "https://api.x.com/2/tweets/search/recent"
+ARCHIVE_SEARCH_URL = "https://api.x.com/2/tweets/search/all"
 DEFAULT_QUERY = "#つぶやきProcessing has:media -is:retweet"
 USER_AGENT = "tsubuyaki-processing-archive/0.2 (+https://github.com/)"
 
@@ -69,26 +70,58 @@ def save_json(path: Path, data: Any) -> None:
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
-def api_get(url: str, token: str) -> FetchResult:
+def api_get(url: str, token: str, max_attempts: int = 4) -> FetchResult:
     req = Request(url, headers={
         "Authorization": f"Bearer {token}",
         "User-Agent": USER_AGENT,
     })
-    try:
-        with urlopen(req, timeout=30) as resp:
-            body = resp.read().decode("utf-8")
-            return FetchResult(json.loads(body), resp.status)
-    except HTTPError as e:
-        body = e.read().decode("utf-8", errors="replace")
-        raise RuntimeError(f"X API HTTP {e.code}: {body[:1200]}") from e
-    except URLError as e:
-        raise RuntimeError(f"X API network error: {e}") from e
+    for attempt in range(max_attempts):
+        try:
+            with urlopen(req, timeout=30) as resp:
+                body = resp.read().decode("utf-8")
+                return FetchResult(json.loads(body), resp.status)
+        except HTTPError as e:
+            body = e.read().decode("utf-8", errors="replace")
+            transient = e.code in {429, 500, 502, 503, 504}
+            if transient and attempt + 1 < max_attempts:
+                retry_after = e.headers.get("Retry-After")
+                reset = e.headers.get("x-rate-limit-reset")
+                if retry_after is not None:
+                    delay = max(0.0, float(retry_after))
+                elif reset is not None:
+                    delay = max(0.0, min(60.0, float(reset) - time.time() + 0.25))
+                else:
+                    delay = min(8.0, float(2 ** attempt))
+                log(f"X API HTTP {e.code}; retrying in {delay:.2f}s (attempt {attempt + 2}/{max_attempts})")
+                time.sleep(delay)
+                continue
+            raise RuntimeError(f"X API HTTP {e.code}: {body[:1200]}") from e
+        except URLError as e:
+            if attempt + 1 < max_attempts:
+                delay = min(8.0, float(2 ** attempt))
+                log(f"X API network error; retrying in {delay:.2f}s (attempt {attempt + 2}/{max_attempts})")
+                time.sleep(delay)
+                continue
+            raise RuntimeError(f"X API network error: {e}") from e
+    raise RuntimeError("X API request exhausted retries")
 
 
-def search_recent(token: str, query: str, max_results: int, next_token: str | None = None, since_id: str | None = None) -> dict[str, Any]:
+def search_posts(
+    token: str,
+    query: str,
+    max_results: int,
+    *,
+    archive: bool = False,
+    start_time: str | None = None,
+    end_time: str | None = None,
+    next_token: str | None = None,
+    since_id: str | None = None,
+) -> dict[str, Any]:
+    if archive and not (start_time and end_time):
+        raise ValueError("Full-archive search requires start_time and end_time")
     params = {
         "query": query,
-        "max_results": str(max(10, min(max_results, 100))),
+        "max_results": str(max(10, min(max_results, 500 if archive else 100))),
         "expansions": "author_id,attachments.media_keys",
         "tweet.fields": "created_at,entities,attachments,lang,possibly_sensitive",
         "user.fields": "username,name,profile_image_url",
@@ -98,8 +131,16 @@ def search_recent(token: str, query: str, max_results: int, next_token: str | No
         params["next_token"] = next_token
     if since_id:
         params["since_id"] = since_id
-    url = API_URL + "?" + urlencode(params)
+    if archive:
+        assert start_time is not None and end_time is not None
+        params["start_time"] = start_time
+        params["end_time"] = end_time
+    url = (ARCHIVE_SEARCH_URL if archive else RECENT_SEARCH_URL) + "?" + urlencode(params)
     return api_get(url, token).data
+
+
+def search_recent(token: str, query: str, max_results: int, next_token: str | None = None, since_id: str | None = None) -> dict[str, Any]:
+    return search_posts(token, query, max_results, next_token=next_token, since_id=since_id)
 
 
 def line_looks_like_code(line: str) -> bool:
@@ -448,18 +489,35 @@ def merge_records(existing: list[dict[str, Any]], new_items: list[tuple[dict[str
     return added
 
 
-def main() -> int:
+def build_arg_parser() -> argparse.ArgumentParser:
     ap = argparse.ArgumentParser()
     ap.add_argument("--query", default=DEFAULT_QUERY)
     ap.add_argument("--max-results", type=int, default=50)
-    ap.add_argument("--pages", type=int, default=1, help="Recent-search result pages to fetch; use sparingly to conserve X API credits")
-    ap.add_argument("--next-token", help="Start from a specific X recent-search pagination token")
-    ap.add_argument("--since-id", help="Only return posts newer than this tweet ID")
+    ap.add_argument("--pages", type=int, default=1, help="Result pages to fetch; use sparingly to conserve X API credits")
+    ap.add_argument("--max-posts", type=int, default=1000, help="Fail closed before staging if fetched posts exceed this bound")
+    ap.add_argument("--archive", action="store_true", help="Use paid full-archive search instead of recent search")
+    ap.add_argument("--start-time", help="Inclusive full-archive lower bound in ISO 8601 UTC")
+    ap.add_argument("--end-time", help="Exclusive full-archive upper bound in ISO 8601 UTC")
+    ap.add_argument("--next-token", help="Start from a specific X search pagination token")
+    ap.add_argument("--since-id", help="Only return posts newer than this tweet ID (recent search only)")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--candidate-dir", type=Path, default=ROOT / ".work" / "candidates")
     ap.add_argument("--state-dir", type=Path, default=ROOT / "archive_state")
     ap.add_argument("--print-json", action="store_true", help="Print fetched candidate records to stdout")
+    return ap
+
+
+def main() -> int:
+    ap = build_arg_parser()
     args = ap.parse_args()
+    if args.archive and not (args.start_time and args.end_time):
+        ap.error("--archive requires --start-time and --end-time")
+    if not args.archive and (args.start_time or args.end_time):
+        ap.error("--start-time and --end-time require --archive")
+    if args.archive and args.since_id:
+        ap.error("--since-id is only supported for recent search")
+    if args.max_posts < 1:
+        ap.error("--max-posts must be positive")
 
     token = os.environ.get("X_BEARER_TOKEN")
     if not token:
@@ -475,8 +533,19 @@ def main() -> int:
     next_token = args.next_token
     pages = max(1, min(args.pages, 10))
     for page_num in range(pages):
-        payload = search_recent(token, args.query, args.max_results, next_token=next_token, since_id=args.since_id)
+        payload = search_posts(
+            token,
+            args.query,
+            args.max_results,
+            archive=args.archive,
+            start_time=args.start_time,
+            end_time=args.end_time,
+            next_token=next_token,
+            since_id=args.since_id,
+        )
         tweets = payload.get("data") or []
+        if len(all_tweets) + len(tweets) > args.max_posts:
+            raise RuntimeError(f"Fetched post count would exceed --max-posts={args.max_posts}; nothing was staged")
         includes = payload.get("includes") or {}
         users.update({u["id"]: u for u in includes.get("users", [])})
         media.update({m["media_key"]: m for m in includes.get("media", [])})
