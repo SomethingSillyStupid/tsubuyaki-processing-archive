@@ -154,6 +154,15 @@ async function initDetail(){
   if(!sketch) throw new Error(`Sketch ${id || '(missing ID)'} not found`);
   const code = await getCode(sketch.code_file);
   document.title = `${displayLabel(sketch)} — #つぶやきProcessing Archive`;
+  const canonical = $('#canonical');
+  canonical.href = `https://tsubuyaki.art/sketch.html?id=${encodeURIComponent(sketch.id)}`;
+  $('#ogTitle').content = document.title;
+  $('#ogUrl').content = canonical.href;
+  const description = sketch.summary || `Verified single-tweet ${languageLabel(sketch)} sketch by @${sketch.author.username}.`;
+  $('#description').content = description;
+  $('#ogDescription').content = description;
+  const shareImage = sketch.preview_still_file || sketch.preview_file;
+  if (shareImage) $('#ogImage').content = new URL(shareImage, location.href).href;
   $('#title').textContent = displayName(sketch);
   $('#artist').textContent = fmtDateTime(sketch.created_at);
   $('#date').textContent = sketch.author.name || sketch.author.username;
