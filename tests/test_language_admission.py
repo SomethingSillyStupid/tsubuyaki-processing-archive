@@ -134,6 +134,29 @@ class LanguageTests(unittest.TestCase):
         self.assertEqual(args.end_time, "2026-02-01T00:00:00Z")
         self.assertEqual(args.max_posts, 500)
 
+    def test_archive_bounds_are_strict_utc_and_increasing(self):
+        start, end = self.fetch.validate_archive_bounds(
+            "2026-01-13T00:00:00Z", "2026-02-01T00:00:00Z"
+        )
+        self.assertLess(start, end)
+        for bad in ("2026-01-13", "2026-01-13T00:00:00", "2026-01-13T00:00:00+01:00"):
+            with self.subTest(bad=bad), self.assertRaisesRegex(ValueError, "UTC RFC3339"):
+                self.fetch.validate_archive_bounds(bad, "2026-02-01T00:00:00Z")
+        with self.assertRaisesRegex(ValueError, "earlier"):
+            self.fetch.validate_archive_bounds("2026-02-01T00:00:00Z", "2026-02-01T00:00:00Z")
+
+    def test_dry_run_record_build_writes_nothing_below_site(self):
+        tweet = {"id":"1", "text":"function setup(){createCanvas(10,10)}", "created_at":"2026-01-01T00:00:00Z"}
+        user = {"username":"artist", "name":"Artist"}
+        media = {"type":"photo", "url":"https://example.invalid/preview.jpg"}
+        with tempfile.TemporaryDirectory() as td:
+            site = Path(td) / "site"
+            with patch.object(self.fetch, "SITE", site), \
+                 patch.object(self.fetch, "SKETCH_DIR", site / "sketches"), \
+                 patch.object(self.fetch, "PREVIEW_DIR", site / "previews"):
+                self.fetch.build_record(tweet, user, media, True)
+            self.assertFalse(site.exists())
+
     def test_api_get_retries_rate_limits_before_succeeding(self):
         class Response:
             status = 200

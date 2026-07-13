@@ -41,6 +41,7 @@ URL_RE = re.compile(r"https?://\S+")
 HASHTAG_RE = re.compile(r"(?:^|\s)#\S+")
 MENTION_RE = re.compile(r"(?:^|\s)@\w+")
 WS_RE = re.compile(r"\s+")
+UTC_RFC3339_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$")
 
 @dataclass
 class FetchResult:
@@ -106,6 +107,16 @@ def api_get(url: str, token: str, max_attempts: int = 4) -> FetchResult:
     raise RuntimeError("X API request exhausted retries")
 
 
+def validate_archive_bounds(start_time: str, end_time: str) -> tuple[datetime, datetime]:
+    if not UTC_RFC3339_RE.fullmatch(start_time) or not UTC_RFC3339_RE.fullmatch(end_time):
+        raise ValueError("Archive bounds must be UTC RFC3339 timestamps ending in Z")
+    start = datetime.fromisoformat(start_time[:-1] + "+00:00")
+    end = datetime.fromisoformat(end_time[:-1] + "+00:00")
+    if start >= end:
+        raise ValueError("Archive start_time must be earlier than end_time")
+    return start, end
+
+
 def search_posts(
     token: str,
     query: str,
@@ -119,6 +130,9 @@ def search_posts(
 ) -> dict[str, Any]:
     if archive and not (start_time and end_time):
         raise ValueError("Full-archive search requires start_time and end_time")
+    if archive:
+        assert start_time is not None and end_time is not None
+        validate_archive_bounds(start_time, end_time)
     params = {
         "query": query,
         "max_results": str(max(10, min(max_results, 500 if archive else 100))),
@@ -391,7 +405,8 @@ def make_still_preview(motion_preview: str | None, tweet_id: str, dry_run: bool)
 
 
 def make_preview(media: dict[str, Any], tweet_id: str, dry_run: bool) -> str | None:
-    PREVIEW_DIR.mkdir(parents=True, exist_ok=True)
+    if not dry_run:
+        PREVIEW_DIR.mkdir(parents=True, exist_ok=True)
     target = PREVIEW_DIR / f"{tweet_id}.webp"
     if target.exists():
         return str(target.relative_to(SITE))
@@ -522,9 +537,6 @@ def main() -> int:
     token = os.environ.get("X_BEARER_TOKEN")
     if not token:
         raise SystemExit("X_BEARER_TOKEN is not set. Store it in env/GitHub Secrets; do not paste it into logs.")
-
-    SKETCH_DIR.mkdir(parents=True, exist_ok=True)
-    PREVIEW_DIR.mkdir(parents=True, exist_ok=True)
 
     all_tweets: list[dict[str, Any]] = []
     users: dict[str, dict[str, Any]] = {}
