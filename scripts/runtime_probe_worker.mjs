@@ -21,7 +21,7 @@ try {
   page.on('console',m=>{if(m.type()==='error'&&!m.text().includes('Permissions policy violation'))errors.push(m.text())});
   const srcdoc=runnerSrcDoc({code,language,processingRuntimeSource,p5RuntimeSource});
   await page.setContent(`<iframe id="runner" sandbox="allow-scripts" srcdoc="${escAttr(srcdoc)}"></iframe><script>window.result=null;addEventListener('message',e=>{if(e.source===document.querySelector('#runner').contentWindow&&e.data&&String(e.data.type).startsWith('tsubuyaki-'))window.result=e.data})<\/script>`);
-  await page.waitForFunction(()=>window.result!==null,{timeout});
+  await page.waitForFunction(()=>window.result!==null,null,{timeout});
   let message=await page.evaluate(()=>window.result);
   if(message?.type==='tsubuyaki-ready'){
     await page.waitForTimeout(postReadyMs);
@@ -29,7 +29,7 @@ try {
   }
   const frame=page.frames()[1]; const canvasCount=frame?await frame.locator('canvas').count():0;
   let result;
-  if(message?.type==='tsubuyaki-ready'&&canvasCount>0&&!errors.length) result={ok:true,language,canvasCount,errors};
+  if(message?.type==='tsubuyaki-ready'&&canvasCount>0&&!errors.length) result={ok:true,language,canvasCount,frameCount:message.frameCount,errors};
   else {
     const error=message?.message||errors.join('; ')||'Sketch did not create a canvas or signal ready';
     const reason=message?.type==='tsubuyaki-error'?reasonFor(`${message.phase||''} ${error}`):(canvasCount?'runtime-error':'no-canvas');

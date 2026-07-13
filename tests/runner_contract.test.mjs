@@ -19,6 +19,8 @@ test('Processing runner embeds original source and self-hosted pinned runtime', 
   assert.ok(html.includes(source));
   assert.doesNotMatch(html, /createCanvas/);
   assert.match(html, /"processing"/);
+  assert.match(html, /Processing\.disableInit\(\)/);
+  assert.ok(html.indexOf('Processing.disableInit()') < html.indexOf('new Processing('));
 });
 
 test('unknown language fails closed without embedding source', () => {

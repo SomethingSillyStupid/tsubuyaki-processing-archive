@@ -6,7 +6,7 @@ let failed=false;
 const fail=(phase,error)=>{if(failed)return;failed=true;send('tsubuyaki-error',{phase,message:String(error&&error.message||error)});};
 addEventListener('error',e=>fail('runtime',e.error||e.message));
 addEventListener('unhandledrejection',e=>fail('runtime',e.reason));
-const ready=()=>{const canvasCount=document.querySelectorAll('canvas').length;if(canvasCount&&!failed)send('tsubuyaki-ready',{canvasCount});else if(!failed)fail('runtime','Sketch did not create a canvas');};
+const ready=(extra={})=>{const canvasCount=document.querySelectorAll('canvas').length;if(canvasCount&&!failed)send('tsubuyaki-ready',{canvasCount,...extra});else if(!failed)fail('runtime','Sketch did not create a canvas');};
 <\/script>${body}</body></html>`;
 
 export function runnerSrcDoc({code, language, processingRuntimeSource, p5RuntimeSource}) {
@@ -22,7 +22,7 @@ export function runnerSrcDoc({code, language, processingRuntimeSource, p5Runtime
       ? '<script src="vendor/processing-1.6.6.min.js"><\/script>'
       : `<script>${escScript(processingRuntimeSource)}<\/script>`;
     // Processing.compile consumes the submitted PDE directly; there is no conversion stored or displayed.
-    const body = `<canvas id="processing-canvas"></canvas><script>try{const originalSource=${JSON.stringify(code).replace(/<\/script/gi,'<\\/script')};const compiled=Processing.compile(originalSource);new Processing(document.getElementById('processing-canvas'),compiled);setTimeout(ready,600)}catch(error){fail('compile',error)}<\/script>`;
+    const body = `<canvas id="processing-canvas"></canvas><script>try{Processing.disableInit();const originalSource=${JSON.stringify(code).replace(/<\/script/gi,'<\\/script')};const compiled=Processing.compile(originalSource);const instance=new Processing(document.getElementById('processing-canvas'),compiled);setTimeout(()=>{const frameCount=Number(instance.frameCount||0);if(typeof instance.draw==='function'&&frameCount<1)fail('runtime','Processing draw loop did not start');else ready({frameCount})},600)}catch(error){fail('compile',error)}<\/script>`;
     return base(language, body, runtime);
   }
   return base('ambiguous', `<div>Unsupported sketch language</div><script>fail('compile','Unsupported sketch language')<\/script>`);

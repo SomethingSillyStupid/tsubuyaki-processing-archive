@@ -18,6 +18,10 @@ test('real verifier admits valid Processing and p5.js but rejects invalid Proces
   assert.equal(processing.ok, true, processing.error);
   assert.equal(processing.canvasCount, 1);
 
+  const animatedProcessing = await verify(root, 'animated.pde', 'processing', 'void setup(){size(8,8);} void draw(){background(frameCount%255);}');
+  assert.equal(animatedProcessing.ok, true, animatedProcessing.error);
+  assert.ok(animatedProcessing.frameCount > 0, `expected a live Processing draw loop, got frameCount=${animatedProcessing.frameCount}`);
+
   const invalid = await verify(root, 'invalid.pde', 'processing', 'void setup(){size(}');
   assert.equal(invalid.ok, false);
   assert.equal(invalid.reason, 'invalid-source');
