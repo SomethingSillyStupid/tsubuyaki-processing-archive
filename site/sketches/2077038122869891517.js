@@ -1,0 +1,10 @@
+f=0
+draw=_=>{f++||createCanvas(W=500,W)
+background(0)
+noFill()
+for(r=1;r<W;r*=1.1){stroke(r)
+strokeWeight(r/25)
+beginShape()
+for(i=0;i<(c=10*noise(r)+r/60|0);i++){
+vertex(250+r*cos(I=TAU*i/c+f*(noise(r)-.5)/50),250+r*sin(I))}
+endShape(CLOSE)}}
