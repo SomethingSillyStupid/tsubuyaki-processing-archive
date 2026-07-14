@@ -1,0 +1,1 @@
+k=0;draw=_=>{createCanvas(w=500,w,WEBGL);c=0;rotateX(1);h=w/2;s=h/5;for(i=-h;i<h;i+=s){for(j=-h;j<h;j+=s){if(c%3==0)fill(99);if(c%4==0)fill('#FF0');quad(i,j,noise(i,j,k)*s,i+s,j,noise(i+s,j,k)*s,i+s,j+s,noise(i+s,j+s,k)*s,i,j+s,noise(i,j+s,k)*s);c++}}k+=.01}

@@ -1,0 +1,1 @@
+setup=_=>createCanvas(W=600,W),t=0,draw=_=>{d=textSize,s=text,background(0,64,0),o=sin(t+=.01)*100,textAlign(CENTER),d(256),s('🤑',133+o/9,198),s('🗽',450,180),s('💸',t%1*W,W*sin(t*2)),a='🏢🏦';for(i=0;i++<4;)d(96*i),s(a.repeat(8/i+2),(i<3)*300+o*i,120*-~i)}//#つぶやきProcessing
