@@ -1,0 +1,11 @@
+f=0
+draw=_=>{f++||createCanvas(W=500,W)
+noStroke()
+for(x=0;x<W;x+=10){for(y=0;y<W;y+=10){
+ c=0
+ for(n=0;n<30;n++){
+  C=$=>W/PI*acos(cos((f-n)*2*$(1)/30))
+  c=max(c,W-(abs(C(cos)-x)+abs(C(sin)-y))*(3+n))
+ }
+ fill(c*noise(x,y))
+ rect(x,y,10)}}}
