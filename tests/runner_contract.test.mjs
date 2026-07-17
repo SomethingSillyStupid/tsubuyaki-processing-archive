@@ -12,6 +12,12 @@ test('p5 runner dispatches, escapes script endings, and posts contract messages'
   assert.match(html, /"p5js"/);
 });
 
+test('runner preserves the browser default white backdrop for transparent canvases', () => {
+  const html = runnerSrcDoc({code:'draw=_=>{createCanvas(8,8);point(1,1)}', language:'p5js'});
+  assert.match(html, /background:#fff/);
+  assert.doesNotMatch(html, /background:#07080b/);
+});
+
 test('Processing runner embeds original source and self-hosted pinned runtime', () => {
   const source = 'float x=1; void setup(){size(2,2,P3D);}';
   const html = runnerSrcDoc({code:source, language:'processing'});

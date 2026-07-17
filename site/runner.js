@@ -1,5 +1,5 @@
 const escScript = (value) => String(value).replace(/<\/script/gi, '<\\/script');
-const base = (language, body, runtime='') => `<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;height:100%;overflow:hidden;background:#07080b;color:#f88}canvas{display:block;width:100%!important;height:100%!important;object-fit:contain;margin:auto}</style>${runtime}</head><body><script>
+const base = (language, body, runtime='') => `<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;height:100%;overflow:hidden;background:#fff;color:#900}canvas{display:block;width:100%!important;height:100%!important;object-fit:contain;margin:auto}</style>${runtime}</head><body><script>
 const language=${JSON.stringify(language)};
 const send=(type,extra={})=>parent.postMessage({type,language,...extra},'*');
 let failed=false;

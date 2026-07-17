@@ -71,6 +71,21 @@ class LanguageTests(unittest.TestCase):
                 self.assertEqual(source, expected)
                 self.assertEqual(self.fetch.classify_language(source), language)
 
+    def test_build_record_restores_x_autolinked_code_token(self):
+        text = "//#つぶやきProcessing #p5js\nt=0,P=[[200,200]]\ndraw=_=&gt;{createCanvas(W=(w=300)*2,W)\nfill('red')\nfor(i=0,d=-1;i&lt;P.length;i++)d&lt;(M=mag(P[i][0]-w,P[i][1]-w))?d=M%w:0\nP.push([(d-1)*cos(T=random(TAU))+w,(d+1)*sin(T)+w])\nhttps://t.co/zuB9SSxcnY(B=&gt;circle(...B,10))\nt&gt;900?P.shift():0\n++t} https://t.co/aFizO1uB2p"
+        tweet = {
+            "id": "2077888406311608446",
+            "text": text,
+            "created_at": "2026-07-16T22:49:36.000Z",
+            "entities": {"urls": [
+                {"start": 219, "end": 242, "url": "https://t.co/zuB9SSxcnY", "display_url": "P.map", "expanded_url": "http://P.map"},
+                {"start": 292, "end": 315, "url": "https://t.co/aFizO1uB2p", "display_url": "pic.x.com/aFizO1uB2p", "media_key": "13_2077888380898336768"},
+            ]},
+        }
+        _, source = self.fetch.build_record(tweet, {"username": "TakagiHitoshi"}, None, True)
+        self.assertIn("P.map(B=>circle(...B,10))", source)
+        self.assertNotIn("https://t.co/zuB9SSxcnY", source)
+
     def test_processing_record_uses_pde_and_explicit_language(self):
         tweet = {"id":"1", "text":"void setup(){size(10,10);}", "created_at":"2026-01-01T00:00:00Z"}
         user = {"username":"artist", "name":"Artist"}

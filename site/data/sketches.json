@@ -98,8 +98,8 @@
     "preview_motion_file": "https://pbs.twimg.com/amplify_video_thumb/2077888380898336768/img/a_G6BcD0iN95xK6b.jpg",
     "summary": "Verified single-tweet p5.js sketch from #つぶやきProcessing.",
     "tsubuyaki": {
-      "tweet_chars": 233,
-      "code_chars": 276,
+      "tweet_chars": 258,
+      "code_chars": 258,
       "tweet_under_280": true,
       "code_under_280": true,
       "code_detected": true,
@@ -116,7 +116,7 @@
       "engine_version": "1.11.3",
       "status": "runs",
       "canvas_count": 1,
-      "verified_at": "2026-07-17T03:38:26Z"
+      "verified_at": "2026-07-17T21:50:54Z"
     }
   },
   {

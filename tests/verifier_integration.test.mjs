@@ -31,6 +31,13 @@ test('real verifier admits valid Processing and p5.js but rejects invalid Proces
   assert.equal(p5.canvasCount, 1);
 });
 
+test('verifier rejects a canvas that never renders any pixels', {timeout: 10_000}, async () => {
+  const root = await mkdtemp(join(tmpdir(), 'verify-blank-'));
+  const result = await verify(root, 'blank.js', 'p5js', 'function setup(){createCanvas(8,8)}');
+  assert.equal(result.ok, false);
+  assert.equal(result.reason, 'no-render');
+});
+
 test('verifier observes after ready and rejects a delayed exception', {timeout: 10_000}, async () => {
   const root = await mkdtemp(join(tmpdir(), 'verify-delayed-'));
   const result = await verify(root, 'delayed.js', 'p5js', 'function setup(){createCanvas(8,8);setTimeout(()=>{throw Error("late boom")},900)}');

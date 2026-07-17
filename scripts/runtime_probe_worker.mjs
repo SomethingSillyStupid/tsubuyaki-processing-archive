@@ -28,12 +28,21 @@ try {
     message=await page.evaluate(()=>window.result);
   }
   const frame=page.frames()[1]; const canvasCount=frame?await frame.locator('canvas').count():0;
+  const rendered=frame&&canvasCount>0?await frame.locator('canvas').evaluateAll(canvases=>canvases.some(canvas=>{
+    try {
+      const blank=document.createElement('canvas'); blank.width=canvas.width; blank.height=canvas.height;
+      return canvas.toDataURL()!==blank.toDataURL();
+    } catch {
+      // A tainted canvas necessarily consumed external pixels and is not blank.
+      return true;
+    }
+  })):false;
   let result;
-  if(message?.type==='tsubuyaki-ready'&&canvasCount>0&&!errors.length) result={ok:true,language,canvasCount,frameCount:message.frameCount,errors};
+  if(message?.type==='tsubuyaki-ready'&&canvasCount>0&&rendered&&!errors.length) result={ok:true,language,canvasCount,frameCount:message.frameCount,rendered,errors};
   else {
-    const error=message?.message||errors.join('; ')||'Sketch did not create a canvas or signal ready';
-    const reason=message?.type==='tsubuyaki-error'?reasonFor(`${message.phase||''} ${error}`):(canvasCount?'runtime-error':'no-canvas');
-    result={ok:false,language,canvasCount,reason,retryable:false,error};
+    const error=message?.message||errors.join('; ')||(!rendered&&canvasCount?'Canvas remained blank':'Sketch did not create a canvas or signal ready');
+    const reason=message?.type==='tsubuyaki-error'?reasonFor(`${message.phase||''} ${error}`):(!rendered&&canvasCount?'no-render':(canvasCount?'runtime-error':'no-canvas'));
+    result={ok:false,language,canvasCount,rendered,reason,retryable:false,error};
   }
   process.stdout.write(JSON.stringify(result));
   await server.kill();

@@ -193,6 +193,27 @@ def extract_title(text: str, username: str, tweet_id: str) -> str:
     return f"@{username} / {tweet_id}"
 
 
+def restore_code_autolinks(text: str, entities: dict[str, Any] | None) -> str:
+    """Restore identifier-like tokens that X rewrote as t.co links."""
+    replacements: list[tuple[int, int, str]] = []
+    for entity in (entities or {}).get("urls", []):
+        if entity.get("media_key"):
+            continue
+        display = str(entity.get("display_url") or "")
+        expanded = str(entity.get("expanded_url") or "")
+        if not re.fullmatch(r"[A-Za-z_$]\w*(?:\.[A-Za-z_$]\w*)+", display):
+            continue
+        if expanded not in {f"http://{display}", f"https://{display}"}:
+            continue
+        start, end = entity.get("start"), entity.get("end")
+        if not isinstance(start, int) or not isinstance(end, int) or text[start:end] != entity.get("url"):
+            continue
+        replacements.append((start, end, display))
+    for start, end, display in sorted(replacements, reverse=True):
+        text = text[:start] + display + text[end:]
+    return text
+
+
 def extract_source(text: str) -> ExtractionResult:
     """Separate only boundary social wrapping; never rewrite source tokens."""
     t = html.unescape(text).replace("\u00a0", " ").strip()
@@ -430,7 +451,7 @@ def make_preview(media: dict[str, Any], tweet_id: str, dry_run: bool) -> str | N
 
 def build_record(tweet: dict[str, Any], user: dict[str, Any], media: dict[str, Any] | None, dry_run: bool) -> tuple[dict[str, Any], str] | None:
     tweet_id = tweet["id"]
-    tweet_text = tweet.get("text", "")
+    tweet_text = restore_code_autolinks(tweet.get("text", ""), tweet.get("entities"))
     code = extract_source(tweet_text).source
     tsubuyaki = verify_tsubuyaki(tweet_text, code)
     if not tsubuyaki["single_tweet_full_code"]:
