@@ -49,6 +49,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add archive_state/rejections.json site/data site/sketches site/previews site/feed.xml site/sitemap.xml
           git commit -m "Update #つぶやきProcessing archive"
+          git pull --rebase origin main
           git push
           echo "changed=true" >> "$GITHUB_OUTPUT"
       - uses: actions/upload-pages-artifact@v3
