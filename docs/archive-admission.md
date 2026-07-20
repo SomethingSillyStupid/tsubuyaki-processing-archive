@@ -2,7 +2,7 @@
 
 The ingestion pipeline is fail-closed: `fetched → extracted → classified → verified → admitted`. Fetching writes exact source and private metadata only to `.work/candidates/`. It does not publish code or records. `admit_candidates.mjs` runs the declared browser runtime (both runtimes only for ambiguous input) and atomically publishes only a clean run that creates a canvas and sends the shared ready message.
 
-Accepted languages are `p5js` and `processing`. Accepted records require nested runtime metadata: engine, pinned engine version, `runs` status, canvas count, and verification timestamp. Rejections remain outside `site/` with one of `invalid-source`, `runtime-error`, `no-canvas`, `unsupported-feature`, `ambiguous-language`, or `infrastructure-error`; infrastructure failures are retryable and never admitted.
+Accepted languages are `p5js` and `processing`. Accepted records require nested runtime metadata: engine, pinned engine version, `runs` status, canvas count, and verification timestamp. Rejections remain outside `site/` with one of `invalid-source`, `runtime-error`, `no-canvas`, `no-render`, `unsupported-feature`, `ambiguous-language`, or `infrastructure-error`; infrastructure failures are retryable and never admitted. `no-render` means the sketch created a canvas but no pixels were observed during a bounded re-sampling window after the ready signal; interaction-only sketches (input required to draw) fail here by policy.
 
 Artist source is not repaired or converted. New Processing records use `.pde`; p5.js uses `.js`. The iframe remains sandboxed with `allow-scripts` only.
 
