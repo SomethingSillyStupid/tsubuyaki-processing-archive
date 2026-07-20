@@ -28,15 +28,26 @@ try {
     message=await page.evaluate(()=>window.result);
   }
   const frame=page.frames()[1]; const canvasCount=frame?await frame.locator('canvas').count():0;
-  const rendered=frame&&canvasCount>0?await frame.locator('canvas').evaluateAll(canvases=>canvases.some(canvas=>{
-    try {
-      const blank=document.createElement('canvas'); blank.width=canvas.width; blank.height=canvas.height;
-      return canvas.toDataURL()!==blank.toDataURL();
-    } catch {
-      // A tainted canvas necessarily consumed external pixels and is not blank.
-      return true;
-    }
-  })):false;
+  let rendered=false;
+  if(message?.type==='tsubuyaki-ready'&&frame&&canvasCount>0){
+    // Re-sample instead of single-shot: first paint can lag the ready signal
+    // on slow/loaded hosts, and some sketches periodically recreate their
+    // canvas. A truly blank canvas stays blank for the whole window.
+    const sampleDeadline=Date.now()+7000;
+    do {
+      rendered=await frame.locator('canvas').evaluateAll(canvases=>canvases.some(canvas=>{
+        try {
+          const blank=document.createElement('canvas'); blank.width=canvas.width; blank.height=canvas.height;
+          return canvas.toDataURL()!==blank.toDataURL();
+        } catch {
+          // A tainted canvas necessarily consumed external pixels and is not blank.
+          return true;
+        }
+      }));
+      if(rendered) break;
+      await new Promise(r=>setTimeout(r,650));
+    } while(Date.now()<sampleDeadline);
+  }
   let result;
   if(message?.type==='tsubuyaki-ready'&&canvasCount>0&&rendered&&!errors.length) result={ok:true,language,canvasCount,frameCount:message.frameCount,rendered,errors};
   else {

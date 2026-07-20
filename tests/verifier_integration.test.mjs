@@ -31,7 +31,7 @@ test('real verifier admits valid Processing and p5.js but rejects invalid Proces
   assert.equal(p5.canvasCount, 1);
 });
 
-test('verifier rejects a canvas that never renders any pixels', {timeout: 10_000}, async () => {
+test('verifier rejects a canvas that never renders any pixels', {timeout: 20_000}, async () => {
   const root = await mkdtemp(join(tmpdir(), 'verify-blank-'));
   const result = await verify(root, 'blank.js', 'p5js', 'function setup(){createCanvas(8,8)}');
   assert.equal(result.ok, false);
