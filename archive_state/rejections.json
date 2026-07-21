@@ -1000,5 +1000,28 @@
     "error": "circle is not defined",
     "retryable": false,
     "checked_at": "2026-07-13T18:42:53Z"
+  },
+  {
+    "id": "2078381766029742127",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2078381766029742127",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-07-20T23:40:05Z"
+  },
+  {
+    "id": "2079099771235774760",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2079099771235774760",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Failed to construct 'Request': Failed to parse URL from shibuya.png",
+    "retryable": false,
+    "checked_at": "2026-07-20T23:40:05Z"
   }
 ]

@@ -1,0 +1,1 @@
+t=0,draw=o=>{for(t||(createCanvas(W=720,W,WEBGL),colorMode(HSB,1,1,1,1),noStroke(H=W/2)),background(0),rotate(t),n=0;n<=1;n+=1/7){for(rotate(1/7*TAU),r=0;r<=1;r+=.01)a=r*TAU,fill((r+t)%1,.2,1,1),circle(cos(a*sin(t))*H*r,sin(a)*H*r+H*cos(t),2);t+=5e-4}}//
