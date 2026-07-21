@@ -1,0 +1,13 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  colorMode(HSB,1)
+  d=43
+  for(x=0;x<W;x+=d){
+  for(y=-x/2,t=1;y<W;y+=25,t*=-1){
+  fill((r=dist(x,y,250,250))/W%1,1,1)
+    s=sin((f+r)/30)
+    quad(x,y,x+d*t*s,y+25*t,x,y+50*t)
+  }}
+}
