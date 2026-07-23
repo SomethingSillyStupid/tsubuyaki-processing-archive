@@ -1,9 +1,50 @@
-# Ops notes (2026-07-20 incident + general maintenance)
+# Ops notes (2026-07-23 incident + earlier)
 
 Handoff notes for whatever agent or human maintains this repo next. The
-project was originally built by OpenAI Codex; the 2026-07-20 repair was done
-by Hermes Agent (kimi-k3). No secrets in here; the X bearer token lives only
-in GitHub Secrets as `X_BEARER_TOKEN`.
+project was originally built by OpenAI Codex; the 2026-07-20 and 2026-07-23
+repairs were done by Hermes Agent (kimi-k3). No secrets in here; the X bearer
+token lives only in GitHub Secrets as `X_BEARER_TOKEN`.
+
+## 2026-07-23: X API credits exhausted + one unverifiable sketch
+
+Two independent failures stacked:
+
+1. **X API HTTP 402 "credits depleted"** killed every scheduled run at the
+   fetch step from 2026-07-22 ~04:00 UTC onward. Fetch state only persists on
+   a successful commit, so no candidates were lost — the backlog refetches
+   once credits are topped up. This is a billing condition, not a code bug;
+   fail-closed behaved correctly.
+2. Before credits ran out, the 2026-07-22 03:43 UTC run already failed
+   verification on sketch 2076113590977974481 (@hisadan, P3D, ~633k
+   rotateX+point calls per frame). Diagnosis: the sketch starves the
+   renderer's main thread so hard that its frames take seconds-to-minutes
+   under headless SwiftShader, and (a) the runner's ready signal could not be
+   observed by the probe (passive waits — waitForFunction polling, CDP
+   bindings, postMessage to the top page — all stall; only repeated active
+   frame.evaluate calls pump the frame's task queue and get slots), and
+   (b) the sketch blooms only after ~200 frames (t += PI/400), so it shows
+   no visible pixels for 10+ minutes of wall time in software GL. It was
+   removed per the admission policy (a sketch visitors can't see render is
+   effectively blank); source remains in git history.
+
+Probe/runner hardening that came out of it (this commit):
+
+- `site/runner.js`: every `send()` now also mirrors the message into
+  `window.__tsubuyakiResult`, and the Processing ready signal comes from a
+  repeating frameCount watch (250ms interval, 15s dead-loop guard) instead of
+  a one-shot 600ms timer that misfires under starvation.
+- `scripts/runtime_probe_worker.mjs`: waits are done by a `pump()` helper —
+  repeated frame.evaluate calls (capped at 4 in flight, self-swallowing on
+  teardown) that both observe `window.__tsubuyakiResult` and keep the starved
+  frame's task queue moving. Pixel sampling budget scales with the probe
+  timeout (min(timeout/2, 30s), clamped to finish inside the caller's hard
+  timeout).
+- Do NOT try screenshot-based blank detection: an untouched p5 canvas
+  composites as semi-transparent gray, so screenshots cannot tell blank from
+  drawn. toDataURL-vs-blank-canvas is the only exact test. WebGL canvases
+  without preserveDrawingBuffer read transparent between frames — heavy GL
+  sketches that need minutes to show pixels are unverifiable by any in-window
+  pixel probe and will be removed on detection, like this one.
 
 ## What broke (2026-07-18 → 2026-07-20)
 
