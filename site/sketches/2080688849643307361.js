@@ -1,0 +1,11 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  stroke(W)
+  for(y=-f%50;y<600;y+=25){
+  for(x=0;x<800-y;x+=25){
+    fill((x+y+f)%100<50?0:W)
+    rect(x,y,30)
+  }}
+}
