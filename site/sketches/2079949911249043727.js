@@ -1,0 +1,12 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  for(x=0;x<600;x+=50){
+  for(y=0;y<600;y+=50){
+    fill(W)
+    rect(x,y,C=50*sin(x+y*2+f/30))
+    fill(0)
+    rect(x+C/4,y+C/4,C/2)
+  }}
+}
