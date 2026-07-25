@@ -1011,7 +1011,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-07-24T21:22:07Z"
+    "checked_at": "2026-07-25T03:37:36Z"
   },
   {
     "id": "2079099771235774760",
@@ -1022,6 +1022,6 @@
     "reason": "runtime-error",
     "error": "Failed to construct 'Request': Failed to parse URL from shibuya.png",
     "retryable": false,
-    "checked_at": "2026-07-24T21:22:07Z"
+    "checked_at": "2026-07-25T03:37:36Z"
   }
 ]
