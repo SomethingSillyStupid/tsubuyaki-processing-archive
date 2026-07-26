@@ -1022,7 +1022,7 @@
     "reason": "runtime-error",
     "error": "Failed to construct 'Request': Failed to parse URL from shibuya.png",
     "retryable": false,
-    "checked_at": "2026-07-26T10:15:10Z"
+    "checked_at": "2026-07-26T13:57:20Z"
   },
   {
     "id": "2081189892382445950",
@@ -1033,7 +1033,7 @@
     "reason": "invalid-source",
     "error": "Invalid or unexpected token",
     "retryable": false,
-    "checked_at": "2026-07-26T10:15:10Z"
+    "checked_at": "2026-07-26T13:57:20Z"
   },
   {
     "id": "2081194824972321073",
