@@ -1,0 +1,15 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  noStroke()
+  for(x=0;x<W;x+=10){
+  for(y=0;y<W;y+=10){
+    noFill()
+    c=0
+    for(s=1;s<6;s++){
+      c=max(c,(y+s*5+(f*(1+x/30)/30))%50<10?s*50:0)
+    }
+    fill(c)
+      rect(x,y,10)
+  }}
+}

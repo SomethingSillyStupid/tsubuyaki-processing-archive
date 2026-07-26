@@ -1,0 +1,15 @@
+f=0
+draw=_=>{
+ f++||createCanvas(W=500,W)
+ noStroke()
+ for(x=0;x<W;x+=5){
+ for(y=0;y<W;y+=5){
+  noFill()
+  c=0
+    for(s=1;s<6;s++){
+      c=max(c,noise(s/5,(x-f)/30,(y-f)/30)<(.5-s/20)?s*50:0)
+    }
+    fill(c)
+      rect(x,y,5)
+  }}
+}
