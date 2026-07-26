@@ -1022,6 +1022,65 @@
     "reason": "runtime-error",
     "error": "Failed to construct 'Request': Failed to parse URL from shibuya.png",
     "retryable": false,
-    "checked_at": "2026-07-25T21:10:10Z"
+    "checked_at": "2026-07-26T03:56:13Z"
+  },
+  {
+    "id": "2081189892382445950",
+    "tweet_url": "https://x.com/atoursource/status/2081189892382445950",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "invalid-source",
+    "error": "Invalid or unexpected token",
+    "retryable": false,
+    "checked_at": "2026-07-26T03:56:13Z"
+  },
+  {
+    "id": "2081194824972321073",
+    "tweet_url": "https://x.com/RegaliaRoots/status/2081194824972321073",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-07-26T03:56:13Z"
+  },
+  {
+    "id": "2081195048402919930",
+    "tweet_url": "https://x.com/RegaliaRoots/status/2081195048402919930",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-07-26T03:56:13Z"
+  },
+  {
+    "id": "2081195225108914424",
+    "tweet_url": "https://x.com/RegaliaRoots/status/2081195225108914424",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-07-26T03:56:13Z"
+  },
+  {
+    "id": "2081195769290453149",
+    "tweet_url": "https://x.com/RegaliaRoots/status/2081195769290453149",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-07-26T03:56:13Z"
   }
 ]

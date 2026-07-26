@@ -1,0 +1,1 @@
+t=0;function draw(){t||(createCanvas(w=400,w),saveGif('art',5)),background(0,15),stroke('#fa0');for(i=0;i<1e3;i++)point(200+cos(a=i+t)*(r=99+sin(i*3-t)*50),200+sin(a)*r);t+=.03}//
