@@ -1,0 +1,1 @@
+t=0,draw=a=>{t||(createCanvas(W=720,W,WEBGL),noFill(H=W/2)),background(255);for(var o=t;o<t+1;o+=.02)stroke(0,255*(o-t)),push(),rotateX(o),rotateY(o*o),rotate(1.618*o),box(H*(1-abs(tan(o)))),pop();t+=.001}// #つぶやきProcessing #CreativeCoding
