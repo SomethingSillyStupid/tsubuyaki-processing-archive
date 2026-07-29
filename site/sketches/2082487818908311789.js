@@ -1,0 +1,10 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  stroke(W)
+  for(x=0;x<W;x+=10){
+  for(y=0;y<W;y+=10){
+    arc(x,y,15,15,i=9*noise(x/99,y/99,f/200),i+1)
+  }}
+}
