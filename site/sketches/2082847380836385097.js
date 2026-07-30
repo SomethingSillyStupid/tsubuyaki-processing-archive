@@ -1,0 +1,13 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+background(0)
+noStroke()
+for(x=0;x<600;x+=50){for(y=0;y<600;y+=50){for(i=0;i<2;i+=.1){
+t=$=>max(-20,min(20,$))
+c=x+t(40*cos(I=f/30+x*2+y+i))
+d=y+t(40*sin(I))
+circle(c,d,20*noise(x/30,y/30,i))
+}
+}}
+}
