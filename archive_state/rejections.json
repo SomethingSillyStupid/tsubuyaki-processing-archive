@@ -1033,7 +1033,7 @@
     "reason": "invalid-source",
     "error": "Invalid or unexpected token",
     "retryable": false,
-    "checked_at": "2026-07-30T06:42:45Z"
+    "checked_at": "2026-07-30T14:32:31Z"
   },
   {
     "id": "2081194824972321073",
@@ -1092,7 +1092,7 @@
     "reason": "invalid-source",
     "error": "Invalid or unexpected token",
     "retryable": false,
-    "checked_at": "2026-07-30T06:42:45Z"
+    "checked_at": "2026-07-30T14:32:31Z"
   },
   {
     "id": "2082007844313075930",
@@ -1103,7 +1103,7 @@
     "reason": "runtime-error",
     "error": "p5.MonoSynth is not a constructor",
     "retryable": false,
-    "checked_at": "2026-07-30T06:42:45Z"
+    "checked_at": "2026-07-30T14:32:31Z"
   },
   {
     "id": "2082549513777008760",
@@ -1115,6 +1115,41 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-07-30T06:42:45Z"
+    "checked_at": "2026-07-30T14:32:31Z"
+  },
+  {
+    "id": "2082721966713364791",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2082721966713364791",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-07-30T14:32:31Z"
+  },
+  {
+    "id": "2082723011287982275",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2082723011287982275",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-07-30T14:32:31Z"
+  },
+  {
+    "id": "2082820711748698167",
+    "tweet_url": "https://x.com/hisadan/status/2082820711748698167",
+    "classification_attempts": [
+      "processing"
+    ],
+    "reason": "runtime-error",
+    "error": "push is not defined",
+    "retryable": false,
+    "checked_at": "2026-07-30T14:32:31Z"
   }
 ]
