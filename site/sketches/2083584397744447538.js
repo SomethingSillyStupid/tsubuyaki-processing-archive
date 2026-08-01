@@ -1,0 +1,15 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+background(0)
+X=W*noise(f/150|0)
+Y=W*noise(f/150|0,9)
+noStroke()
+c=f*3%450
+fill(125-125*cos(c/225*PI))
+for(x=0;x<W;x+=20){for(y=0;y<W;y+=20){
+r=dist(X,Y,x,y)
+R=max(1,c/r)
+circle(X+(x-X)*R,Y+(y-Y)*R,9)
+}}
+}
