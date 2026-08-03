@@ -1,0 +1,1 @@
+t=0,draw=_=>{t||createCanvas(w=400,w,WEBGL);background(0);rotateX(1);stroke(w);for(t+=PI/157,i=4e3;i--;){u=i%100/99;b=(i/100|0)*PI/20;r=50+99*u+16*sin(t+6*PI*u);a=b+.32*sin(4*PI*u+b-2*t);point(r*cos(a),r*sin(a),54-54*u+21*sin(PI*u)**2*sin(3*t+2*b))}}//#つぶやきProcessing
