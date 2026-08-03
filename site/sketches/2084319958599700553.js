@@ -1,0 +1,1 @@
+t=0,draw=_=>{t||createCanvas(w=400,w),t+=.006,background(0);for(s=40;s--;)for(i=100;i--;){u=i/99,b=(s+u)*PI/20,r=80+80*sin(2*PI*u+t),a=b+.6*sin(4*PI*u-2*t),fill(255,80*u,255-255*u),circle(200+r*cos(a),200+90*sin(a+.35*sin(t+u*6)),7)}}//#つぶやきProcessing

@@ -1,0 +1,11 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  noStroke()
+  for(x=0;x<W;x+=10){
+  for(y=0;y<W;y+=10){
+    fill(200*noise(x/30,y/30)*(1+sin((f+x+y)/30))%255)
+    rect(x,y,10)
+  }}
+}
