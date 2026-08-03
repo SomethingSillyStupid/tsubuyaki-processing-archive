@@ -1092,7 +1092,7 @@
     "reason": "invalid-source",
     "error": "Invalid or unexpected token",
     "retryable": false,
-    "checked_at": "2026-08-03T07:47:05Z"
+    "checked_at": "2026-08-03T11:45:01Z"
   },
   {
     "id": "2082007844313075930",
@@ -1103,7 +1103,7 @@
     "reason": "runtime-error",
     "error": "p5.MonoSynth is not a constructor",
     "retryable": false,
-    "checked_at": "2026-08-03T07:47:05Z"
+    "checked_at": "2026-08-03T11:45:01Z"
   },
   {
     "id": "2082549513777008760",
@@ -1115,7 +1115,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-08-03T07:47:05Z"
+    "checked_at": "2026-08-03T11:45:01Z"
   },
   {
     "id": "2082721966713364791",
@@ -1127,7 +1127,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-08-03T07:47:05Z"
+    "checked_at": "2026-08-03T11:45:01Z"
   },
   {
     "id": "2082723011287982275",
@@ -1139,7 +1139,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-08-03T07:47:05Z"
+    "checked_at": "2026-08-03T11:45:01Z"
   },
   {
     "id": "2082820711748698167",
@@ -1150,7 +1150,7 @@
     "reason": "runtime-error",
     "error": "push is not defined",
     "retryable": false,
-    "checked_at": "2026-08-03T07:47:05Z"
+    "checked_at": "2026-08-03T11:45:01Z"
   },
   {
     "id": "2082975582699278719",
@@ -1162,7 +1162,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-08-03T07:47:05Z"
+    "checked_at": "2026-08-03T11:45:01Z"
   },
   {
     "id": "2083449481991684310",
@@ -1173,6 +1173,17 @@
     "reason": "invalid-source",
     "error": "Invalid or unexpected token",
     "retryable": false,
-    "checked_at": "2026-08-03T07:47:05Z"
+    "checked_at": "2026-08-03T11:45:01Z"
+  },
+  {
+    "id": "2084231160872481267",
+    "tweet_url": "https://x.com/inaba_darkfox/status/2084231160872481267",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "invalid-source",
+    "error": "Invalid or unexpected token",
+    "retryable": false,
+    "checked_at": "2026-08-03T11:45:01Z"
   }
 ]
