@@ -1,0 +1,11 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0,20)
+  noStroke()
+  for(x=-W;x<W;x+=5){
+    t=250+W*sin(f/200+x)
+    fill(250-abs(c=55*sin((f+x)/99))*3)
+    circle(x+t,t,c)
+  }
+}
