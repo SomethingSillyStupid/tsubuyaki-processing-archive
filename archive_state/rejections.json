@@ -1220,5 +1220,76 @@
     "error": "Invalid or unexpected token",
     "retryable": false,
     "checked_at": "2026-08-06T14:35:02Z"
+  },
+  {
+    "id": "2085717201902813522",
+    "tweet_url": "https://x.com/PixelonKas/status/2085717201902813522",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-08-12T23:22:08Z"
+  },
+  {
+    "id": "2085721538620248428",
+    "tweet_url": "https://x.com/marekozor/status/2085721538620248428",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-08-12T23:22:08Z"
+  },
+  {
+    "id": "2087008269092962627",
+    "tweet_url": "https://x.com/nicolasbaez/status/2087008269092962627",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "invalid-source",
+    "error": "Invalid or unexpected token",
+    "retryable": false,
+    "checked_at": "2026-08-12T23:22:08Z"
+  },
+  {
+    "id": "2087103212012597547",
+    "tweet_url": "https://x.com/marekozor/status/2087103212012597547",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-08-12T23:22:08Z"
+  },
+  {
+    "id": "2087557189745463560",
+    "tweet_url": "https://x.com/PixelonKas/status/2087557189745463560",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-08-12T23:22:08Z"
+  },
+  {
+    "id": "2087559629995720711",
+    "tweet_url": "https://x.com/marekozor/status/2087559629995720711",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-08-12T23:22:08Z"
   }
 ]

@@ -1,0 +1,2 @@
+setup=_=>{createCanvas(w=400,w,WEBGL);smooth();r=l=>{if(l<5){box(l*4)}else{for(let x of [-l,l]){for(let y of [-l,l]){for(let z of [-l,l]){if(x*y*z>0){push();translate(x,y,z);r(l/2);pop()}}}}}};rotate(2.2,[1,1,0]);pointLight(w,w,99,0,0,330);noStroke();
+;r(80)}

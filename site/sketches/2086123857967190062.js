@@ -1,0 +1,2 @@
+a=(x,y,o=mag(k=x/4-12.5,e=y/11+7)/8)=>point((q=3*(tan(y/2)/2+cos(y))/k+k*(4/o+cos(y)/3+sin(e+o*4-t*2)))+40*cos(c=o/2+e/2-t/4)+200,q*sin(c)-k*k*o/6+e*o*11)
+t=0,draw=$=>{t||createCanvas(w=400,w);background(9).stroke(w,66);for(t+=PI/30,i=2e4;i--;)a(i%100,i/250)}//#つぶやきProcessing

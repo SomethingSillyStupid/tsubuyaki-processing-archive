@@ -1,0 +1,13 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  colorMode(HSB,1)
+  background(0)
+  noStroke()
+  for(x=0;x<W;x+=5){
+  for(y=0;y<W;y+=5){
+    c=(noise(x/99,y/99,f/300)*5)%1
+    fill(1,(c*4+f/30)%1,1,c<.2?1:0)
+    rect(x,y,5)
+  }}
+}

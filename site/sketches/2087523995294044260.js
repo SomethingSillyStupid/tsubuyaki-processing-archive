@@ -1,0 +1,9 @@
+t=0
+$=[]
+draw=_=>{t?colorMode(HSB):createCanvas(W=720,W)
+B=blendMode
+B(BLEND)
+background(0,.03)
+B(ADD)
+for(i=2;i--;)$[t++%W]={x:t*1.5%W,y:t*4%W,s:25,c:t%360}
+$.map(p=>fill(p.c,90,W,.1)+circle(p.x+=cos(A=noise(p.x/180,p.y/180,t/W/W)*99),p.y+=sin(A),p.s*=.99))}

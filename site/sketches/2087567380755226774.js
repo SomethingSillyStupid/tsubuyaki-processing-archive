@@ -1,0 +1,12 @@
+f=k=n=0
+draw=_=>{f++||createCanvas(W=500,W)+background(0)
+stroke(W)
+fill(0)
+for(y=0;y<W;y+=50)line(0,y,W,y)
+r=random
+line(x=W*r(),y=W*r(),x+25*cos(i=TAU*r()),Y=y+25*sin(i))
+k+=(Math.floor(y/50)!=Math.floor(Y/50))
+n++
+textSize(30)
+rect(0,0,W,50)
+text(n/k,0,50)}

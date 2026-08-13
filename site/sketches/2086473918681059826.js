@@ -1,0 +1,12 @@
+f=0
+draw=_=>{
+ f++||createCanvas(W=500,W)
+ background(0)
+ stroke(W)
+ for(r=0;r<W;r+=50){
+  for(i=0;i<TAU;i+=PI/(r/50|0)){
+    strokeWeight(r/90)
+    line(250+r*cos(i),250+r*sin(i),250+(r+50)*cos(I=i+f*noise(r)/30),250+(r+50)*sin(I))
+  }
+ }
+}

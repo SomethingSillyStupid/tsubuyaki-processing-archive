@@ -1,0 +1,1 @@
+t=0,draw=s=>{t||createCanvas(W=720,W,WEBGL),noFill(H=W/2),background(0);for(var n=0;n<1;n+=.02){rotate(a=n*TAU);var o=(n+t)%1;stroke(255,255*sin(o*PI)),circle(cos(a+noise(n,t)*TAU)*sin(a+t)*H*n,sin(a+noise(t,a)*TAU)*cos(sin(t))*H*n,H*o*.3)}t+=.001}//

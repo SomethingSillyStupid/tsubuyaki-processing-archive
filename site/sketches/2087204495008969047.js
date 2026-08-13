@@ -1,0 +1,13 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  b=blendMode
+  b(BLEND)
+  background(0)
+  b(DIFFERENCE)
+  noStroke()
+  fill(W)
+  for(d=0;d<999;d+=20){
+    arc(250,250,d,d,D=f*noise(d)/30,D+PI,PIE)
+  }
+}
