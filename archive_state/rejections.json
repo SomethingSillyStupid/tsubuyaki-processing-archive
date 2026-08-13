@@ -1231,7 +1231,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-08-13T05:50:06Z"
+    "checked_at": "2026-08-13T17:13:36Z"
   },
   {
     "id": "2085721538620248428",
@@ -1243,7 +1243,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-08-13T05:50:06Z"
+    "checked_at": "2026-08-13T17:13:36Z"
   },
   {
     "id": "2087008269092962627",
@@ -1254,7 +1254,7 @@
     "reason": "invalid-source",
     "error": "Invalid or unexpected token",
     "retryable": false,
-    "checked_at": "2026-08-13T05:50:06Z"
+    "checked_at": "2026-08-13T17:13:36Z"
   },
   {
     "id": "2087103212012597547",
@@ -1266,7 +1266,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-08-13T05:50:06Z"
+    "checked_at": "2026-08-13T17:13:36Z"
   },
   {
     "id": "2087557189745463560",
@@ -1278,7 +1278,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-08-13T05:50:06Z"
+    "checked_at": "2026-08-13T17:13:36Z"
   },
   {
     "id": "2087559629995720711",
@@ -1290,7 +1290,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-08-13T05:50:06Z"
+    "checked_at": "2026-08-13T17:13:36Z"
   },
   {
     "id": "2087714913280049657",
@@ -1302,7 +1302,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-08-13T05:50:06Z"
+    "checked_at": "2026-08-13T17:13:36Z"
   },
   {
     "id": "2087715864455897512",
@@ -1314,6 +1314,18 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-08-13T05:50:06Z"
+    "checked_at": "2026-08-13T17:13:36Z"
+  },
+  {
+    "id": "2087875434633392151",
+    "tweet_url": "https://x.com/marekozor/status/2087875434633392151",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-08-13T17:13:36Z"
   }
 ]
