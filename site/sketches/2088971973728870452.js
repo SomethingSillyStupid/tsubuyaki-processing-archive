@@ -1,0 +1,11 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0,99)
+  noStroke()
+  for(x=-W;x<W;x+=40){
+  for(t=0;t<1e3;t+=40){
+    T=t+5*tan(x+f/99)
+      rect(x+T,T,20)
+  }}
+}
