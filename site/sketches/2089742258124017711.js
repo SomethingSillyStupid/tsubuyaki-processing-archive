@@ -1,0 +1,16 @@
+f=0
+draw=_=>{
+ f++||createCanvas(W=550,W)
+ background(0)
+ stroke(W)
+ noFill()
+ for(z=1;z<9;z++){
+ strokeWeight(z/2)
+ beginShape()
+ for(r=0;r<W;r++){
+ R=((r+z*5)/50|0)*50
+ vertex(250+R*cos(i=r/30+f*(1+z/9)/99),250+R*sin(i))
+ }
+ endShape()
+ }
+}
