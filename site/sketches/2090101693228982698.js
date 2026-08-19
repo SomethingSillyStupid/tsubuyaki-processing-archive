@@ -1,0 +1,14 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(W)
+  noStroke()
+  for(x=-W;x<W;x+=25){
+  for(y=-W;y<W;y+=25){
+    N=900-min(x,y)
+    k=(f*3+9e3)*noise(x,y)%N
+    fill(0,k)
+    c=max(0,k-250)
+    rect(x+c,y+c,25*(1+noise(x,y)*2|0))
+  }}
+}
