@@ -1,0 +1,12 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  stroke(W)
+  noFill()
+  for(x=0;x<W;x+=5){
+  for(y=0;y<W;y+=5){
+    N=noise(x/9,(y/30+f*noise(x)/9)/9)
+    N<.5&&rect(x,y,sin(N*PI*2)*(4+x/24))
+  }}
+}
