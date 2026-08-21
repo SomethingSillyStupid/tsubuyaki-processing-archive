@@ -1,0 +1,13 @@
+f=0
+draw=_=>{
+ f++||createCanvas(W=500,W)
+ background(0)
+ stroke(W,200)
+ noFill()
+ strokeWeight(2)
+ for(y=-W;y<1e3;y+=3){
+   X=(f+9e3)*5*noise(y)%1e3-250
+   d=noise(y,9)-.5
+   y%2?line(X,y+X*d,X+200,y+(X+100)*d):circle(X,y+X*d,37*y%50)
+ }
+}
