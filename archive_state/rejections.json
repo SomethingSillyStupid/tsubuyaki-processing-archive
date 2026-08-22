@@ -1361,7 +1361,7 @@
     "reason": "invalid-source",
     "error": "Invalid or unexpected token",
     "retryable": false,
-    "checked_at": "2026-08-22T08:50:02Z"
+    "checked_at": "2026-08-22T13:01:55Z"
   },
   {
     "id": "2090387658878976243",
@@ -1373,7 +1373,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-08-22T08:50:02Z"
+    "checked_at": "2026-08-22T13:01:55Z"
   },
   {
     "id": "2090750929486102557",
@@ -1385,6 +1385,30 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-08-22T08:50:02Z"
+    "checked_at": "2026-08-22T13:01:55Z"
+  },
+  {
+    "id": "2091116435007484283",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2091116435007484283",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-08-22T13:01:55Z"
+  },
+  {
+    "id": "2091139646763790787",
+    "tweet_url": "https://x.com/PixelonKas/status/2091139646763790787",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-08-22T13:01:55Z"
   }
 ]

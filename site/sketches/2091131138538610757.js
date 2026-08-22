@@ -1,0 +1,11 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  stroke(W)
+  strokeWeight(3)
+  for(x=0;x<1e3;x+=50){
+  for(y=0;y<W;y+=5){
+    line(x-y,Y=y+50*sin(f/30+x+y/99),x-y+50,Y)
+  }}
+}
