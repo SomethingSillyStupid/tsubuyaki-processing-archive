@@ -1361,7 +1361,7 @@
     "reason": "invalid-source",
     "error": "Invalid or unexpected token",
     "retryable": false,
-    "checked_at": "2026-08-23T08:49:33Z"
+    "checked_at": "2026-08-23T16:45:16Z"
   },
   {
     "id": "2090387658878976243",
@@ -1373,7 +1373,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-08-23T08:49:33Z"
+    "checked_at": "2026-08-23T16:45:16Z"
   },
   {
     "id": "2090750929486102557",
@@ -1385,7 +1385,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-08-23T08:49:33Z"
+    "checked_at": "2026-08-23T16:45:16Z"
   },
   {
     "id": "2091116435007484283",
@@ -1397,7 +1397,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-08-23T08:49:33Z"
+    "checked_at": "2026-08-23T16:45:16Z"
   },
   {
     "id": "2091139646763790787",
@@ -1409,6 +1409,29 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-08-23T08:49:33Z"
+    "checked_at": "2026-08-23T16:45:16Z"
+  },
+  {
+    "id": "2091459996378657157",
+    "tweet_url": "https://x.com/marekozor/status/2091459996378657157",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-08-23T16:45:16Z"
+  },
+  {
+    "id": "2091470599189414057",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2091470599189414057",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Unexpected identifier 'https'",
+    "retryable": false,
+    "checked_at": "2026-08-23T16:45:16Z"
   }
 ]
