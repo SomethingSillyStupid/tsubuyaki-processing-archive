@@ -1,0 +1,15 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  stroke(W)
+  noFill()
+  translate(250,250)
+  for(r=0;r<W;r+=5){
+    push()
+    scale(sin(f*noise(r)/30)/4+.75)
+    rotate(r/20)
+    rect(0,0,r,r/2)
+    pop()
+  }
+}
