@@ -2,7 +2,12 @@ import { runnerSrcDoc } from './runner.js';
 
 const DATA_URL = 'data/sketches.json';
 const PAGE_SIZE = 24;
+const CODE_FETCH_ATTEMPTS = 3;
+const CODE_PREFETCH_CONCURRENCY = 6;
+const CODE_FETCH_TIMEOUT_MS = 8_000;
+const CODE_RENDER_DELAY_MS = 100;
 const $ = (sel, el=document) => el.querySelector(sel);
+const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 const fmtDate = (iso) => new Intl.DateTimeFormat(undefined,{year:'numeric',month:'short',day:'numeric'}).format(new Date(iso));
 const fmtDateTime = (iso) => new Intl.DateTimeFormat(undefined,{year:'numeric',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}).format(new Date(iso));
 const esc = (value='') => String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
@@ -16,9 +21,42 @@ async function getSketches(){
 }
 
 async function getCode(file){
-  const res = await fetch(file, {cache:'no-store'});
-  if(!res.ok) throw new Error(`Could not load ${file}`);
-  return res.text();
+  let error;
+  for(let attempt=1; attempt<=CODE_FETCH_ATTEMPTS; attempt++){
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), CODE_FETCH_TIMEOUT_MS);
+    try {
+      const res = await fetch(file, {cache:'reload', signal:controller.signal});
+      if(res.ok) return await res.text();
+      error = new Error(`Could not load ${file} (HTTP ${res.status})`);
+      controller.abort();
+    } catch(caught) {
+      error = caught;
+    } finally {
+      clearTimeout(timeout);
+    }
+    if(attempt<CODE_FETCH_ATTEMPTS) await wait(200*attempt);
+  }
+  throw error || new Error(`Could not load ${file}`);
+}
+
+async function prefetchCodes(sketches, codeById, onSettled){
+  const failures = [];
+  let next = 0;
+  async function worker(){
+    while(next<sketches.length){
+      const sketch = sketches[next++];
+      try {
+        codeById.set(sketch.id, await getCode(sketch.code_file));
+      } catch(error) {
+        failures.push({file:sketch.code_file, message:error instanceof Error ? error.message : String(error)});
+      } finally {
+        onSettled?.();
+      }
+    }
+  }
+  await Promise.all(Array.from({length:Math.min(CODE_PREFETCH_CONCURRENCY,sketches.length)}, worker));
+  return failures;
 }
 
 function previewImage(sketch, className='hover-preview'){
@@ -105,7 +143,7 @@ function syncUrl({artist, language, sort, search, status}){
 
 async function initIndex(){
   const sketches = await getSketches();
-  const withCode = await Promise.all(sketches.map(async s => [s, await getCode(s.code_file)]));
+  const codeById = new Map();
   const grid = $('#grid'); const search = $('#search'); const artist = $('#artist'); const language = $('#language'); const sort = $('#sort'); const status = $('#status'); const loadMore = $('#loadMore'); const resultCount = $('#resultCount');
   const params = new URLSearchParams(location.search);
   let visibleLimit = PAGE_SIZE;
@@ -119,7 +157,7 @@ async function initIndex(){
   language.value = params.get('language') || '';
 
   function filteredRows(){
-    let rows = [...withCode];
+    let rows = sketches.map(sketch => [sketch, codeById.get(sketch.id) || '']);
     const q = search.value.trim().toLowerCase();
     const a = artist.value;
     const st = status.value;
@@ -142,9 +180,22 @@ async function initIndex(){
     activateHoverPreviews(grid);
   }
 
+  let codeRenderTimer;
+  function scheduleCodeRender(){
+    if(codeRenderTimer) return;
+    codeRenderTimer = setTimeout(() => {
+      codeRenderTimer = undefined;
+      render();
+    }, CODE_RENDER_DELAY_MS);
+  }
+
   [search,artist,language,sort,status].forEach(el=>el.addEventListener('input',() => { visibleLimit = PAGE_SIZE; render(); }));
   loadMore.addEventListener('click', () => { visibleLimit += PAGE_SIZE; render(); });
   render();
+  void prefetchCodes(sketches, codeById, scheduleCodeRender).then(failures => {
+    if(failures.length) console.warn('Some sketch source files could not be indexed.', failures);
+    scheduleCodeRender();
+  }).catch(error => console.error('Could not build the source search index.', error));
 }
 
 async function initDetail(){
