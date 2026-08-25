@@ -420,3 +420,152 @@ test('a non-OK response with a stalled body is canceled before retrying', { time
     await new Promise(resolve => server.close(resolve));
   }
 });
+
+const clickStabilitySketches = [
+  {
+    id: 'click-stability',
+    language: 'p5js',
+    created_at: '2026-08-10T00:00:00.000Z',
+    author: { username: 'clickstability', name: 'Click stability', url: 'https://example.test/clickstability' },
+    code_file: 'sketches/click-stability.js',
+    preview_still_file: 'previews/click-still.svg',
+    preview_motion_file: 'previews/click-motion.svg',
+    status: 'verified',
+    runtime: { status: 'runs' },
+    tsubuyaki: { code_chars: 12 },
+    summary: 'A card whose source index arrives while the user is clicking it.',
+  },
+];
+
+test('background source indexing preserves a hovered card until its click completes', { timeout: 30_000 }, async () => {
+  let resolveSourceRequested;
+  const sourceRequested = new Promise(resolve => { resolveSourceRequested = resolve; });
+  let releaseSource = () => {};
+  const { server, url } = await startStaticSite({
+    handleRequest(req, res) {
+      if (req.url === '/data/sketches.json') {
+        res.writeHead(200, { 'content-type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify(clickStabilitySketches));
+        return true;
+      }
+      if (req.url === '/previews/click-still.svg' || req.url === '/previews/click-motion.svg') {
+        res.writeHead(200, { 'content-type': 'image/svg+xml' });
+        res.end('<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"><rect width="10" height="10" fill="black"/></svg>');
+        return true;
+      }
+      if (req.url === '/sketches/click-stability.js') {
+        let released = false;
+        releaseSource = () => {
+          if (released) return;
+          released = true;
+          res.writeHead(200, { 'content-type': 'application/javascript; charset=utf-8' });
+          res.end('const clickStabilityMarker = true;');
+        };
+        resolveSourceRequested();
+        return true;
+      }
+      return false;
+    },
+  });
+  const browser = await chromium.launch({ headless: true, args: ['--no-sandbox'] });
+  try {
+    const context = await browser.newContext({ viewport: { width: 1365, height: 1000 } });
+    const page = await context.newPage();
+    await page.goto(url, { waitUntil: 'domcontentloaded' });
+    await page.locator('#grid .card').first().waitFor({ state: 'visible', timeout: 10_000 });
+    await sourceRequested;
+    await page.evaluate(() => document.querySelector('#grid .card')?.scrollIntoView({ block: 'center' }));
+    const thumb = await page.evaluate(() => {
+      const card = document.querySelector('#grid .card');
+      window.__clickedCard = card;
+      const rect = card?.querySelector('.thumb')?.getBoundingClientRect();
+      return rect ? { x: rect.x, y: rect.y, width: rect.width, height: rect.height } : null;
+    });
+    assert.ok(thumb, 'the thumbnail should be rendered before interaction');
+    await page.mouse.move(thumb.x + thumb.width / 2, thumb.y + thumb.height / 2);
+    await page.waitForFunction(
+      () => document.querySelector('#grid .card')?.classList.contains('is-playing')
+        && document.querySelectorAll('.motion-preview').length === 1,
+      null,
+      { timeout: 5_000 },
+    );
+
+    await page.mouse.down();
+    releaseSource();
+    await page.waitForTimeout(250);
+    assert.equal(
+      await page.evaluate(() => document.querySelector('#grid .card') === window.__clickedCard && window.__clickedCard?.isConnected),
+      true,
+      'background code indexing must not replace the card during a click',
+    );
+    await page.mouse.up();
+    await page.waitForURL(/\/sketch\.html\?id=click-stability$/, { timeout: 1_500 });
+    await context.close();
+  } finally {
+    releaseSource();
+    await browser.close();
+    await new Promise(resolve => server.close(resolve));
+  }
+});
+
+test('clearing a text search prevents a queued source-index rerender from replacing cards', { timeout: 30_000 }, async () => {
+  let resolveSourceRequested;
+  const sourceRequested = new Promise(resolve => { resolveSourceRequested = resolve; });
+  let releaseSource = () => {};
+  const { server, url } = await startStaticSite({
+    handleRequest(req, res) {
+      if (req.url === '/data/sketches.json') {
+        res.writeHead(200, { 'content-type': 'application/json; charset=utf-8' });
+        res.end(JSON.stringify(clickStabilitySketches));
+        return true;
+      }
+      if (req.url === '/sketches/click-stability.js') {
+        let released = false;
+        releaseSource = () => {
+          if (released) return;
+          released = true;
+          res.writeHead(200, { 'content-type': 'application/javascript; charset=utf-8' });
+          res.end('const clickStabilityMarker = true;');
+        };
+        resolveSourceRequested();
+        return true;
+      }
+      return false;
+    },
+  });
+  const browser = await chromium.launch({ headless: true, args: ['--no-sandbox'] });
+  try {
+    const context = await browser.newContext({ viewport: { width: 1365, height: 1000 } });
+    const page = await context.newPage();
+    await page.goto(`${url}?q=click`, { waitUntil: 'domcontentloaded' });
+    await page.locator('#grid .card').first().waitFor({ state: 'visible', timeout: 10_000 });
+    await sourceRequested;
+    releaseSource();
+    await page.waitForTimeout(20);
+    const thumb = await page.evaluate(() => {
+      const search = document.querySelector('#search');
+      search.value = '';
+      search.dispatchEvent(new Event('input', { bubbles: true }));
+      const card = document.querySelector('#grid .card');
+      window.__clearedSearchCard = card;
+      const rect = card?.querySelector('.thumb')?.getBoundingClientRect();
+      return rect ? { x: rect.x, y: rect.y, width: rect.width, height: rect.height } : null;
+    });
+    assert.ok(thumb, 'clearing a search should leave the matching card visible');
+    await page.waitForTimeout(250);
+    assert.equal(
+      await page.evaluate(() => document.querySelector('#grid .card') === window.__clearedSearchCard && window.__clearedSearchCard?.isConnected),
+      true,
+      'a queued source-index render must not replace cards after the search is cleared',
+    );
+    await page.mouse.move(thumb.x + thumb.width / 2, thumb.y + thumb.height / 2);
+    await page.mouse.down();
+    await page.mouse.up();
+    await page.waitForURL(/\/sketch\.html\?id=click-stability$/, { timeout: 1_500 });
+    await context.close();
+  } finally {
+    releaseSource();
+    await browser.close();
+    await new Promise(resolve => server.close(resolve));
+  }
+});

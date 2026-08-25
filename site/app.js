@@ -51,7 +51,7 @@ async function prefetchCodes(sketches, codeById, onSettled){
       } catch(error) {
         failures.push({file:sketch.code_file, message:error instanceof Error ? error.message : String(error)});
       } finally {
-        onSettled?.();
+        onSettled?.(sketch);
       }
     }
   }
@@ -124,7 +124,7 @@ function searchableText(sketch, code){
 
 function cardTemplate(sketch, code){
   const detailUrl = `sketch.html?id=${encodeURIComponent(sketch.id)}`;
-  return `<a class="card" href="${detailUrl}" data-user="${esc(sketch.author.username)}" data-date="${esc(sketch.created_at)}" data-title="${esc(searchableText(sketch, code))}">
+  return `<a class="card" href="${detailUrl}" data-id="${esc(sketch.id)}" data-user="${esc(sketch.author.username)}" data-date="${esc(sketch.created_at)}" data-title="${esc(searchableText(sketch, code))}">
     <div class="thumb">${mediaTemplate(sketch, code)}<span class="badge">${esc(statusBadge(sketch))}</span></div>
     <div class="card-body"><h2>${esc(displayName(sketch))}</h2><div class="meta"><span>${fmtDate(sketch.created_at)}</span><span>•</span><span>${esc(sketch.author.name || sketch.author.username)}</span></div><div class="mini-badges"><span>${esc(languageLabel(sketch))}</span><span>${esc(tsubuyakiBadge(sketch))}</span><span>${esc(statusBadge(sketch))}</span></div><p class="summary">${esc(sketch.summary || `Verified single-tweet ${languageLabel(sketch)} sketch from #つぶやきProcessing.`)}</p></div>
   </a>`;
@@ -180,11 +180,22 @@ async function initIndex(){
     activateHoverPreviews(grid);
   }
 
+  function updateCardSearchIndex(sketch){
+    const card = [...grid.querySelectorAll('.card')].find(element => element.dataset.id === sketch.id);
+    if (card) card.dataset.title = searchableText(sketch, codeById.get(sketch.id) || '');
+  }
+
   let codeRenderTimer;
-  function scheduleCodeRender(){
-    if(codeRenderTimer) return;
+  function scheduleCodeRender(sketch){
+    // Keep visible links mounted while source-code indexing completes in the background.
+    if (!search.value.trim()) {
+      if (sketch) updateCardSearchIndex(sketch);
+      return;
+    }
+    if (codeRenderTimer) return;
     codeRenderTimer = setTimeout(() => {
       codeRenderTimer = undefined;
+      if (!search.value.trim()) return;
       render();
     }, CODE_RENDER_DELAY_MS);
   }
