@@ -1,0 +1,16 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+b=blendMode
+b(BLEND)
+background(0)
+b(DIFFERENCE)
+noStroke()
+for(x=0;x<600;x+=70){for(y=0;y<500;y+=70){
+t=(f+y)%600
+circle(x,Y=x%140<50?t-50:550-t,50)
+for(i=0;i<4;i++){
+circle(x+20*cos(I=i/2*PI+f/30),Y+5*sin(I),5)
+}
+}}
+}
