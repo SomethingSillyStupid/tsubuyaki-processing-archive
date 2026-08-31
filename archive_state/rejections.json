@@ -1490,7 +1490,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-08-31T16:11:24Z"
+    "checked_at": "2026-08-31T21:30:18Z"
   },
   {
     "id": "2092946639199551515",
@@ -1502,7 +1502,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-08-31T16:11:24Z"
+    "checked_at": "2026-08-31T21:30:18Z"
   },
   {
     "id": "2094159187353772256",
@@ -1514,6 +1514,18 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-08-31T16:11:24Z"
+    "checked_at": "2026-08-31T21:30:18Z"
+  },
+  {
+    "id": "2094485178122944955",
+    "tweet_url": "https://x.com/PixelonKas/status/2094485178122944955",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-08-31T21:30:18Z"
   }
 ]
