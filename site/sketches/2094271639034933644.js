@@ -1,0 +1,14 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+b=blendMode
+b(BLEND)
+background(0)
+b(DIFFERENCE)
+stroke(W)
+strokeWeight(3)
+for(n=0;++n<15;){for(i=0;i<6;i+=PI/4){
+p=$=>[n*25+$*cos(I=i+f*(n-7.5)/999),n*25+$*sin(I)]
+line(...p(50),...p(W))
+}}
+}

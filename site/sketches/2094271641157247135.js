@@ -1,0 +1,14 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+b=blendMode
+b(BLEND)
+background(0)
+b(DIFFERENCE)
+stroke(W)
+strokeWeight(3)
+for(n=1;n<15;n++){for(i=0;i<6;i+=PI/4){
+p=$=>[W*noise(n)+$*cos(I=i+f*(n-7.5)/999),W*noise(n,9)+$*sin(I)]
+line(...p(50),...p(200))
+}}
+}
