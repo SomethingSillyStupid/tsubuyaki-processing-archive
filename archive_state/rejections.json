@@ -1502,7 +1502,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-08-31T21:30:18Z"
+    "checked_at": "2026-09-01T05:07:08Z"
   },
   {
     "id": "2094159187353772256",
@@ -1514,7 +1514,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-08-31T21:30:18Z"
+    "checked_at": "2026-09-01T05:07:08Z"
   },
   {
     "id": "2094485178122944955",
@@ -1526,6 +1526,29 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-08-31T21:30:18Z"
+    "checked_at": "2026-09-01T05:07:08Z"
+  },
+  {
+    "id": "2094555501258264685",
+    "tweet_url": "https://x.com/marekozor/status/2094555501258264685",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-09-01T05:07:08Z"
+  },
+  {
+    "id": "2094616010133299622",
+    "tweet_url": "https://x.com/nicolasbaez/status/2094616010133299622",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "invalid-source",
+    "error": "Invalid or unexpected token",
+    "retryable": false,
+    "checked_at": "2026-09-01T05:07:08Z"
   }
 ]
