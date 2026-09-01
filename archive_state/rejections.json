@@ -1502,7 +1502,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-01T05:07:08Z"
+    "checked_at": "2026-09-01T13:31:09Z"
   },
   {
     "id": "2094159187353772256",
@@ -1514,7 +1514,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-01T05:07:08Z"
+    "checked_at": "2026-09-01T13:31:09Z"
   },
   {
     "id": "2094485178122944955",
@@ -1526,7 +1526,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-01T05:07:08Z"
+    "checked_at": "2026-09-01T13:31:09Z"
   },
   {
     "id": "2094555501258264685",
@@ -1538,7 +1538,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-01T05:07:08Z"
+    "checked_at": "2026-09-01T13:31:09Z"
   },
   {
     "id": "2094616010133299622",
@@ -1549,6 +1549,18 @@
     "reason": "invalid-source",
     "error": "Invalid or unexpected token",
     "retryable": false,
-    "checked_at": "2026-09-01T05:07:08Z"
+    "checked_at": "2026-09-01T13:31:09Z"
+  },
+  {
+    "id": "2094773014244003928",
+    "tweet_url": "https://x.com/PixelonKas/status/2094773014244003928",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-09-01T13:31:09Z"
   }
 ]
