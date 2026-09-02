@@ -1,0 +1,14 @@
+f=0
+draw=_=>{
+ f++||createCanvas(W=500,W)
+ background(W)
+ stroke(0)
+ for(n=0;n<999;n++){
+  r=W
+  i=(f+9e3)*noise(n)/30
+  for(R=W;R>80;R-=80){
+   r=(i+(R%160<80?-1:1)*f/90)%(PI/4)<PI/16?R:r
+  }
+  line(250,250,250+r*cos(i),250+r*sin(i))
+ }
+}

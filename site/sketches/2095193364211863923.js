@@ -1,0 +1,11 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)+background(0)
+  p=(a,b)=>[250+a*cos(b),250+a*sin(b)]
+  for(n=0;n<400;n+=4){
+    stroke(W,99)
+    line(...p(0,i=(f+9e3)*noise(n)/30),...p(n,i))
+    stroke(0)
+    line(...p(n,i),...p(W,i))
+  }
+}
