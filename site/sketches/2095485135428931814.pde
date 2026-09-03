@@ -1,0 +1,1 @@
+float r,i,a,b,t,n,x,y,c=30,k,d=256;void setup(){size(770,770);}void draw(){for(x=0;x<770;x++)for(y=0;y<770;y++){r=i=n=0;a=x/d-2;b=y/d-1.5;while(r*r+i*i<4&n++<d){t=r*r-i*i+a;i=2*r*i+b;r=t;}k=n<d?1:9;stroke(i*i*c*k%d,r*i*c*k%d,r*r*c*k%d);point(x,y);}c*=1.02;}
