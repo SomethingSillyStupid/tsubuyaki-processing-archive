@@ -1,0 +1,10 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  stroke(W)
+  for(i=0;i<TAU*9;i+=PI/30){
+    I=i*i
+    line(250+i*cos(i),250+i*sin(i),250+I*cos(I),250+I*sin(I)+50*sin(f/30+i))
+  }
+}
