@@ -1,0 +1,12 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  noStroke()
+  for(x=-W;x<999;x+=40){
+  for(y=-x;y<999;y+=80){
+    X=40*sin(f/30+x+y)
+    Y=40*sin(f/37+x*2+y)
+    rect(x-X,y-Y,X*2,Y*2)
+  }}
+}
