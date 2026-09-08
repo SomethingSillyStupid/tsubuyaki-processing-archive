@@ -1619,7 +1619,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-08T19:28:36Z"
+    "checked_at": "2026-09-08T22:41:48Z"
   },
   {
     "id": "2096168858314809446",
@@ -1631,7 +1631,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-08T19:28:36Z"
+    "checked_at": "2026-09-08T22:41:48Z"
   },
   {
     "id": "2096380492241330225",
@@ -1643,7 +1643,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-08T19:28:36Z"
+    "checked_at": "2026-09-08T22:41:48Z"
   },
   {
     "id": "2096681238878982258",
@@ -1655,7 +1655,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-08T19:28:36Z"
+    "checked_at": "2026-09-08T22:41:48Z"
   },
   {
     "id": "2096747570852946129",
@@ -1666,7 +1666,7 @@
     "reason": "runtime-error",
     "error": "Unexpected identifier 'https'",
     "retryable": false,
-    "checked_at": "2026-09-08T19:28:36Z"
+    "checked_at": "2026-09-08T22:41:48Z"
   },
   {
     "id": "2097130131295019389",
@@ -1678,7 +1678,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-08T19:28:36Z"
+    "checked_at": "2026-09-08T22:41:48Z"
   },
   {
     "id": "2097130560238104713",
@@ -1690,7 +1690,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-08T19:28:36Z"
+    "checked_at": "2026-09-08T22:41:48Z"
   },
   {
     "id": "2097164896831954950",
@@ -1701,6 +1701,18 @@
     "reason": "invalid-source",
     "error": "Invalid or unexpected token",
     "retryable": false,
-    "checked_at": "2026-09-08T19:28:36Z"
+    "checked_at": "2026-09-08T22:41:48Z"
+  },
+  {
+    "id": "2097412654528709062",
+    "tweet_url": "https://x.com/PixelonKas/status/2097412654528709062",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-09-08T22:41:48Z"
   }
 ]
