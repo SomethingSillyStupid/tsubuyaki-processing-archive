@@ -1,0 +1,1 @@
+t=0,draw=o=>{for(t||(createCanvas(W=720,W),noFill(H=W/2),colorMode(HSB,TAU,1,1,1)),translate(H,H),background(0),a=0;a<TAU;a+=.02){push(),rotate(a);var e=noise(a,t),r=noise(t,a);stroke(a,.1,1,e*r),ellipse(0,0,H*a*e,H*a*r),pop()}t+=.001}//
