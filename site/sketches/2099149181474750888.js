@@ -1,0 +1,2 @@
+a=(y,d=mag(k=(4+cos(y))*cos(i/7),e=y/5-11)-6)=>point((q=99+3*sin(9/k)+y/23*k*(e+sin(-d*4)))*sin(c=d/4-t/4+i%2*9+sin(t*3+e)/9)+200,q*cos(c)+200)
+t=0,draw=$=>{t||createCanvas(w=400,w);background(9).stroke(w,166);for(t+=PI/60,i=1e4;i--;)a(i/289)}//#つぶやきProcessing
