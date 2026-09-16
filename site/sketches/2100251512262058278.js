@@ -1,0 +1,11 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  stroke(W)
+  for(i=0;i<TAU;i+=PI/5){
+    for(r=0,x=y=250;r<W;r+=30){
+    line(x,y,x+=200*cos(I=i+f/20*noise(r)),y+=200*sin(I))
+    }
+  }
+}

@@ -1748,7 +1748,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-16T13:32:05Z"
+    "checked_at": "2026-09-16T19:35:28Z"
   },
   {
     "id": "2099089054797041875",
@@ -1760,7 +1760,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-16T13:32:05Z"
+    "checked_at": "2026-09-16T19:35:28Z"
   },
   {
     "id": "2099412701617500660",
@@ -1772,7 +1772,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-16T13:32:05Z"
+    "checked_at": "2026-09-16T19:35:28Z"
   },
   {
     "id": "2100200062865277412",
@@ -1784,6 +1784,18 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-16T13:32:05Z"
+    "checked_at": "2026-09-16T19:35:28Z"
+  },
+  {
+    "id": "2100238426389856603",
+    "tweet_url": "https://x.com/synthicoin/status/2100238426389856603",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-09-16T19:35:28Z"
   }
 ]
