@@ -1748,7 +1748,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-16T19:35:28Z"
+    "checked_at": "2026-09-16T22:58:07Z"
   },
   {
     "id": "2099089054797041875",
@@ -1760,7 +1760,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-16T19:35:28Z"
+    "checked_at": "2026-09-16T22:58:07Z"
   },
   {
     "id": "2099412701617500660",
@@ -1772,7 +1772,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-16T19:35:28Z"
+    "checked_at": "2026-09-16T22:58:07Z"
   },
   {
     "id": "2100200062865277412",
@@ -1784,7 +1784,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-16T19:35:28Z"
+    "checked_at": "2026-09-16T22:58:07Z"
   },
   {
     "id": "2100238426389856603",
@@ -1796,6 +1796,18 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-16T19:35:28Z"
+    "checked_at": "2026-09-16T22:58:07Z"
+  },
+  {
+    "id": "2100335768795582703",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2100335768795582703",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-09-16T22:58:07Z"
   }
 ]
