@@ -1,0 +1,2 @@
+// #つぶやきProcessing #p5js
+c=0,draw=_=>{c++?noStroke():createCanvas(540,540),B=(c%120>60)*15,R=rect,background(B*17),S=sin(c%60*PI/120);for(i=49;i--;)push(),translate(i%7*90+B,(i/7|0)*90+B),pop(B?fill(0)+R(x=-90*S,x,60):rotate(PI/2*S)+R(k=-15,j=-45,30,90)+R(j,k,90,30))}
