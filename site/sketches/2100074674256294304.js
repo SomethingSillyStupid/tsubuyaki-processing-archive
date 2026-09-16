@@ -1,0 +1,1 @@
+n=(a,b)=>noise(a,b);setup=_=>createCanvas(w=500,w,WEBGL);k=0;draw=_=>{h=w/2;q=50;rotateY(1);for(i=-h;i<h;i+=q){for(j=-h;j<h;j+=q){x=map(i,-h,h,0,3);a=n(i/q,j/q)*pow(sin(x),2)*q*k;quad(i,j,n(i,j)*a,i+q,j,n(i+q,j)*a,i+q,j+q,n(i+q,j+q)*a,i,j+q,n(i,j+q)*a)}}k+=.1}
