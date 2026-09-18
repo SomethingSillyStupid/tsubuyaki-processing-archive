@@ -1,0 +1,13 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+background(0)
+fill(W)
+stroke(W)
+for(y=0;y<W;y+=.5){
+X=(f*3+9e3)*noise(y)%900-200
+r=dist(X,y,250,250)**1.05
+i=atan2(y-250,X-250)
+circle(X,y,9)
+circle(c=250+r*cos(i),d=250+r*sin(i),9)
+line(c,d,X,y)}}
