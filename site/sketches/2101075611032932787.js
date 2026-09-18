@@ -1,0 +1,11 @@
+//Still WIP #つぶやきProcessing #p5js
+t=0,d=20
+draw=_=>{
+createCanvas(W=(w=200)*2,W)
+colorMode(HSB)
+strokeWeight(7)
+F=x=>(x<0?-1:1)*(abs(x))
+for(x=0;x<8*W;x+=d)for(y=0;y<8*W;y+=d)
+stroke((x*y)%360,w,w),
+point((w*sin((x-y+t)/W))+w,(w*cos((x+y-t/w)/W))+w)
+++t}
