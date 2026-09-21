@@ -1,0 +1,16 @@
+f=0
+draw=_=>{
+ f++||createCanvas(W=500,W)
+ background(0)
+ noStroke()
+ c=circle
+ for(t=1;t<20;t++){
+ for(n=0;n<99;n+=3){
+  d=(f*t/3+n+9e3)%600-50
+  k=abs(10*t*sin(d/99+t))
+  c(d,k,9)
+  c(W-k,d,9)
+  c(W-d,W-k,9)
+  c(k,W-d,9)
+ }}
+}
