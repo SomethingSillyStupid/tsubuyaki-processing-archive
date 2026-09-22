@@ -1,0 +1,2 @@
+a=(p,g,m=6+4*sin(t/6),r=(cos(m*p/4)**4+sin(m*p/4)**4)**-.6*g*120,q=p+g*sin(t/7)*1.2)=>point(r*cos(q)+200,r*sin(q)+200)
+t=0,draw=$=>{t||createCanvas(w=400,w);background(9);stroke(w,40);for(i=3e4;i--;)a(i%240/240*TAU,(i/240|0)/125);t+=.06}//#つぶやきProcessing
