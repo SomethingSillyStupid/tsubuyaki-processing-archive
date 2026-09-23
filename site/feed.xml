@@ -5,8 +5,15 @@
 <link>https://tsubuyaki.art/</link>
 <description>Recent archived #つぶやきProcessing p5.js and Processing sketches.</description>
 <language>en</language>
-<lastBuildDate>Tue, 22 Sep 2026 22:58:40 +0000</lastBuildDate>
+<lastBuildDate>Wed, 23 Sep 2026 04:45:43 +0000</lastBuildDate>
 <atom:link href="https://tsubuyaki.art/feed.xml" rel="self" type="application/rss+xml" />
+<item>
+<title>@nicolasbaez · 2026-09-23</title>
+<link>https://tsubuyaki.art/sketch.html?id=2102618939930935589</link>
+<guid isPermaLink="true">https://tsubuyaki.art/sketch.html?id=2102618939930935589</guid>
+<pubDate>Wed, 23 Sep 2026 04:39:54 +0000</pubDate>
+<description>Verified single-tweet p5.js sketch by @nicolasbaez (260 code chars). Original post: https://x.com/nicolasbaez/status/2102618939930935589</description>
+</item>
 <item>
 <title>@TakagiHitoshi · 2026-09-22</title>
 <link>https://tsubuyaki.art/sketch.html?id=2102527044022358355</link>
@@ -209,13 +216,6 @@
 <guid isPermaLink="true">https://tsubuyaki.art/sketch.html?id=2100711813545705815</guid>
 <pubDate>Thu, 17 Sep 2026 22:21:40 +0000</pubDate>
 <description>Verified single-tweet p5.js sketch by @TakagiHitoshi (239 code chars). Original post: https://x.com/TakagiHitoshi/status/2100711813545705815</description>
-</item>
-<item>
-<title>@TakagiHitoshi · 2026-09-17</title>
-<link>https://tsubuyaki.art/sketch.html?id=2100711211784675484</link>
-<guid isPermaLink="true">https://tsubuyaki.art/sketch.html?id=2100711211784675484</guid>
-<pubDate>Thu, 17 Sep 2026 22:19:16 +0000</pubDate>
-<description>Verified single-tweet p5.js sketch by @TakagiHitoshi (230 code chars). Original post: https://x.com/TakagiHitoshi/status/2100711211784675484</description>
 </item>
 </channel>
 </rss>
