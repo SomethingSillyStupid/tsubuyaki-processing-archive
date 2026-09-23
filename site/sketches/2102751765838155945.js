@@ -1,0 +1,15 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+background(0)
+noFill()
+for(y=1;y<=250;y*=1.01){
+strokeWeight(y/50)
+stroke(y)
+beginShape()
+for(n=0;n<50;n+=3){
+  vertex(x=(f*3+9e3)*noise(y)%900-200+n,(x+y)%100<50?y:W-y)
+}
+endShape()
+}
+}

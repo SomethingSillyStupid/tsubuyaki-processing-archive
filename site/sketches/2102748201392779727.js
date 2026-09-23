@@ -1,0 +1,9 @@
+t=0
+$=[]
+draw=_=>{background(0,t++?9:!createCanvas(W=720,W)+W)
+noStroke()
+filter(BLUR)
+$[t%180]={x:0,y:0}
+$.map(p=>{p.x+=cos(N=noise(p.x/W,p.y/W,t/W)*19)*3
+p.y+=sin(N)*3
+for(i=0;i<36;i++)circle(60+p.x*(i%2*2-1)+i%6*120,60+(I=int(i/6))*120+p.y*(I%2*2-1),2)})}
