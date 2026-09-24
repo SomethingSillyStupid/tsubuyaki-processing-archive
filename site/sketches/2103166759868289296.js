@@ -1,0 +1,12 @@
+f=0
+draw=_=>{
+ f++||createCanvas(W=500,W)
+ background(W)
+ noStroke()
+ fill(0)
+ for(r=0;r<W;r+=9){
+ for(i=0;i<TAU;i+=PI/4){
+  p=(a,b=0)=>[150+r*a*cos(I=i+b+(f+9e3)*noise(r)/30),150+r*a*sin(I)]
+  triangle(...p(1),...p(1,.3),...p(2))
+ }}
+}
