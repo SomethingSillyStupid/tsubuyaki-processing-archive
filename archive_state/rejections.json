@@ -1820,7 +1820,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-23T22:59:23Z"
+    "checked_at": "2026-09-24T13:35:16Z"
   },
   {
     "id": "2101910810234949945",
@@ -1832,7 +1832,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-23T22:59:23Z"
+    "checked_at": "2026-09-24T13:35:16Z"
   },
   {
     "id": "2101976277116666200",
@@ -1844,7 +1844,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-23T22:59:23Z"
+    "checked_at": "2026-09-24T13:35:16Z"
   },
   {
     "id": "2102009184627597467",
@@ -1856,6 +1856,18 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-23T22:59:23Z"
+    "checked_at": "2026-09-24T13:35:16Z"
+  },
+  {
+    "id": "2103102715270193228",
+    "tweet_url": "https://x.com/marekozor/status/2103102715270193228",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-09-24T13:35:16Z"
   }
 ]

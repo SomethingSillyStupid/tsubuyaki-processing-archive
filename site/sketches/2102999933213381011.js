@@ -1,0 +1,1 @@
+x=y=.1,t=0,draw=$=>{t||createCanvas(w=400,w);t||colorMode(HSB);background(9);C=cos(t/20);S=sin(t/20);stroke(t*20%360,70,95,.2);for(i=3e4;i--;){X=sin(-2*y)-cos(-2*x);y=sin(-1.2*x)-cos(2*y);x=X;point((x*C-y*S)*80+200,(x*S+y*C)*80+200)}t+=.02}//#つぶやきProcessing
