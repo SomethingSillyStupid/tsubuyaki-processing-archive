@@ -1,0 +1,12 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  noStroke()
+  for(n=0;n<60;n++){
+  for(k=0;k<400;k+=3){
+    fill(n*44%255)
+    r=k*sin(f/30+n*5)
+    circle(W*noise(n)+r*cos(n),W*noise(n,9)+r*sin(n),n/3)
+  }}
+}
