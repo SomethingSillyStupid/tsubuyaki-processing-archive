@@ -1832,7 +1832,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-26T04:57:58Z"
+    "checked_at": "2026-09-26T13:06:04Z"
   },
   {
     "id": "2101976277116666200",
@@ -1844,7 +1844,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-26T04:57:58Z"
+    "checked_at": "2026-09-26T13:06:04Z"
   },
   {
     "id": "2102009184627597467",
@@ -1856,7 +1856,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-26T04:57:58Z"
+    "checked_at": "2026-09-26T13:06:04Z"
   },
   {
     "id": "2103102715270193228",
@@ -1868,6 +1868,18 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-26T04:57:58Z"
+    "checked_at": "2026-09-26T13:06:04Z"
+  },
+  {
+    "id": "2103777825568526502",
+    "tweet_url": "https://x.com/PixelonKas/status/2103777825568526502",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-09-26T13:06:04Z"
   }
 ]
