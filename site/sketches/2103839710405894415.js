@@ -1,0 +1,13 @@
+f=0
+draw=_=>{
+ f++||createCanvas(W=500,W)
+ background(0)
+ stroke(W)
+ for(z=1e3;z>50;z-=50){
+ p=f/z*2/.2,n=p|0
+ for(x=1+(p-n)*.2,c=0;x<W;x*=1.2,c++){
+   fill(255-z/2)
+   rect(250-x,W,-x/5,D=-z*noise(c-n,z))
+   rect(250+x,W,x/5,D)
+ }}
+}
