@@ -1,0 +1,14 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  stroke(W)
+  noFill()
+  for(x=0;x<W;x+=5){
+  beginShape()
+  for(n=0;n<200;n+=3){
+    c=n+700-(f*3+9e3)*noise(x)%900
+   vertex(x+99*cos(x+(c+f*noise(x,9))/30),c)
+  }endShape()
+  }
+}
