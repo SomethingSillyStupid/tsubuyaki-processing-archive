@@ -1868,7 +1868,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-29T00:25:06Z"
+    "checked_at": "2026-09-29T10:42:51Z"
   },
   {
     "id": "2103777825568526502",
@@ -1880,7 +1880,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-29T00:25:06Z"
+    "checked_at": "2026-09-29T10:42:51Z"
   },
   {
     "id": "2104373058157048090",
@@ -1892,7 +1892,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-29T00:25:06Z"
+    "checked_at": "2026-09-29T10:42:51Z"
   },
   {
     "id": "2104519759949680787",
@@ -1904,6 +1904,17 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-09-29T00:25:06Z"
+    "checked_at": "2026-09-29T10:42:51Z"
+  },
+  {
+    "id": "2104760337304039863",
+    "tweet_url": "https://x.com/nicolasbaez/status/2104760337304039863",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "invalid-source",
+    "error": "Invalid or unexpected token",
+    "retryable": false,
+    "checked_at": "2026-09-29T10:42:51Z"
   }
 ]
