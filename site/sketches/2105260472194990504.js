@@ -1,0 +1,9 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)+background(0)
+  noStroke()
+  colorMode(HSB,1)
+  fill(noise(f/99),.3,1,.2)
+  r=W*noise(f/30)
+  circle(250+r*cos(f/40),250+r*sin(f/37),100)
+}
