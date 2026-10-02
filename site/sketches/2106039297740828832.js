@@ -1,0 +1,11 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  for(x=0;x<600;x+=50){
+  for(y=-x;y<600;y+=100){
+    fill(0)
+    stroke(W)
+    quad(x,y,x,y+100,X=x+80*cos(i=f/30+x+y),(Y=y+50*sin(i))+100,X,Y)
+  }}
+}
