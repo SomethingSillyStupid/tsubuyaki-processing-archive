@@ -1,0 +1,11 @@
+setup=_=>{
+createCanvas(400,400);noStroke();
+textSize(120);textAlign(CENTER,CENTER);
+strokeWeight(2);t=translate;
+f=0;
+draw=_=>{
+background(0);fill('red');
+circle(200,100,20);t(200,100);
+rotate(sin(f++/20)*PI/6);t(-200,-100);
+fill(255);text("A",200,200);
+}}
