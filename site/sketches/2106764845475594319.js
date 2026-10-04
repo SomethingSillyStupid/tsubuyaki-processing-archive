@@ -1,0 +1,11 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  noStroke()
+  for(x=0;x<W;x+=25){
+  for(y=0;y<W;y+=25){
+    c=max(0,10+40*sin(f/30+x+y*3))
+    rect(x,y,c,50)
+  }}
+}

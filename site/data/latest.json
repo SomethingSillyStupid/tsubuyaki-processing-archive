@@ -1,5 +1,37 @@
 [
   {
+    "id": "2106764845475594319",
+    "created_at": "2026-10-04T15:14:15.000Z",
+    "author": {
+      "name": "Snow Esamosc",
+      "username": "SnowEsamosc",
+      "url": "https://x.com/SnowEsamosc",
+      "profile_image_url": "https://pbs.twimg.com/profile_images/1705130433795837952/8ZO9j8GL_normal.jpg"
+    },
+    "tweet_url": "https://x.com/SnowEsamosc/status/2106764845475594319",
+    "archive_url": "https://tsubuyaki.art/sketch.html?id=2106764845475594319",
+    "preview_still_file": "https://pbs.twimg.com/amplify_video_thumb/2106764806439276545/img/e-SFxuXfnL-u_ZQI.jpg",
+    "preview_motion_file": "https://pbs.twimg.com/amplify_video_thumb/2106764806439276545/img/e-SFxuXfnL-u_ZQI.jpg",
+    "runtime_status": null,
+    "language": "p5js",
+    "runtime": {
+      "engine": "p5.js",
+      "engine_version": "1.11.3",
+      "status": "runs",
+      "canvas_count": 1,
+      "verified_at": "2026-10-04T19:39:01Z"
+    },
+    "tsubuyaki": {
+      "tweet_chars": 202,
+      "code_chars": 176,
+      "tweet_under_280": true,
+      "code_under_280": true,
+      "code_detected": true,
+      "single_tweet_full_code": true,
+      "status": "verified"
+    }
+  },
+  {
     "id": "2106704796397011066",
     "created_at": "2026-10-04T11:15:38.000Z",
     "author": {
@@ -600,38 +632,6 @@
     "tsubuyaki": {
       "tweet_chars": 245,
       "code_chars": 245,
-      "tweet_under_280": true,
-      "code_under_280": true,
-      "code_detected": true,
-      "single_tweet_full_code": true,
-      "status": "verified"
-    }
-  },
-  {
-    "id": "2105835812407713981",
-    "created_at": "2026-10-02T01:42:36.000Z",
-    "author": {
-      "name": "黒狐",
-      "username": "inaba_darkfox",
-      "url": "https://x.com/inaba_darkfox",
-      "profile_image_url": "https://pbs.twimg.com/profile_images/1778240432612548608/npfeIdnv_normal.jpg"
-    },
-    "tweet_url": "https://x.com/inaba_darkfox/status/2105835812407713981",
-    "archive_url": "https://tsubuyaki.art/sketch.html?id=2105835812407713981",
-    "preview_still_file": "https://pbs.twimg.com/amplify_video_thumb/2105835794464378880/img/RVc6i0ITd8-enank.jpg",
-    "preview_motion_file": "https://pbs.twimg.com/amplify_video_thumb/2105835794464378880/img/RVc6i0ITd8-enank.jpg",
-    "runtime_status": null,
-    "language": "p5js",
-    "runtime": {
-      "engine": "p5.js",
-      "engine_version": "1.11.3",
-      "status": "runs",
-      "canvas_count": 1,
-      "verified_at": "2026-10-02T05:36:31Z"
-    },
-    "tsubuyaki": {
-      "tweet_chars": 273,
-      "code_chars": 257,
       "tweet_under_280": true,
       "code_under_280": true,
       "code_detected": true,
