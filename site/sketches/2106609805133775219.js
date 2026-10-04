@@ -1,0 +1,16 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+background(0)
+stroke(W)
+m=W/2
+for(i=0;i<60;i++){
+x=m+300*cos(I=i/30*PI)
+y=m+300*sin(I)
+X=m+300*cos(I+=3)
+Y=m+300*sin(I)
+c=.5+sin(f/30+i)*.5
+C=.5+sin(f/47+i)*.5
+line(x+(X-x)*c,y+(Y-y)*c,x+(X-x)*C,y+(Y-y)*C)
+}
+}
