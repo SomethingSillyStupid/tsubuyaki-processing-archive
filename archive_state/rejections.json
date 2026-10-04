@@ -1892,7 +1892,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-10-02T20:45:42Z"
+    "checked_at": "2026-10-03T23:04:58Z"
   },
   {
     "id": "2104519759949680787",
@@ -1904,7 +1904,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-10-02T20:45:42Z"
+    "checked_at": "2026-10-03T23:04:58Z"
   },
   {
     "id": "2104760337304039863",
@@ -1915,7 +1915,7 @@
     "reason": "invalid-source",
     "error": "Invalid or unexpected token",
     "retryable": false,
-    "checked_at": "2026-10-02T20:45:42Z"
+    "checked_at": "2026-10-03T23:04:58Z"
   },
   {
     "id": "2106039920041332854",
@@ -1926,6 +1926,17 @@
     "reason": "runtime-error",
     "error": "Unexpected end of input",
     "retryable": false,
-    "checked_at": "2026-10-02T20:45:42Z"
+    "checked_at": "2026-10-03T23:04:58Z"
+  },
+  {
+    "id": "2106258775351107789",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2106258775351107789",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "no-render",
+    "error": "Canvas remained blank",
+    "retryable": false,
+    "checked_at": "2026-10-03T23:04:58Z"
   }
 ]
