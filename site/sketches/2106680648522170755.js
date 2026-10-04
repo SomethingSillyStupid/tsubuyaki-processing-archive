@@ -1,0 +1,1 @@
+t=0,draw=o=>{for(t||(createCanvas(W=720,W),noFill(H=W/2),colorMode(HSB,1,1,1,1)),background(0),T=translate,R=rotate,T(H,H),R(t),y=-1;y<1;y+=.05)for(u=y*H,x=-1;x<1;x+=.05)v=u*x,push(),stroke((t+x)%1,.2,1,.3),T(-u,-v),R(t+x+y),line(-u,-v,u,v),pop();t+=.01}//
