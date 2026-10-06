@@ -1,0 +1,1 @@
+float z,t,i,j,e=800;void setup(){size(800,800,P3D);colorMode(3);}void draw(){background(0);camera(e,e,e/4,0,0,-e,0,0,-1);for(i=0;i<e;i++)for(j=0;j<e;j++){z=9*noise(i/99,j/99,t/300);stroke(256-(z*20+t)%256,255,255);if(z>5|z%2<.05)point(i,j,z>5?z*20-99:0);}t++;}
