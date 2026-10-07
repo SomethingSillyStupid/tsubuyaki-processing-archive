@@ -1,0 +1,15 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+background(0,30)
+stroke(W)
+noFill()
+for(x=0;x<600;x+=20){
+for(y=0;y<600;y+=20){
+ beginShape()
+ for(n=0;n<30;n++){
+  vertex(x+25*cos(i=x+y+n/30+f/40),y+25*sin(i))
+ }
+endShape(CLOSE)
+}}
+}

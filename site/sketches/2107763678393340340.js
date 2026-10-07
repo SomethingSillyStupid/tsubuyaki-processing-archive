@@ -1,0 +1,13 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  stroke(W)
+  for(x=0;x<W;x+=3){
+    t=noise(x)
+    a=20*sin(f/30+x)*t
+    c=(f*3+9e3)*noise(x)%700
+    line(x,y=c+sin(c/50+x)*99-99,x-a,y-50*t)
+    line(x,y,x+a,y-50*t)
+  }
+}
