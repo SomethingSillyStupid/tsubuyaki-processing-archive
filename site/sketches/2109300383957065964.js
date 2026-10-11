@@ -1,0 +1,12 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+background(0)
+noStroke()
+for(x=-f%40;x<600;x+=40){
+for(y=-f%40-x/2;y<600;y+=40){
+for(c=x+y+f*2+x/2,i=c;i<c+TAU;i+=TAU/5){
+  r=12+5*cos(c+f/10)
+  noise((x+f)/90,(y+f+x/2)/90)<.5||circle(x+r*cos(i),y+r*sin(i),12)
+}}}
+}
