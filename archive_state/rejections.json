@@ -1994,7 +1994,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-10-13T11:47:44Z"
+    "checked_at": "2026-10-13T19:17:57Z"
   },
   {
     "id": "2109809703563981245",
@@ -2005,6 +2005,18 @@
     "reason": "invalid-source",
     "error": "Invalid or unexpected token",
     "retryable": false,
-    "checked_at": "2026-10-13T11:47:44Z"
+    "checked_at": "2026-10-13T19:17:57Z"
+  },
+  {
+    "id": "2109997129641124091",
+    "tweet_url": "https://x.com/rincode0112/status/2109997129641124091",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-10-13T19:17:57Z"
   }
 ]

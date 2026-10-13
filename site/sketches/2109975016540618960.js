@@ -1,0 +1,10 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  stroke(W)
+  noFill()
+  for(r=0;r<W;r+=9){
+    arc(250,250,250+r*cos(R=noise(r/30)+f/90),250+R*sin(R),f/30,f/30+PI)
+  }
+}
