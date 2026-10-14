@@ -1,0 +1,11 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  noStroke()
+  for(r=0;r<30;r++){
+  fill(W,30+30*cos(f/30+r))
+    c=$=>250+r*7*sin((f+9e3)*noise(r,$)/30)
+    quad(c(0),250-r*7,250+r*7,c(9),c(4),250+r*7,250-r*7,c(7))
+  }
+}
