@@ -1994,7 +1994,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-10-13T19:17:57Z"
+    "checked_at": "2026-10-13T23:46:41Z"
   },
   {
     "id": "2109809703563981245",
@@ -2005,7 +2005,7 @@
     "reason": "invalid-source",
     "error": "Invalid or unexpected token",
     "retryable": false,
-    "checked_at": "2026-10-13T19:17:57Z"
+    "checked_at": "2026-10-13T23:46:41Z"
   },
   {
     "id": "2109997129641124091",
@@ -2017,6 +2017,17 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-10-13T19:17:57Z"
+    "checked_at": "2026-10-13T23:46:41Z"
+  },
+  {
+    "id": "2110132571334168783",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2110132571334168783",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Runtime probe exceeded 10000ms hard timeout",
+    "retryable": false,
+    "checked_at": "2026-10-13T23:46:41Z"
   }
 ]
