@@ -1,0 +1,16 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+b=blendMode
+background(0,99)
+b(DIFFERENCE)
+q=$=>250-d/2+(W-d)/PI*asin(sin(f/50*$(a)))
+p=_=>[q(cos),q(sin)]
+fill(W)
+d=120
+for(a=0;a<9;a++)rect(...p(),120)
+b(BLEND)
+fill(0)
+d=0
+for(a=0;a<TAU;a+=.03)circle(...p(),20)
+}
