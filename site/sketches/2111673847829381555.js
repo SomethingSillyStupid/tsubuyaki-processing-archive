@@ -1,0 +1,12 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)+background(0)
+  noStroke()
+  for(y=0;y<W;y+=10){
+    p=$=>[X=(f*3+9e3-$)*noise(y)%600-50,y+50*sin(X/30+y)]
+    fill(W)
+    circle(...p(0),20)
+    fill(0)
+    circle(...p(30),18)
+  }
+}
