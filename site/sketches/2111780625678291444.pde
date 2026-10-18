@@ -1,0 +1,1 @@
+float r,t,i,k=TAU;void setup(){size(800,800);}void draw(){background(-1);noFill();translate(400,400);for(i=0;i<6;i++){rotate(PI/3);beginShape();for(r=0;r<k;r+=.01)vertex(99*(1-2*sin(t%k)*cos(r))*cos(r),99*(1-cos(t%k)*sin(r*t%k))*sin(r));endShape();}t+=.01;}
