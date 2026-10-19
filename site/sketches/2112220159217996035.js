@@ -1,0 +1,13 @@
+f=0
+draw=_=>{
+ f++||createCanvas(W=500,W)
+ background(0)
+ noStroke()
+ for(x=-50;x<600;x+=99){
+ for(y=-50;y<600;y+=99){
+ for(n=0;n<40;n+=8){
+  t=50*sin(f/30+x*.3+y+n)
+  fill(n%16<2?W:0)
+  quad(x+n,y+n,x+t,y-t,x+99-n,y+99-n,x-t,y+t)
+ }}}
+}
