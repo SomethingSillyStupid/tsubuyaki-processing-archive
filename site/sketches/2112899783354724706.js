@@ -1,0 +1,11 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  noFill()
+  for(r=0;r<W;r+=5){
+    t=r*sin(f/90+r)
+    stroke(W,abs(r*sin(f/30+r/2)))
+    circle(250+t*cos(i=r/30),250+t*sin(i),t/5)
+  }
+}
