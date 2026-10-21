@@ -2040,6 +2040,17 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-10-20T23:13:06Z"
+    "checked_at": "2026-10-21T04:45:03Z"
+  },
+  {
+    "id": "2112757591742750853",
+    "tweet_url": "https://x.com/nicolasbaez/status/2112757591742750853",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "invalid-source",
+    "error": "Invalid or unexpected token",
+    "retryable": false,
+    "checked_at": "2026-10-21T04:45:03Z"
   }
 ]
