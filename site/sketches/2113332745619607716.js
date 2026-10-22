@@ -1,0 +1,11 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  stroke(W)
+  noFill()
+  for(x=0;x<W;x+=20){
+  for(n=0;n<99;n+=5){
+    arc(x,y=(f+n)*3*noise(x)%600-50,40,40,c=y/30+x-PI/4,c+PI/2*3)
+  }}
+}
