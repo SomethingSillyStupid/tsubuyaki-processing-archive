@@ -2040,7 +2040,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-10-22T04:42:49Z"
+    "checked_at": "2026-10-22T14:10:44Z"
   },
   {
     "id": "2112757591742750853",
@@ -2051,6 +2051,18 @@
     "reason": "invalid-source",
     "error": "Invalid or unexpected token",
     "retryable": false,
-    "checked_at": "2026-10-22T04:42:49Z"
+    "checked_at": "2026-10-22T14:10:44Z"
+  },
+  {
+    "id": "2113201341019426882",
+    "tweet_url": "https://x.com/PixelonKas/status/2113201341019426882",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-10-22T14:10:44Z"
   }
 ]
