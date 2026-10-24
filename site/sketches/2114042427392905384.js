@@ -1,0 +1,12 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  noStroke()
+  for(x=0;x<=W;x+=20){
+  for(y=0;y<=W;y+=20){
+  for(n=0;n<20;n++){
+    r=$=>max(-10,min(10,20*$((n+f)*noise(x,y)/9)))
+    circle(x+r(cos),y+r(sin),3)
+  }}}
+}
