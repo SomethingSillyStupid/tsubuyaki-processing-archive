@@ -2051,7 +2051,7 @@
     "reason": "invalid-source",
     "error": "Invalid or unexpected token",
     "retryable": false,
-    "checked_at": "2026-10-26T04:45:03Z"
+    "checked_at": "2026-10-26T15:57:29Z"
   },
   {
     "id": "2113201341019426882",
@@ -2063,6 +2063,18 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-10-26T04:45:03Z"
+    "checked_at": "2026-10-26T15:57:29Z"
+  },
+  {
+    "id": "2114589437858656742",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2114589437858656742",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-10-26T15:57:29Z"
   }
 ]
