@@ -1,0 +1,11 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  stroke(W)
+  fill(0)
+  for(x=0;x<600;x+=20){
+  for(y=-x/2;y<600;y+=20){
+    arc(x,y,80,80,F=x+y+f/50,F+1)
+  }}
+}

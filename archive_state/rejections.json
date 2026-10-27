@@ -2051,7 +2051,7 @@
     "reason": "invalid-source",
     "error": "Invalid or unexpected token",
     "retryable": false,
-    "checked_at": "2026-10-26T21:02:30Z"
+    "checked_at": "2026-10-27T14:30:21Z"
   },
   {
     "id": "2113201341019426882",
@@ -2063,7 +2063,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-10-26T21:02:30Z"
+    "checked_at": "2026-10-27T14:30:21Z"
   },
   {
     "id": "2114589437858656742",
@@ -2075,6 +2075,17 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-10-26T21:02:30Z"
+    "checked_at": "2026-10-27T14:30:21Z"
+  },
+  {
+    "id": "2114920561415737403",
+    "tweet_url": "https://x.com/nicolasbaez/status/2114920561415737403",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "invalid-source",
+    "error": "Invalid or unexpected token",
+    "retryable": false,
+    "checked_at": "2026-10-27T14:30:21Z"
   }
 ]
