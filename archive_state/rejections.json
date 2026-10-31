@@ -2075,7 +2075,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-10-30T20:48:32Z"
+    "checked_at": "2026-10-31T05:38:49Z"
   },
   {
     "id": "2114920561415737403",
@@ -2086,7 +2086,7 @@
     "reason": "invalid-source",
     "error": "Invalid or unexpected token",
     "retryable": false,
-    "checked_at": "2026-10-30T20:48:32Z"
+    "checked_at": "2026-10-31T05:38:49Z"
   },
   {
     "id": "2115426556965532051",
@@ -2098,6 +2098,17 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-10-30T20:48:32Z"
+    "checked_at": "2026-10-31T05:38:49Z"
+  },
+  {
+    "id": "2116277970629435733",
+    "tweet_url": "https://x.com/GPT2QAI/status/2116277970629435733",
+    "classification_attempts": [
+      "processing"
+    ],
+    "reason": "invalid-source",
+    "error": "Private field '#つぶやきProcessing' must be declared in an enclosing class",
+    "retryable": false,
+    "checked_at": "2026-10-31T05:38:49Z"
   }
 ]
