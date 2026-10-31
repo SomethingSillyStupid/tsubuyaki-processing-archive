@@ -1,0 +1,13 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  for(c=0;c<600;c+=50){
+  for(i=0;i<TAU;i+=PI/30){
+    r=(c+f*3)%600
+    R=r/(abs(cos(i+c))+abs(sin(i+c)))
+    k=$=>circle(250+R*cos(i),250+R*sin(i),$)
+    k(13)
+    k(9)
+  }}
+}
