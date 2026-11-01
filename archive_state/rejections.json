@@ -2075,7 +2075,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-11-01T06:00:56Z"
+    "checked_at": "2026-11-01T15:07:11Z"
   },
   {
     "id": "2114920561415737403",
@@ -2086,7 +2086,7 @@
     "reason": "invalid-source",
     "error": "Invalid or unexpected token",
     "retryable": false,
-    "checked_at": "2026-11-01T06:00:56Z"
+    "checked_at": "2026-11-01T15:07:11Z"
   },
   {
     "id": "2115426556965532051",
@@ -2098,7 +2098,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-11-01T06:00:56Z"
+    "checked_at": "2026-11-01T15:07:11Z"
   },
   {
     "id": "2116277970629435733",
@@ -2109,6 +2109,17 @@
     "reason": "invalid-source",
     "error": "Private field '#つぶやきProcessing' must be declared in an enclosing class",
     "retryable": false,
-    "checked_at": "2026-11-01T06:00:56Z"
+    "checked_at": "2026-11-01T15:07:11Z"
+  },
+  {
+    "id": "2116858957860147694",
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2116858957860147694",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "runtime-error",
+    "error": "Failed to construct 'Request': Failed to parse URL from fuji.png",
+    "retryable": false,
+    "checked_at": "2026-11-01T15:07:11Z"
   }
 ]
