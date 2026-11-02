@@ -1,0 +1,14 @@
+f=0
+draw=_=>{
+ f++||createCanvas(W=500,W)
+ background(0)
+ for(x=0;x<W;x+=5){
+ beginShape()
+ for(i=0;i<10;i++){
+  r=20+5*cos(I=i*PI)
+  c=f*5*noise(x)%600-50
+  vertex(x+50*sin(c/90+i/5*PI+x)+r*cos(I=I/5+f/30),c+r*sin(I))
+ }
+ endShape(CLOSE)
+ }
+}
