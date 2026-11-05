@@ -1,0 +1,13 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+background(0)
+for(r=210;r>10;r-=20){
+ beginShape()
+ for(i=c=0;i<TAU;i+=PI/20,c^=1){
+  R=r*(1+c/2)
+vertex(250+R*cos(i+f*noise(r)/60),250+R*sin(i+f*noise(r,9)/50))
+  }
+  endShape(CLOSE)
+ }
+}
