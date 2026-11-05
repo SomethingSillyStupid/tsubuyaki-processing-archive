@@ -2109,7 +2109,7 @@
     "reason": "invalid-source",
     "error": "Private field '#つぶやきProcessing' must be declared in an enclosing class",
     "retryable": false,
-    "checked_at": "2026-11-04T12:06:41Z"
+    "checked_at": "2026-11-05T00:55:03Z"
   },
   {
     "id": "2116858957860147694",
@@ -2120,7 +2120,7 @@
     "reason": "runtime-error",
     "error": "Failed to construct 'Request': Failed to parse URL from fuji.png",
     "retryable": false,
-    "checked_at": "2026-11-04T12:06:41Z"
+    "checked_at": "2026-11-05T00:55:03Z"
   },
   {
     "id": "2117934535740715214",
@@ -2131,6 +2131,6 @@
     "reason": "runtime-error",
     "error": "$ is not defined",
     "retryable": false,
-    "checked_at": "2026-11-04T12:06:41Z"
+    "checked_at": "2026-11-05T00:55:03Z"
   }
 ]
