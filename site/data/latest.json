@@ -1,5 +1,69 @@
 [
   {
+    "id": "2118917248484360244",
+    "created_at": "2026-11-07T04:03:34.000Z",
+    "author": {
+      "name": "きんぞ",
+      "username": "TakagiHitoshi",
+      "url": "https://x.com/TakagiHitoshi",
+      "profile_image_url": "https://pbs.twimg.com/profile_images/1882774256393850880/AcqwIYlC_normal.jpg"
+    },
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2118917248484360244",
+    "archive_url": "https://tsubuyaki.art/sketch.html?id=2118917248484360244",
+    "preview_still_file": "https://pbs.twimg.com/tweet_video_thumb/HWfn-i9agAAclNH.jpg",
+    "preview_motion_file": "https://pbs.twimg.com/tweet_video_thumb/HWfn-i9agAAclNH.jpg",
+    "runtime_status": null,
+    "language": "p5js",
+    "runtime": {
+      "engine": "p5.js",
+      "engine_version": "1.11.3",
+      "status": "runs",
+      "canvas_count": 1,
+      "verified_at": "2026-11-07T05:57:00Z"
+    },
+    "tsubuyaki": {
+      "tweet_chars": 262,
+      "code_chars": 262,
+      "tweet_under_280": true,
+      "code_under_280": true,
+      "code_detected": true,
+      "single_tweet_full_code": true,
+      "status": "verified"
+    }
+  },
+  {
+    "id": "2118906548080824656",
+    "created_at": "2026-11-07T03:21:03.000Z",
+    "author": {
+      "name": "きんぞ",
+      "username": "TakagiHitoshi",
+      "url": "https://x.com/TakagiHitoshi",
+      "profile_image_url": "https://pbs.twimg.com/profile_images/1882774256393850880/AcqwIYlC_normal.jpg"
+    },
+    "tweet_url": "https://x.com/TakagiHitoshi/status/2118906548080824656",
+    "archive_url": "https://tsubuyaki.art/sketch.html?id=2118906548080824656",
+    "preview_still_file": "https://pbs.twimg.com/tweet_video_thumb/HWfeQpabYAAOXYb.jpg",
+    "preview_motion_file": "https://pbs.twimg.com/tweet_video_thumb/HWfeQpabYAAOXYb.jpg",
+    "runtime_status": null,
+    "language": "p5js",
+    "runtime": {
+      "engine": "p5.js",
+      "engine_version": "1.11.3",
+      "status": "runs",
+      "canvas_count": 1,
+      "verified_at": "2026-11-07T05:57:00Z"
+    },
+    "tsubuyaki": {
+      "tweet_chars": 276,
+      "code_chars": 276,
+      "tweet_under_280": true,
+      "code_under_280": true,
+      "code_detected": true,
+      "single_tweet_full_code": true,
+      "status": "verified"
+    }
+  },
+  {
     "id": "2118833379923865685",
     "created_at": "2026-11-06T22:30:18.000Z",
     "author": {
@@ -568,70 +632,6 @@
     "tsubuyaki": {
       "tweet_chars": 219,
       "code_chars": 219,
-      "tweet_under_280": true,
-      "code_under_280": true,
-      "code_detected": true,
-      "single_tweet_full_code": true,
-      "status": "verified"
-    }
-  },
-  {
-    "id": "2116658783044935763",
-    "created_at": "2026-10-31T22:29:14.000Z",
-    "author": {
-      "name": "きんぞ",
-      "username": "TakagiHitoshi",
-      "url": "https://x.com/TakagiHitoshi",
-      "profile_image_url": "https://pbs.twimg.com/profile_images/1882774256393850880/AcqwIYlC_normal.jpg"
-    },
-    "tweet_url": "https://x.com/TakagiHitoshi/status/2116658783044935763",
-    "archive_url": "https://tsubuyaki.art/sketch.html?id=2116658783044935763",
-    "preview_still_file": "https://pbs.twimg.com/tweet_video_thumb/HV_h6_fbYAAYsVT.jpg",
-    "preview_motion_file": "https://pbs.twimg.com/tweet_video_thumb/HV_h6_fbYAAYsVT.jpg",
-    "runtime_status": null,
-    "language": "p5js",
-    "runtime": {
-      "engine": "p5.js",
-      "engine_version": "1.11.3",
-      "status": "runs",
-      "canvas_count": 1,
-      "verified_at": "2026-11-01T06:00:56Z"
-    },
-    "tsubuyaki": {
-      "tweet_chars": 188,
-      "code_chars": 188,
-      "tweet_under_280": true,
-      "code_under_280": true,
-      "code_detected": true,
-      "single_tweet_full_code": true,
-      "status": "verified"
-    }
-  },
-  {
-    "id": "2116654383534670264",
-    "created_at": "2026-10-31T22:11:45.000Z",
-    "author": {
-      "name": "きんぞ",
-      "username": "TakagiHitoshi",
-      "url": "https://x.com/TakagiHitoshi",
-      "profile_image_url": "https://pbs.twimg.com/profile_images/1882774256393850880/AcqwIYlC_normal.jpg"
-    },
-    "tweet_url": "https://x.com/TakagiHitoshi/status/2116654383534670264",
-    "archive_url": "https://tsubuyaki.art/sketch.html?id=2116654383534670264",
-    "preview_still_file": "https://pbs.twimg.com/tweet_video_thumb/HV_d7WybwAAWjm2.jpg",
-    "preview_motion_file": "https://pbs.twimg.com/tweet_video_thumb/HV_d7WybwAAWjm2.jpg",
-    "runtime_status": null,
-    "language": "p5js",
-    "runtime": {
-      "engine": "p5.js",
-      "engine_version": "1.11.3",
-      "status": "runs",
-      "canvas_count": 1,
-      "verified_at": "2026-11-01T06:00:56Z"
-    },
-    "tsubuyaki": {
-      "tweet_chars": 272,
-      "code_chars": 272,
       "tweet_under_280": true,
       "code_under_280": true,
       "code_detected": true,
