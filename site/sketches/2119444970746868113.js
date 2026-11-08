@@ -1,0 +1,16 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+ background(0)
+ stroke(W)
+ noFill()
+ for(z=1;z<20;z++){
+ strokeWeight(z/2)
+ beginShape()
+ for(c=0;c<200;c++){
+  t=(f*3+9e3)*noise(z)%800-200+c
+  vertex(W/PI*acos(cos(z+t/10*noise(z,9))),t)
+ }
+ endShape()
+}
+}
