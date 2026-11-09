@@ -1,0 +1,15 @@
+f=0
+draw=_=>{
+ f++||createCanvas(W=500,W)
+ background(0)
+ stroke(W)
+ noFill()
+ for(x=0;x<600;x+=40){
+  beginShape()
+  for(y=0;y<W;y++){
+    s=sin(x+y/10+.1)
+    vertex(x+50*sin(x+f/50)*s/abs(s),y)
+  }
+  endShape()
+ }
+}
