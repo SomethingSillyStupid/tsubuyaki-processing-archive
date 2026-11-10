@@ -1,0 +1,11 @@
+f=0
+draw=_=>{f++||createCanvas(W=500,W)
+background(W)
+fill(0)
+stroke(W)
+for(x=-f%50;x<999;x+=50){for(y=-x/2;y<999;y+=50){
+beginShape()
+for(i=0;i<7;i+=PI/3){C=20*cos(i)
+S=20*sin(i)
+c=5*sin((x+y+f)/99)*noise(x+f+C,y+x/2+S)
+bezierVertex(x+c*C,y+c*S)}endShape()}}}
