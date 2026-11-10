@@ -1,0 +1,1 @@
+float i,j,t=-10;int w=720; void setup(){size(720,720);noStroke();fill(0);}void draw(){background(255);for(i=0;i<99;i++){for(j=0;j<99;j++){ rect(i,j,(sin(j*j+i/j+t*7)%cos(pow(pow(i,5-i/j*7+t),3)*j)+.3),1);}} copy(this.get(),2,0,w/5,w/9,0,0,w*2,3*w/2);t-=.01;}

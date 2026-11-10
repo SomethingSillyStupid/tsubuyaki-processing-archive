@@ -2131,7 +2131,7 @@
     "reason": "runtime-error",
     "error": "$ is not defined",
     "retryable": false,
-    "checked_at": "2026-11-10T12:37:51Z"
+    "checked_at": "2026-11-10T21:49:57Z"
   },
   {
     "id": "2118387642647953695",
@@ -2143,7 +2143,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-11-10T12:37:51Z"
+    "checked_at": "2026-11-10T21:49:57Z"
   },
   {
     "id": "2119342549920051394",
@@ -2154,6 +2154,18 @@
     "reason": "runtime-error",
     "error": "Unexpected identifier '#つぶやきProcessing'",
     "retryable": false,
-    "checked_at": "2026-11-10T12:37:51Z"
+    "checked_at": "2026-11-10T21:49:57Z"
+  },
+  {
+    "id": "2120161286189097195",
+    "tweet_url": "https://x.com/PixelonKas/status/2120161286189097195",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-11-10T21:49:57Z"
   }
 ]
