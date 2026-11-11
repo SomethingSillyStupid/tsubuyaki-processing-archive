@@ -2131,7 +2131,7 @@
     "reason": "runtime-error",
     "error": "$ is not defined",
     "retryable": false,
-    "checked_at": "2026-11-10T21:49:57Z"
+    "checked_at": "2026-11-11T06:12:07Z"
   },
   {
     "id": "2118387642647953695",
@@ -2143,7 +2143,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-11-10T21:49:57Z"
+    "checked_at": "2026-11-11T06:12:07Z"
   },
   {
     "id": "2119342549920051394",
@@ -2154,7 +2154,7 @@
     "reason": "runtime-error",
     "error": "Unexpected identifier '#つぶやきProcessing'",
     "retryable": false,
-    "checked_at": "2026-11-10T21:49:57Z"
+    "checked_at": "2026-11-11T06:12:07Z"
   },
   {
     "id": "2120161286189097195",
@@ -2166,6 +2166,17 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-11-10T21:49:57Z"
+    "checked_at": "2026-11-11T06:12:07Z"
+  },
+  {
+    "id": "2120358124880052309",
+    "tweet_url": "https://x.com/nicolasbaez/status/2120358124880052309",
+    "classification_attempts": [
+      "p5js"
+    ],
+    "reason": "invalid-source",
+    "error": "Invalid or unexpected token",
+    "retryable": false,
+    "checked_at": "2026-11-11T06:12:07Z"
   }
 ]
