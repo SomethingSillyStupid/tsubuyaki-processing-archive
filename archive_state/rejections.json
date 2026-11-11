@@ -2143,7 +2143,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-11-11T16:58:23Z"
+    "checked_at": "2026-11-11T22:42:57Z"
   },
   {
     "id": "2119342549920051394",
@@ -2154,7 +2154,7 @@
     "reason": "runtime-error",
     "error": "Unexpected identifier '#つぶやきProcessing'",
     "retryable": false,
-    "checked_at": "2026-11-11T16:58:23Z"
+    "checked_at": "2026-11-11T22:42:57Z"
   },
   {
     "id": "2120161286189097195",
@@ -2166,7 +2166,7 @@
     "reason": "ambiguous-language",
     "error": "Expected exactly one runtime to succeed; got 0",
     "retryable": false,
-    "checked_at": "2026-11-11T16:58:23Z"
+    "checked_at": "2026-11-11T22:42:57Z"
   },
   {
     "id": "2120358124880052309",
@@ -2177,6 +2177,6 @@
     "reason": "invalid-source",
     "error": "Invalid or unexpected token",
     "retryable": false,
-    "checked_at": "2026-11-11T16:58:23Z"
+    "checked_at": "2026-11-11T22:42:57Z"
   }
 ]
