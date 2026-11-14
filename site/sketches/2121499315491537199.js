@@ -1,0 +1,12 @@
+f=0
+draw=_=>{
+ f++||createCanvas(W=500,W)
+ noStroke()
+ for(z=20;z>0;z--){
+ for(n=0;n<99;n++){
+   fill(z*7)
+   F=(f*3+n+z*3)%600
+   g=(k)=>map(F/30%1,0,1,(r=(F/30|0)*30)*k(r+z),(r+=30)*k(r+z))
+   circle(250+g(cos),250+g(sin),z+F/9)
+ }}
+}
