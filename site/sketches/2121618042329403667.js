@@ -1,0 +1,13 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)
+stroke(W)
+background(0)
+frameRate(1)
+for(m=0;m<200;m++){
+line(250+200*cos(i=m/100*PI),250+200*sin(i),250+200*cos(i*=f+1),250+200*sin(i))
+}
+textSize(50)
+text(f,0,50)
+f<21&&save(`${f}.jpg`)
+}
