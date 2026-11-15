@@ -1,0 +1,1 @@
+float i,m,n,o,s,h=m=360,v=n=240; void setup(){size(720,480);stroke(h);} void draw(){fill(0, 69);rect(-1, -1, 2*h+2, 2*v+2);for(i=4e3;i>0;i--){s=(s+1.5+((int)(PI*Math.random())|0))%7;o=1.79*s;m=(m+h+v*cos(o))/2;n=(n+v+v*sin(o))/2;rect(m,n,2,2);}}
