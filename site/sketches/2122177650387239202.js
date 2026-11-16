@@ -1,0 +1,11 @@
+f=0
+draw=_=>{
+f++||createCanvas(W=500,W)+background(0)
+strokeWeight(5)
+for(x=0,c=0;x<W;x+=99,c^=1){for(y=0;y<W;y+=99,c^=1){for(i=0;i<TAU;i+=TAU/5){
+stroke(c*W)
+r=abs(250*sin(f*noise(x,y)/70))
+line(x,y,x+r*cos(I=f/200+i),y+r*sin(I))
+}
+}}
+}
