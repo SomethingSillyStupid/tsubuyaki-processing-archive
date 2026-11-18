@@ -1,0 +1,11 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  stroke(W)
+  for(y=-99;y<600;y+=5){
+  for(n=0;n<60;n+=9){
+    line((X=W*noise(y)+300*tan((n+(f*3))*noise(y,9)/300)),Y=y+30*cos((f+n)/30+y),X-10,Y-10)
+    line(X,Y,X-10,Y+10)
+  }}
+}
