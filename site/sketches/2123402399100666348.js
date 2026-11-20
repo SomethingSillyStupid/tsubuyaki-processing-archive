@@ -1,0 +1,10 @@
+t=0
+draw=_=>{B=blendMode
+F=a=>{for(y=0;y<W;y+=31)for(x=0;x<W;x+=31)fill(noise(x,y,t/W)*W%360,80,sin(noise(y,x,t/W))**4*99)+square(x+(O=!a*9),y+O,a*18+6,6)}
+colorMode(HSB)
+filter(BLUR)
+B(BLEND)
+background(0,t++?.05:!createCanvas(W=720,W)+W)
+F(0)
+B(ADD)
+F(1)}

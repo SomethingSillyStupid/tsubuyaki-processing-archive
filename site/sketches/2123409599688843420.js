@@ -1,0 +1,14 @@
+f=0
+draw=_=>{
+ f++||createCanvas(W=500,W)
+ background(0)
+ stroke(W)
+ noFill()
+ for(x=-f%99;x<600;x+=99){
+ for(y=-f%99-x/2;y<600;y+=99){
+   rect(x,y,99)
+   for(i=0;i<6;i+=.3){
+     line(x,y,x+99*cos(I=i+x*3/2+y+1.99*f),y+99*sin(I))
+   }
+  }}
+}
