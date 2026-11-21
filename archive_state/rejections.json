@@ -2188,6 +2188,18 @@
     "reason": "invalid-source",
     "error": "Invalid or unexpected token",
     "retryable": false,
-    "checked_at": "2026-11-21T01:31:09Z"
+    "checked_at": "2026-11-21T21:39:47Z"
+  },
+  {
+    "id": "2124190435996315816",
+    "tweet_url": "https://x.com/marekozor/status/2124190435996315816",
+    "classification_attempts": [
+      "p5js",
+      "processing"
+    ],
+    "reason": "ambiguous-language",
+    "error": "Expected exactly one runtime to succeed; got 0",
+    "retryable": false,
+    "checked_at": "2026-11-21T21:39:47Z"
   }
 ]
