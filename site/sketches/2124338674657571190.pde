@@ -1,0 +1,1 @@
+float i,m,n,o,s,t,h=m=360,v=n=240;void setup(){size(720,480);stroke(h);}void draw(){background(0);for(i=9e4;i>0;i--){s=(s+1+((int)(random(PI))|0))%7;o=PI/2*s;m=(m+h+v*cos(o))/2;n=(n+v+v*sin(o)-random(i%random(v*asin((s*i%t/2)*cos(t)))))/2;point(m,n);}t+=.01;}
