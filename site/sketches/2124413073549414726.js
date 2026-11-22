@@ -1,0 +1,12 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(0)
+  stroke(W)
+  noFill()
+  for(i=0;i<TAU;i+=.003){
+   r=600-(f*3+9e3)*noise(i)%700
+   R=max(r,m=((1e3*noise(i*99)-250)/70|0)*70)
+   circle(250+R*cos(i),250+R*sin(i),r/m*30)
+  }
+}

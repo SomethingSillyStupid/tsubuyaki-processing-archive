@@ -1,0 +1,10 @@
+t=0
+$=[]
+draw=_=>{t++||createCanvas(W=720,W)
+B=blendMode
+colorMode(HSB)
+B(BLEND)
+background(0,.1)
+B(ADD)
+$[t%W]={x:360,y:360,s:9,c:t%W/2}
+$.map(p=>fill(p.c,50,W,T=tan(p.s+=.1)**2)+circle(p.x+=cos(R=noise(p.x/W,p.y/W,t/W)*W)*p.s/9,p.y+=sin(R)*p.s/9,1/T))}
