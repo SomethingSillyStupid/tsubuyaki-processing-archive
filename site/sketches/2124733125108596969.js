@@ -1,0 +1,12 @@
+f=0
+draw=_=>{
+  f++||createCanvas(W=500,W)
+  background(W)
+  noStroke()
+  fill(0)
+  for(x=-f%50;x<600;x+=50){
+  for(y=-f%50-x/2;y<600;y+=50){
+  for(c=0;c<30;c+=3){
+    circle(x+c*cos(C=c+f/30+x+y+2*f+x/2),y+c*sin(C),5+c)
+  }}}
+}
