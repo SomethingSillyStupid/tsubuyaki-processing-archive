@@ -1,0 +1,15 @@
+f=0
+draw=_=>{
+ f++||createCanvas(W=500,W)
+ background(0)
+ noStroke()
+ for(x=0;x<600;x+=110){
+  for(y=0;y<600;y+=20){
+   push()
+   X=x+30*sin(x*y)
+   d=40*noise(x,y)*(.6+sin(x+(y+f)/20))
+   quad(X-d,y,X,y-d,X+d,y,X,y+d)
+   pop()
+  }
+ }
+}
